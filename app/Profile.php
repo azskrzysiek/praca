@@ -8,8 +8,13 @@ class Profile extends Model
 {
 
     protected $fillable = [
-        'name', 'lastname','description', 'image',
+        'name', 'lastname', 'description', 'image',
     ];
+
+    public function profileImage()
+    {
+        return ($this->image) ? '/storage/' . $this->image : '/jpg/noimage.jpg';
+    }
 
     public function user()
     {
@@ -18,7 +23,7 @@ class Profile extends Model
 
     public function getPositioneAttribute()
     {
-        $position = ['Bramkarz','Lewoskrzydłowy','Leworozgrywający','Środkowy','Praworozgrywający','Prawoskrzydłowy','Kołowy','Kołowy','Trener','Kibic'];
+        $position = ['Bramkarz', 'Lewoskrzydłowy', 'Leworozgrywający', 'Środkowy', 'Praworozgrywający', 'Prawoskrzydłowy', 'Kołowy', 'Kołowy', 'Trener', 'Kibic'];
 
         $where = $this->position;
 

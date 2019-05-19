@@ -2,10 +2,9 @@
 
 namespace App;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -17,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','username',
+        'name', 'email', 'password', 'username',
     ];
 
     /**
@@ -44,9 +43,32 @@ class User extends Authenticatable
 
         static::created(function ($user) {
             $user->profile()->create([
-                'name' => $user->name,
+                'name' => $user->splitName(),
+                'lastname' => $user->splitLastname(),
             ]);
         });
+    }
+
+    public function splitName()
+    {
+        $userWholeName = $this->name;
+        $pieces = explode(" ", $userWholeName);
+        return $pieces[0];
+    }
+
+    public function splitLastname()
+    {
+        $userWholeName = $this->name;
+
+        if (strpos($userWholeName, " ") !== false) {
+            $pieces = explode(" ", $userWholeName);
+            return $pieces[1];
+        } else {
+            return "";
+        }
+
+        // $pieces = explode(" ", $userWholeName);
+        // return $pieces[1];
     }
 
     public function profile()
@@ -56,13 +78,17 @@ class User extends Authenticatable
 
     public function posts()
     {
-        return $this->hasMany(Post::class)->orderBy('created_at','DESC');
+        return $this->hasMany(Post::class)->orderBy('created_at', 'DESC');
     }
 
-    static function thisUser()
+    public function favoriting()
+    {
+        return $this->belongsToMany(Post::class);
+    }
+
+    public static function thisUser()
     {
         return Auth::user() ? Auth::user() : null;
     }
 
-    
 }

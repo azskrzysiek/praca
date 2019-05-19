@@ -13,9 +13,27 @@
        </div>
        <div class="col-4">
            <div>
-               <h3>{{ $post->user->username }}</h3>
+               <div class="d-flex align-items-center">
+                   <div class="pr-3">
+                    <img style="max-width: 40px;" src="{{ $post->user->profile->profileImage() }}" class="rounded-circle w-100" alt="">
+                   </div>
+                   <div>
+                       <div class="font-weight-bold d-flex align-items-center">
+                           <a href="/profile/{{ $post->user->id }}">
+                                <span class="text-dark">{{ $post->user->username }}</span>
+                            </a>
+                            <favorite-button post-id="{{ $post->id }}" favorit="{{ $favorit }}"></favorite-button>
+                        </div>
+                   </div>
+               </div>
+               <hr>
 
-               <p>{{ $post->caption }}</p>
+               <p>
+                   <span class="font-weight-bold">
+                       <a href="/profile/{{ $post->user->id }}">
+                            <span class="text-dark">{{ $post->user->username }}</span>
+                        </a>
+                    </span> {{ $post->caption }}</p>
            </div>
        </div>
    </div>

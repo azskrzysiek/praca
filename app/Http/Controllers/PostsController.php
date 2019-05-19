@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 
 class PostsController extends Controller
@@ -12,6 +13,18 @@ class PostsController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+    }
+
+    public function index(Post $post)
+    {
+        //  $users = auth()->user()->favoriting()->pluck('post_user.user_id');
+
+        //  $posts = Post::whereIn('user_id', $users)->latest()->get();
+         
+
+        $posts = Post::latest()->paginate(3);
+
+        return view('posts.index', compact('posts'));
     }
 
     public function create()
@@ -44,6 +57,8 @@ class PostsController extends Controller
 
     public function show(Post $post)
     {
-        return view('posts.show', compact('post'));
+        $favorit = (auth()->user()) ? auth()->user()->favoriting->contains($post->id) : false;
+
+        return view('posts.show', compact('post', 'favorit'));
     }
 }

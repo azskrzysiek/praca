@@ -4,7 +4,7 @@
 <div class="container">
    <div class="row">
        <div class="col-12 col-md-7 text-center">
-            <img src="/storage/{{ $user->profile->image }}" class=" rounded-circle w-100" alt="">
+            <img src="{{ $user->profile->profileImage() }}" style="max-height: 400px; max-width: 400px;" class=" rounded-circle w-100" alt="">
             <div class="row justify-content-center">
                 <div class="col-6 offset-4"><a class="d-flex" href="#"><i class="fab fa-instagram pt-1 mr-2"></i><div>Instagram</div></a></div>
                 <div class="col-6 offset-4"><a class="d-flex" href="#"><i class="fab fa-facebook pt-1 mr-2"></i><div>Facebook</div></a></div>
@@ -43,7 +43,7 @@
         </div>
 
        <div class="row pt-4">
-           @foreach($user->posts as $post)
+           @foreach($posts as $post)
             <div class="col-4 pb-4">
                 <a href="/p/{{ $post->id }}">
                     <img src="/storage/{{ $post->image }}" class="w-100" alt="">
@@ -51,5 +51,32 @@
             </div>
            @endforeach
        </div>
+
+       <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                {{ $posts->links() }}
+            </div>
+        </div>
+
+       <div class="row">
+            <div class="col-12 text-center">Moje ulubione filmy</div>
+        </div>
+        <div class="row">
+            @foreach ($postFavorites as $postFavorite)
+            <div class="col-4 pb-4">
+                 <a href="/p/{{ $postFavorite->id }}">
+                     <img src="/storage/{{ $postFavorite->image }}" class="w-100" alt="">
+                 </a>
+             </div>
+            @endforeach
+        </div>
+
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                {{ $postFavorites->links() }}
+            </div>
+        </div>       
 </div>
+
+
 @endsection

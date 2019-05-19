@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 
 class ProfilesController extends Controller
@@ -18,9 +20,16 @@ class ProfilesController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(User $user)
+    public function index(User $user, Post $post)
     {
-        return view('profiles.index', compact('user'));
+
+         $users = auth()->user()->posts()->pluck('posts.user_id');
+
+         $posts = Post::whereIn('user_id', $users)->latest()->paginate(3, ['*'], 'posts');
+
+         $postFavorites = Auth::user()->favoriting()->paginate(3, ['*'], 'postFavorites');
+
+        return view('profiles.index', compact('user','posts','postFavorites'));
     }
 
     public function edit(User $user)
@@ -33,7 +42,7 @@ class ProfilesController extends Controller
     public function update(User $user)
     {
         $this->authorize('update', $user->profile);
-        
+
         $data = request()->validate([
             'name' => '',
             'lastname' => '',
@@ -41,22 +50,20 @@ class ProfilesController extends Controller
             'image' => '',
         ]);
 
-        
-        if (request('image'))
-        {
+        if (request('image')) {
             $imagePath = request('image')->store('profile', 'public');
-            
+
             $image = Image::make(public_path("storage/{$imagePath}"))->fit(800, 800);
             $image->save();
 
-            auth()->user()->profile->update(array_merge(
-                $data,
-                ['image' => $imagePath]
-            ));
-        } else {
-            auth()->user()->profile->update($data);
+            $imageArray = ['image' => $imagePath];
+
         }
 
+        auth()->user()->profile->update(array_merge(
+            $data,
+            $imageArray ?? []
+        ));
 
         return redirect("/profile/{$user->id}");
     }

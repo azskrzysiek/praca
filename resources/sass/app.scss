@@ -9,10 +9,16 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+@import '~slick-carousel/slick/slick';
+@import '~slick-carousel/slick/slick-theme';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome.scss';
 @import '~@fortawesome/fontawesome-free/scss/solid.scss';
 @import '~@fortawesome/fontawesome-free/scss/brands.scss';
 
 body {
     background-image: url('https://barbarashdwallpapers.com/wp-content/uploads/2015/05/White-wave-pattern-wallpaper.jpg');
+}
+
+.active {
+    color: yellow;
 }
