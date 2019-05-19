@@ -33,7 +33,7 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item d-flex" href="{{ route('profile', $user->id) }}">
+                                <a class="dropdown-item d-flex" href="{{ route('profile.show', $user->id) }}">
                                     <i class="fa fa-user-circle pt-1"></i>
                                     <div class="ml-3">Profile</div>
                                 </a>
