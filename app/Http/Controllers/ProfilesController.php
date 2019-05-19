@@ -21,6 +21,6 @@ class ProfilesController extends Controller
     {
         $user = User::findOrFail($user);
 
-        return view('profile', compact('user'));
+        return view('profiles.index', compact('user'));
     }
 }

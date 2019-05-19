@@ -12,8 +12,9 @@
             </div>
        </div>
        <div class="col-12 col-md-5 text-center">
-           <div class="pt-5">
+           <div class="pt-5 d-flex justify-content-between align-items-center">
                <h1>{{ $user->username }}</h1>
+               <a href="/p/create">Add new post</a>
            </div>
            <div>
                <div><strong class="mr-3">Imię</strong>{{ $user->profile->name }}</div>
@@ -23,24 +24,22 @@
                <div><strong class="mr-3">Doświadczenie:</strong>{{ $user->profile->experience }}</div>
                <div><strong class="mr-3">Wzrost:</strong>{{ $user->profile->height }}</div>
                <div><strong class="mr-3">Aktualny klub:</strong>{{ $user->profile->club }}</div>
+               <div><strong class="mr-3">Dodanych filmów:</strong>{{ $user->posts->count() }}</div>
            </div>
            <div class="pt-5 font-weight-bold">Parę słów o sobie:</div>
            <div class="text-justify">{{ $user->profile->description }}</div>
 
        </div>
+       
 
-       <div class="row pt-4 justify-content-center">
-           <div class="col-6 text-center font-weight-bold">Moje filmy</div>
-           <div class="w-100"></div>
-           <div class="text-center col-sm-12 col-md-4">
-                <iframe class="p-4" width="400" height="320" src="https://www.youtube.com/embed/p-x8m1sJegw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-           </div>
-           <div class="text-center col-sm-12 col-md-4">
-                <iframe class="p-4" width="400" height="320" src="https://www.youtube.com/embed/p-x8m1sJegw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-           </div>
-           <div class="text-center col-sm-12 col-md-4">
-                <iframe class="p-4" width="400" height="320" src="https://www.youtube.com/embed/p-x8m1sJegw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-           </div>
+       <div class="row pt-4">
+            <div class="col-6 offset-3 text-center font-weight-bold pb-2">Moje filmy</div>
+            <div class="w-100"></div>
+           @foreach($user->posts as $post)
+            <div class="col-4 pb-4">
+                <img src="/storage/{{ $post->image }}" class="w-100" alt="">
+            </div>
+           @endforeach
        </div>
 </div>
 @endsection
