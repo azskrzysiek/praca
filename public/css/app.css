@@ -16700,9 +16700,14 @@ readers do not read off random characters that represent icons */
 
 body {
   background-image: url("https://barbarashdwallpapers.com/wp-content/uploads/2015/05/White-wave-pattern-wallpaper.jpg");
+  color: #000;
 }
 
 .active {
   color: yellow;
+}
+
+.jumbotron {
+  background: -moz-linear-gradient(top, #1e5799 0%, rgba(30, 87, 153, 0.54) 46%, rgba(125, 185, 232, 0.18) 82%, rgba(125, 185, 232, 0) 100%);
 }
 

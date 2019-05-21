@@ -23,7 +23,7 @@ class ProfilesController extends Controller
     public function index(User $user, Post $post)
     {
 
-         $users = auth()->user()->posts()->pluck('posts.user_id');
+         $users = $user->posts()->pluck('posts.user_id');
 
          $posts = Post::whereIn('user_id', $users)->latest()->paginate(3, ['*'], 'posts');
 

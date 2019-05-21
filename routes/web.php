@@ -19,6 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('favorite/', 'FavoritesController@index');
 Route::post('favorite/{post}', 'FavoritesController@store');
 
 Route::get('/', 'PostsController@index');
