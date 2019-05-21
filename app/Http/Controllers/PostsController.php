@@ -12,7 +12,7 @@ class PostsController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->except('index','show');
+        $this->middleware('auth')->except('index','show','fetch_data');
     }
 
     public function index(Post $post)
@@ -22,10 +22,11 @@ class PostsController extends Controller
         //  $posts = Post::whereIn('user_id', $users)->latest()->get();
          
 
-        $posts = Post::latest()->paginate(3);
+        $posts = Post::latest()->paginate(6);
 
         return view('posts.index', compact('posts'));
     }
+
 
     public function create()
     {

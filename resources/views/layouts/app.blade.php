@@ -10,6 +10,10 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    <script
+			  src="https://code.jquery.com/jquery-3.2.0.js"
+			  integrity="sha256-wPFJNIFlVY49B+CuAIrDr932XSb6Jk3J1M22M3E2ylQ="
+			  crossorigin="anonymous"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     
 
@@ -23,14 +27,13 @@
 <body>
     <div id="app">
         <div class="wrapper">
-            @include('layouts.nav')
+                @include('layouts.nav')
      
              <main class="py-4">
                  @yield('content')
              </main>
         </div>
     </div>
-
-    @yield('script')
-</body>
+    </body>
 </html>
+    @yield('script')

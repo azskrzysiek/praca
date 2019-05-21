@@ -27,9 +27,9 @@ class ProfilesController extends Controller
 
          $posts = Post::whereIn('user_id', $users)->latest()->paginate(3, ['*'], 'posts');
 
-         $postFavorites = Auth::user()->favoriting()->paginate(3, ['*'], 'postFavorites');
+        //  $postFavorites = Auth::user()->favoriting()->paginate(3, ['*'], 'postFavorites');
 
-        return view('profiles.index', compact('user','posts','postFavorites'));
+        return view('profiles.index', compact('user','posts'));
     }
 
     public function edit(User $user)
