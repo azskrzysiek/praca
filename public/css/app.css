@@ -16705,7 +16705,6 @@ body {
   left: 0;
   right: 0;
   height: 100%;
-  padding: 4rem;
 }
 
 body:before {
@@ -16724,8 +16723,8 @@ body:before {
           transform: scale(5);
   -webkit-transform-origin: top left;
           transform-origin: top left;
-  -webkit-filter: blur(2px) grayscale(50%);
-          filter: blur(2px) grayscale(50%);
+  -webkit-filter: blur(2px) grayscale(80%);
+          filter: blur(2px) grayscale(80%);
 }
 
 .active {

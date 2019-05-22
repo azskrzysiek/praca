@@ -1,10 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container d-flex flex-column justify-content-center" style="height: 100vh;">
+    <div class="jumbotron">
+
+    
+    <div class="row">
+        <div class="col-12">
+            <div class="card text-center">
+                <div class="card"><h4 class="pt-1">Moje ulubione filmy</h4></div>
+            </div>
+        </div>
+    </div>
     <div class="row">
     @foreach ($postFavorites as $postFavorite)
-    <div class="col-4 py-4">
+    <div class=" col-12 col-md-4 py-4">
         <div class="card" style="min-height: 280px;">
             <div class="card-header d-flex align-items-baseline justify-content-between">
                 <div>
@@ -30,7 +40,7 @@
     </div>
     @endforeach
             </div>
-
+    </div>
     <div class="row">
         <div class="col-12 d-flex justify-content-center">
             {{ $postFavorites->links() }}

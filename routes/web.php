@@ -18,13 +18,18 @@
 Auth::routes();
 
 
+
+
+Route::get('/', function() {
+    return view('welcome');
+})->middleware('guest');
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('favorite/', 'FavoritesController@index');
 Route::post('favorite/{post}', 'FavoritesController@store');
 
-Route::get('/', 'PostsController@index');
-Route::get('/', 'PostsController@index');
+Route::get('/posts', 'PostsController@index');
 Route::get('/p/create', 'PostsController@create');
 Route::post('/p', 'PostsController@store');
 Route::get('/p/{post}', 'PostsController@show');

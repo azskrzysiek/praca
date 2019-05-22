@@ -3,12 +3,12 @@
 @section('content')
 
 
-<div class="container">
-    <div class="row">
+<div class="container d-flex flex-column justify-content-center" style="height:95vh;">
+    <div class="row" style="padding-top: 15rem;">
         <div class="card-deck">
     @foreach ($posts as $post)
             <div class="col-4 py-4">
-                <div class="card" style="min-height: 280px;">
+                <div class="card" style="min-height: 280px; min-width: 350px;">
                     <div class="card-header d-flex align-items-baseline justify-content-between">
                         <div>
                             <i class="fas fa-clock pr-2"></i>
@@ -21,7 +21,7 @@
                         </span>
                     </div>
                     <a href="/p/{{ $post->id }}">
-                        <img src="/storage/{{ $post->image }}" class="card-img-top" alt="...">
+                        <img src="/storage/{{ $post->image }}" class="card-img-top" style="" alt="...">
                     </a>
                     <div class="card-body">
                         <p class="card-text text-center">

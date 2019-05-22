@@ -1,7 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container d-flex flex-column justify-content-center" style="height: 100vh;">
+    <div class="jumbotron">
+
+    
     <form action="/profile/{{ $user->id }}" enctype="multipart/form-data" method="POST">
         @csrf
         @method('PATCH')
@@ -49,7 +52,9 @@
 
         <div class="row pt-3">
             <button class="btn btn-outline-primary">Save Profile</button>
+            <a href="javascript:history.back()" class="btn btn-outline-primary ml-3">Back</a>
         </div>
     </form>
+</div>
 </div>
 @endsection

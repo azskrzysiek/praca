@@ -33,11 +33,15 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item d-flex" href="{{ route('profile.show', $user->id) }}">
+                                <a class="dropdown-item d-flex align-items-baseline" href="{{ route('home') }}">
+                                        <i class="fas fa-columns"></i>
+                                    <div class="ml-3">Dashboard</div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-baseline" href="{{ route('profile.show', $user->id) }}">
                                     <i class="fa fa-user-circle pt-1"></i>
                                     <div class="ml-3">Profile</div>
                                 </a>
-                                <a class="dropdown-item d-flex" href="{{ route('logout') }}"
+                                <a class="dropdown-item d-flex align-items-baseline" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                     <i class="fa fa-power-off pt-1"></i>
