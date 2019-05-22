@@ -1,4 +1,4 @@
-<nav id="navbar" style="height:60px" class=" navbar fixed-top navbar-expand-md navbar-light bg-white shadow-sm">
+<nav id="navbar" style="max-height:60px" class=" navbar fixed-top navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand d-flex" href="{{ url('/') }}">
                 <div><img src="/svg/logo.svg" class="pr-3" style="height: 25px; border-right: 1px solid #333;" alt=""></div>

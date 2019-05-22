@@ -12,7 +12,7 @@ class ProfilesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['index']);
+        $this->middleware('auth');
     }
 
     /**
@@ -47,6 +47,7 @@ class ProfilesController extends Controller
             'name' => '',
             'lastname' => '',
             'description' => '',
+            'position' => '',
             'image' => '',
         ]);
 

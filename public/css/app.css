@@ -16698,15 +16698,17 @@ readers do not read off random characters that represent icons */
   font-family: "Font Awesome 5 Brands";
 }
 
-body {
+.bg-text {
   position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
+  min-height: 100vh;
+  padding: 4rem;
 }
 
-body:before {
+.bg-text:before {
   content: "";
   position: fixed;
   background: url("https://images.unsplash.com/photo-1553627220-92f0446b6a5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
@@ -16726,6 +16728,18 @@ body:before {
           filter: blur(2px) grayscale(80%);
 }
 
+a.badge {
+  color: #000;
+}
+
+a.badge:hover {
+  color: #fff;
+}
+
+a.badge.red:hover {
+  color: #b30000;
+}
+
 .active {
   color: yellow;
 }
@@ -16741,5 +16755,9 @@ body:before {
 .offset {
   padding: 0;
   margin: 0;
+}
+
+.modal {
+  padding-top: 20vh;
 }
 

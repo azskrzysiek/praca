@@ -12,7 +12,7 @@ class PostsController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->except('index','show','fetch_data');
+        $this->middleware('auth');
     }
 
     public function index(Post $post)

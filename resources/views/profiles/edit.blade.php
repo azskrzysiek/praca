@@ -32,6 +32,27 @@
                 @enderror
         </div>
         <div class="form-group row">
+            <label for="position" class="col-md-4 col-form-label pl-0">Profile position</label>
+                <select id="position" type="text" rows="5" class="form-control @error('position') is-invalid @enderror" name="position">
+
+                    @php
+                        $position = ['Bramkarz', 'Lewoskrzydłowy', 'Leworozgrywający', 'Środkowy', 'Praworozgrywający', 'Prawoskrzydłowy', 'Kołowy', 'Kołowy', 'Trener', 'Kibic'];
+                    @endphp
+
+                    @foreach ($position as $item)
+                        <option value="{{$loop->iteration}}" {{ ($user->profile->position == $loop->iteration) ? 'selected' : '' }}>{{$item}}
+                        </option>
+                    @endforeach
+                
+                </select>
+
+                @error('position')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+        </div>
+        <div class="form-group row">
             <label for="description" class="col-md-4 col-form-label pl-0">Profile description</label>
                 <textarea id="description" type="text" rows="5" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description')}}" autocomplete="description" autofocus>{{ $user->profile->description }}</textarea>
 

@@ -22,7 +22,7 @@ Auth::routes();
 
 Route::get('/', function() {
     return view('welcome');
-})->middleware('guest');
+})->middleware('guest')->name('welcome');
 
 Route::get('/home', 'HomeController@index')->name('home');
 

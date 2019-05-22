@@ -34,7 +34,7 @@
                <div class="row pb-4">
                    <div class="col-4">
                        @can('update', $user->profile)
-                        <a class="d-block badge badge-pill badge-success" style="color: black;" href="/p/create">
+                        <a class="d-block badge badge-pill badge-success" href="/p/create">
                             <i class="fas fa-2x fa-plus-circle pb-1"></i>
                             <div>Add new post</div>
                         </a>
@@ -50,9 +50,9 @@
                    </div>
                    <div class="col-4">
                         @can('update', $user->profile)
-                            <a class="d-block badge badge-pill badge-warning" href="/favorite">
+                            <a class="d-block badge badge-pill badge-warning red" href="/favorite">
                                 <i class="fas fa-2x fa-heart pb-1"></i>
-                                <div>Show favorites</div>
+                                <div>Ulubione</div>
                             </a>
                         @endcan
                    </div>

@@ -8,7 +8,7 @@ class Profile extends Model
 {
 
     protected $fillable = [
-        'name', 'lastname', 'description', 'image',
+        'name', 'lastname', 'description','position', 'image',
     ];
 
     public function profileImage()
@@ -30,4 +30,5 @@ class Profile extends Model
         return $position[$where - 1];
 
     }
+    
 }
