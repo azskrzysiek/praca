@@ -29,7 +29,7 @@
         <div class="wrapper">
                 @include('layouts.nav')
      
-             <main class="py-4">
+             <main class="bg-text">
                  @yield('content')
              </main>
         </div>

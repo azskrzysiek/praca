@@ -22,7 +22,7 @@ class PostsController extends Controller
         //  $posts = Post::whereIn('user_id', $users)->latest()->get();
          
 
-        $posts = Post::latest()->paginate(6);
+        $posts = Post::with('user')->latest()->paginate(6);
 
         return view('posts.index', compact('posts'));
     }

@@ -16699,7 +16699,33 @@ readers do not read off random characters that represent icons */
 }
 
 body {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
   padding: 4rem;
+}
+
+body:before {
+  content: "";
+  position: fixed;
+  background: url("https://images.unsplash.com/photo-1553627220-92f0446b6a5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+  background-size: center;
+  background-position: center;
+  z-index: -1;
+  /* Keep the background behind the content */
+  height: 20%;
+  width: 20%;
+  /* Using Glen Maddern's trick /via @mente */
+  /* don't forget to use the prefixes you need */
+  -webkit-transform: scale(5);
+          transform: scale(5);
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+  -webkit-filter: blur(2px) grayscale(50%);
+          filter: blur(2px) grayscale(50%);
 }
 
 .active {
@@ -16707,7 +16733,7 @@ body {
 }
 
 .jumbotron {
-  background: -moz-linear-gradient(top, #1e5799 0%, rgba(30, 87, 153, 0.54) 46%, rgba(125, 185, 232, 0.18) 82%, rgba(125, 185, 232, 0) 100%);
+  background: #fff;
 }
 
 .sticky {

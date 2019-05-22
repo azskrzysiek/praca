@@ -5,37 +5,34 @@
 
 <div class="container">
     <div class="row">
+        <div class="card-deck">
     @foreach ($posts as $post)
-            {{-- <div class="col-4">
-                <h1 class="text-center">{{ $post->title }}</h1>
-                <a href="/p/{{ $post->id }}">
-                    <img class="w-100" src="/storage/{{ $post->image }}" class="w-100" alt="">
-                </a>
-                    <p>
+            <div class="col-4 py-4">
+                <div class="card" style="min-height: 280px;">
+                    <div class="card-header d-flex align-items-baseline justify-content-between">
+                        <div>
+                            <i class="fas fa-clock pr-2"></i>
+                            <span>{{ $post->created_date}}</span>
+                        </div>
                         <span class="font-weight-bold">
                             <a href="/profile/{{ $post->user->id }}">
                                 <span class="text-dark">{{ $post->user->username }}</span>
                             </a>
-                        </span> {{ $post->caption }}
-                    </p>
-            </div> --}}
-            <div class="col-4 py-4">
-                <div class="card" style="min-height: 280px;">
+                        </span>
+                    </div>
                     <a href="/p/{{ $post->id }}">
                         <img src="/storage/{{ $post->image }}" class="card-img-top" alt="...">
                     </a>
                     <div class="card-body">
-                        <p class="card-text">
-                            <span class="font-weight-bold">
-                                <a href="/profile/{{ $post->user->id }}">
-                                    <span class="text-dark">{{ $post->user->username }}</span>
-                                </a>
-                            </span> {{ $post->caption }}
+                        <p class="card-text text-center">
+                             
+                            <span>{{ $post->title }}</span>
                         </p>
                     </div>
                     </div>
             </div>
-    @endforeach
+            @endforeach
+        </div>
     </div>
 
     

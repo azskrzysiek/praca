@@ -1,10 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="jumbotron ">
-
-    
+<div class="container mt-0">
+    <div class="jumbotron">
    <div class="row">
        <div class="col-12 col-md-7 text-center">
             <img src="{{ $user->profile->profileImage() }}" style="max-height: 400px; max-width: 400px;" class=" rounded-circle w-100 mb-3" alt="">
@@ -80,20 +78,30 @@
 
 </div>
        
-
-
         <div class="row">
-            <div class="col-12 text-center">Moje filmy</div>
+            <div class="col-12 text-center">
+                <div class="card">Moje filmy</div>
+            </div>
         </div>
 
        <div class="row pt-4">
+        <div class="card-deck">
            @foreach($posts as $post)
             <div class="col-4 pb-4">
-                <a href="/p/{{ $post->id }}">
-                    <img src="/storage/{{ $post->image }}" class="w-100" alt="">
-                </a>
+                <div class="col-4">
+                    <div class="card" style="width: 18rem;">
+                         <div class="card-header text-center">
+                             {{ $post->title }}
+                         </div>
+                         <a href="/p/{{ $post->id }}">
+                             <img src="/storage/{{ $post->image }}" class="w-100 card-img-top" alt="">
+                         </a>
+                     </div>
+                </div>
             </div>
            @endforeach
+        </div>
+
        </div>
 
        <div class="row">

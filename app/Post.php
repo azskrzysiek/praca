@@ -22,4 +22,9 @@ class Post extends Model
     {
         return $this->belongsToMany(User::class);
     }
+
+    public function getCreatedDateAttribute()
+    {
+        return $this->created_at->diffForHumans();
+    }
 }

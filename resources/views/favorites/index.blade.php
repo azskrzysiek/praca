@@ -4,20 +4,31 @@
 <div class="container">
     <div class="row">
     @foreach ($postFavorites as $postFavorite)
-            <div class="col-4">
-                <h1 class="text-center">{{ $postFavorite->title }}</h1>
-                <a href="/p/{{ $postFavorite->id }}">
-                    <img class="w-100" src="/storage/{{ $postFavorite->image }}" class="w-100" alt="">
-                </a>
-                    <p>
-                        <span class="font-weight-bold">
-                            <a href="/profile/{{ $postFavorite->user->id }}">
-                                <span class="text-dark">{{ $postFavorite->user->username }}</span>
-                            </a>
-                        </span> {{ $postFavorite->caption }}
-                    </p>
+    <div class="col-4 py-4">
+        <div class="card" style="min-height: 280px;">
+            <div class="card-header d-flex align-items-baseline justify-content-between">
+                <div>
+                    <i class="fas fa-clock pr-2"></i>
+                    <span>{{ $postFavorite->created_date}}</span>
                 </div>
-                @endforeach
+                <span class="font-weight-bold">
+                    <a href="/profile/{{ $postFavorite->user->id }}">
+                        <span class="text-dark">{{ $postFavorite->user->username }}</span>
+                    </a>
+                </span>
+            </div>
+            <a href="/p/{{ $postFavorite->id }}">
+                <img src="/storage/{{ $postFavorite->image }}" class="card-img-top" alt="...">
+            </a>
+            <div class="card-body">
+                <p class="card-text text-center">
+                     
+                    <span>{{ $postFavorite->title }}</span>
+                </p>
+            </div>
+            </div>
+    </div>
+    @endforeach
             </div>
 
     <div class="row">

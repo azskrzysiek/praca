@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 
@@ -28,5 +29,7 @@ class AppServiceProvider extends ServiceProvider
         view()->composer('layouts.nav', function($view) {
             $view->with('user', User::thisUser());
         });
+
+        Carbon::setLocale('pl');
     }
 }
