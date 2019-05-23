@@ -30,6 +30,7 @@ class HomeController extends Controller
 
         $posts = Post::whereIn('user_id', $user)->latest()->get();
 
-        return view('home', compact('posts'));
+        return view('dashboard.home', compact('posts'));
     }
+
 }

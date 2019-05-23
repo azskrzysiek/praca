@@ -32,7 +32,11 @@ Route::post('favorite/{post}', 'FavoritesController@store');
 Route::get('/posts', 'PostsController@index');
 Route::get('/p/create', 'PostsController@create');
 Route::post('/p', 'PostsController@store');
-Route::get('/p/{post}', 'PostsController@show');
+
+Route::get('/p/{post}/edit', 'PostsController@edit')->name('posts.edit');
+Route::get('/p/{post}', 'PostsController@show')->name('posts.show');
+Route::patch('/p/{post}', 'PostsController@update')->name('posts.update');
+Route::delete('/p/{post}', 'PostsController@destroy')->name('posts.delete');
 
 Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
 Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');

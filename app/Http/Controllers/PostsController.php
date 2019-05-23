@@ -35,6 +35,7 @@ class PostsController extends Controller
 
     public function store()
     {
+        
          $data = request()->validate([
             'title' => 'required',
             'caption' => 'required',
@@ -61,5 +62,50 @@ class PostsController extends Controller
         $favorit = (auth()->user()) ? auth()->user()->favoriting->contains($post->id) : false;
 
         return view('posts.show', compact('post', 'favorit'));
+    }
+
+    public function edit(Post $post)
+    {
+        $this->authorize('update', $post);
+
+        return view('posts.edit', compact('post'));
+    }
+
+    public function update(Post $post)
+    {
+        $this->authorize('update', $post);
+
+        $data = request()->validate([
+            'title' => 'required',
+            'caption' => 'required',
+            'image' => ['required','image'],
+         ]);
+
+        if (request('image')) {
+            $imagePath = request('image')->store('posts', 'public');
+
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(800, 800);
+            $image->save();
+
+            $imageArray = ['image' => $imagePath];
+
+        }
+
+        $post->update(array_merge(
+            $data,
+            $imageArray ?? []
+        ));
+
+        return redirect("/home");
+    }
+
+    public function destroy(Post $post)
+    {
+
+        $this->authorize('delete', $post);
+
+        $post->delete();
+
+        return back();
     }
 }
