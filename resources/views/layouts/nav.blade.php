@@ -1,8 +1,9 @@
+
 <nav id="navbar" style="max-height:60px" class="{{ Auth::guest() ? 'visible' : ''}} navbar fixed-top navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
-            <a class="navbar-brand d-flex" href="{{ url('/') }}">
-                <div><img src="/svg/logo.svg" class="pr-3" style="height: 25px; border-right: 1px solid #333;" alt=""></div>
-                <div class="pl-2 pt-1">ReczVod</div>
+            <a title="strona główna" class="navbar-brand d-flex" href="{{ url('/') }}">
+                <div><img src="/svg/logo.svg" class="pr-1 hov" style="" alt=""></div>
+                <div class="pl-2 pt-1 hov">ReczVod</div>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>

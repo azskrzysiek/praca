@@ -26,6 +26,7 @@
 //     padding: 4rem;
 // }
 
+
 .bg-text {
     position: absolute;
     top: 0; bottom: 0; left: 0; right: 0;
@@ -79,9 +80,7 @@ a.badge {
     background: #fff;
 }
 
-.sticky {
-    opacity: .9;
-}
+
 
 .offset {
     padding: 0;
@@ -123,7 +122,7 @@ a:hover {
     background-size: cover;
     background-position: center;
     height: 100vh;
-    margin-bottom: 20px; 
+    // margin-bottom: 20px; 
     padding: 0 20px;
     display: flex;
     flex-direction: column;
@@ -137,6 +136,7 @@ a:hover {
     font-size: 50px;
     line-height: 1.2;
     margin-top: -2rem;
+    text-shadow: 1px 1px #000;
 }
 
 #showcase p{
@@ -151,6 +151,61 @@ a:hover {
     border: 1px solid #000;
     padding: 10px 20px;
     border-radius: 10px;
+    font-weight: 700;
+}
+
+#showcase .scrollDown {
+    position: absolute;
+    top: 63%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 50px;
+}
+#showcase .scrollDown:before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: -20px;
+    width: 10px;
+    height: 10px;
+    border-left: 2px solid black;
+    border-bottom: 2px solid black;
+    transform: rotate(-45deg);
+}
+
+#showcase .scrollDown:after {
+    content: '';
+    position: absolute;
+    top: -31px;
+    left: -6px;
+    width: 2px;
+    height: 20px;
+    background: black;
+    animation: animate 2s linear infinite;
+}
+
+@keyframes animate
+{
+    0%
+    {
+        transform-origin: top;
+        transform: scaleY(0);
+    }
+    45%
+    {
+        transform-origin: top;
+        transform: scaleY(1);
+    }
+    55%
+    {
+        transform-origin: bottom;
+        transform: scaleY(1);
+    }
+    100%
+    {
+        transform-origin: bottom;
+        transform: scaleY(0);
+    }
 }
 
 #showcase .button:hover {
@@ -158,6 +213,76 @@ a:hover {
     color: #fff;
 }
 
-.visible {
-    opacity: 0.9;
+#showcase .bg-shadow {
+    background-color: #ECEAE9;
+    opacity: .7;
+    padding: 4rem;
+    border-radius: 20px;
 }
+
+
+
+
+// navbar
+
+.visible {
+    opacity: .9;
+}
+
+
+.sticky {
+    opacity: .9;
+}
+
+.hov {
+    text-shadow: 1px 1px #000;
+}
+
+.hov:hover {
+    color: #C1BAB8;
+}
+
+img {
+    &.hov {
+        height: 35px;
+    }
+    &.hov:hover {
+        filter: invert(0.5);
+    }
+}
+
+#section-a,
+#section-b,
+#section-c {
+    color: #926239;
+    height: 100vh;
+}
+
+#section-a {
+    padding: 20px;
+    background: #F4F386;
+    text-align: center;
+}
+#section-b {
+    padding: 20px;
+    background: #f4f4f4;
+    text-align: center;
+}
+#section-c {
+    display: flex;
+}
+#section-c div {
+    padding: 20px;
+}
+
+#section-c .box-1, #section-c .box-3{
+    background: #926239;
+    color: #fff;
+}
+
+#section-c .box-2 {
+    background: #f9f9f9;
+}
+
+
+
