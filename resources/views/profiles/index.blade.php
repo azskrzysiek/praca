@@ -24,6 +24,7 @@
                         <i class="fab fa-twitter pt-1 mr-2"></i>
                         <div>Twitter</div>
                     </a>
+                    <social-facebook></social-facebook>
                 </div>
             </div>
        </div>
