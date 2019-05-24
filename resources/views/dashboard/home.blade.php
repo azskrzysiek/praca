@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
+
 @section('content')
-<div class="container d-flex flex-column justify-content-center" style="height: 100vh;">
+<div class="container d-flex flex-column justify-content-center" style="height: 96vh;">
     <div class="jumbotron">
         <div class="row">
             <div class="col-12">
@@ -43,7 +44,14 @@
                                         &#8260; 
                                         <a title="Usuń ten post"
                                         class="pl-1"
-                                        onclick=" confirm('Jestes pewien ? '); event.preventDefault(); document.getElementById('delete-post-{{ $post->id }}').submit();">
+                                        onclick="event.preventDefault(); 
+                                        var r = confirm('Jestes pewien ?'); 
+                                        if (r === true)
+                                        {
+                                            document.getElementById('delete-post-{{ $post->id }}').submit();
+                                        } else {
+                                            return false;
+                                        }">
                                         <i class="fas fa-trash" style="color: red; font-size: 130%;"></i>
                                         </a>
                                         <form class="d-none" id="delete-post-{{ $post->id }}" action="{{ route('posts.delete', $post->id) }}" method="POST">
@@ -68,3 +76,4 @@
     </div>
 </div>
 @endsection
+

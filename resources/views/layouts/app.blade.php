@@ -16,33 +16,34 @@
 			  crossorigin="anonymous"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     
-
+    
+    
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" type="text/css">
-
+    
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
         <div class="wrapper">
-                @include('layouts.nav')
+            @include('layouts.nav')
+                
+            @guest
 
-                @guest
                 <main class="bg-guest">
                     @yield('content')
                 </main>
-                @else
+            @else
                 <main class="bg-text">
                     @yield('content')
                 </main>
 
-                @endguest
+            @endguest
 
      
         </div>
     </div>
-    </body>
+</body>
 </html>
-    @yield('script')

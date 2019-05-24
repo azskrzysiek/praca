@@ -3,7 +3,7 @@
 @section('content')
 
 
-<div class="container d-flex flex-column justify-content-center" style="height:95vh;">
+<div class="container d-flex flex-column justify-content-center" style="height:90vh;">
     <div class="row" style="padding-top: 15rem;">
         <div class="card-deck">
     @foreach ($posts as $post)

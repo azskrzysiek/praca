@@ -17,30 +17,16 @@
             </div>
         @endif --}}
 
-            
+        <header id="showcase">
+            <h1>Welcome to the beach</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque aspernatur eveniet unde reiciendis repellendus vitae!</p>
+            <a class="button">Read more</a>
+        </header>
+        <section id="section-a">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, voluptatum quisquam consequuntur ullam natus saepe placeat tempora aut dolore doloremque dicta, quia consectetur quaerat aspernatur voluptas ducimus ab! Esse sequi laborum obcaecati accusantium praesentium iste sapiente quia doloribus magni veniam sunt blanditiis, quos eveniet dignissimos qui fuga excepturi non. Voluptates ex, adipisci veniam voluptatem fugiat illo impedit nisi nobis! Saepe ipsum vitae ipsa laudantium harum cupiditate molestias recusandae velit, odio, doloremque placeat architecto odit, totam aliquam? Est blanditiis similique doloribus debitis sapiente nam numquam repudiandae illum, iusto eligendi voluptatum laborum quisquam facere. Ratione rerum cum odit veniam aperiam, commodi eveniet?</p>
+        </section>
 
-            
-<div class="container d-flex flex-column justify-content-center" style="padding-top: 20vh;">
-    <div class="row ">
-        <div class="col-12">
-            <div class="title m-b-md">
-                ReczVod
-            </div>
-
-            <div class="links">
-                <a href="https://laravel.com/docs">Docs</a>
-                <a href="https://laracasts.com">Laracasts</a>
-                <a href="https://laravel-news.com">News</a>
-                <a href="https://blog.laravel.com">Blog</a>
-                <a href="https://nova.laravel.com">Nova</a>
-                <a href="https://forge.laravel.com">Forge</a>
-                <a href="https://github.com/laravel/laravel">GitHub</a>
-            </div>
-        </div>
-        </div>
-
-        </div>
+        
 @endsection
-
 
 

@@ -1,4 +1,4 @@
-<nav id="navbar" style="max-height:60px" class=" navbar fixed-top navbar-expand-md navbar-light bg-white shadow-sm">
+<nav id="navbar" style="max-height:60px" class="{{ Auth::guest() ? 'visible' : ''}} navbar fixed-top navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand d-flex" href="{{ url('/') }}">
                 <div><img src="/svg/logo.svg" class="pr-3" style="height: 25px; border-right: 1px solid #333;" alt=""></div>
@@ -33,6 +33,10 @@
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item d-flex align-items-baseline" href="{{ route('posts.index') }}">
+                                    <i class="fas fa-home"></i>
+                                    <div class="ml-3">Strona główna</div>
+                                </a>
                                 <a class="dropdown-item d-flex align-items-baseline" href="{{ route('home') }}">
                                         <i class="fas fa-columns"></i>
                                     <div class="ml-3">Dashboard</div>

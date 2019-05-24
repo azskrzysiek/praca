@@ -78,7 +78,7 @@ class PostsController extends Controller
         $data = request()->validate([
             'title' => 'required',
             'caption' => 'required',
-            'image' => ['required','image'],
+            'image' => ['image'],
          ]);
 
         if (request('image')) {
