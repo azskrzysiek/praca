@@ -40211,7 +40211,7 @@ var render = function() {
     "div",
     _vm._l(_vm.todos, function(todo) {
       return _c(
-        "li",
+        "div",
         { key: todo.index, staticStyle: { "list-style-type": "none" } },
         [
           todo.edit

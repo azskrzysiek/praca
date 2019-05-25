@@ -1,6 +1,6 @@
 <template>
     <div>
-        <li v-for="todo in todos" :key="todo.index" style="list-style-type: none;">
+        <div v-for="todo in todos" :key="todo.index" style="list-style-type: none;">
             <input
                 v-if="todo.edit"
                 v-model="todo.title"
@@ -11,7 +11,7 @@
             <div v-else>
                 <label @click="todo.edit = true;"> Facebook </label>
             </div>
-        </li>
+        </div>
     </div>
     
 </template>

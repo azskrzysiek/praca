@@ -77,11 +77,12 @@
                 <form method="POST" action="{{ route('login') }}">
                         @csrf
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                        <div class="form-group row loginText">
+                            {{-- <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label> --}}
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            <div class="col-md-12 d-flex align-items-baseline">
+                                <i class="fas fa-envelope-square pr-2"></i>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="example@example.com" required autocomplete="email" autofocus>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -91,11 +92,12 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                        <div class="form-group row loginText">
+                            {{-- <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label> --}}
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                            <div class="col-md-12 d-flex align-items-baseline">
+                                <i class="fas fa-lock pr-2"></i>
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Hasło" required autocomplete="current-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -106,21 +108,21 @@
                         </div>
 
                         <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6 ml-3 d-flex">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
                                     <label class="form-check-label" for="remember">
-                                        {{ __('Remember Me') }}
+                                        {{ __('Pamiętaj mnie') }}
                                     </label>
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-5">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
+                            <div class="col-md-8 offset-md-2">
+                                <button type="submit" class="btn btn-outline-success">
+                                    {{ __('Zaloguj się') }}
                                 </button>
 
                                 
@@ -132,7 +134,7 @@
                     <div>
                             @if (Route::has('password.request'))
                             <a class="btn btn-link" href="{{ route('password.request') }}">
-                                {{ __('Forgot Your Password?') }}
+                                {{ __('Zapomniałeś hasła ?') }}
                             </a>
                         @endif
                     </div>
@@ -156,11 +158,12 @@
                             <form method="POST" action="{{ route('register') }}">
                                 @csrf
         
-                                <div class="form-group row">
-                                    <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                                <div class="form-group row loginText">
+                                    {{-- <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label> --}}
         
-                                    <div class="col-md-6">
-                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="name" autofocus>
+                                    <div class="col-md-12 d-flex align-items-baseline">
+                                        <i class="fas fa-signature"></i>
+                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" autocomplete="name" placeholder="Imię i nazwisko" autofocus>
         
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
@@ -170,11 +173,12 @@
                                     </div>
                                 </div>
         
-                                <div class="form-group row">
-                                    <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                                <div class="form-group row loginText">
+                                    {{-- <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label> --}}
         
-                                    <div class="col-md-6">
-                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email">
+                                    <div class="col-md-12 d-flex align-items-baseline">
+                                        <i class="fas fa-envelope-square pr-2"></i>
+                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" placeholder="example@example.com">
         
                                         @error('email')
                                             <span class="invalid-feedback" role="alert">
@@ -184,11 +188,12 @@
                                     </div>
                                 </div>
         
-                                <div class="form-group row">
-                                    <label for="username" class="col-md-4 col-form-label text-md-right">Username</label>
+                                <div class="form-group row loginText">
+                                    {{-- <label for="username" class="col-md-4 col-form-label text-md-right">Username</label> --}}
         
-                                    <div class="col-md-6">
-                                        <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" autocomplete="username">
+                                    <div class="col-md-12 d-flex align-items-baseline">
+                                        <i class="fas fa-user pr-2"></i>
+                                        <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" autocomplete="username" placeholder="Nazwa użytkownika">
         
                                         @error('username')
                                             <span class="invalid-feedback" role="alert">
@@ -198,11 +203,12 @@
                                     </div>
                                 </div>
         
-                                <div class="form-group row">
-                                    <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                                <div class="form-group row loginText">
+                                    {{-- <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label> --}}
         
-                                    <div class="col-md-6">
-                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password">
+                                    <div class="col-md-12 d-flex align-items-baseline">
+                                        <i class="fas fa-lock pr-2"></i>
+                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" autocomplete="new-password" placeholder="Hasło">
         
                                         @error('password')
                                             <span class="invalid-feedback" role="alert">
@@ -212,18 +218,19 @@
                                     </div>
                                 </div>
         
-                                <div class="form-group row">
-                                    <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
+                                <div class="form-group row loginText">
+                                    {{-- <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label> --}}
         
-                                    <div class="col-md-6">
-                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
+                                    <div class="col-md-12 d-flex align-items-baseline">
+                                        <i class="fas fa-lock pr-2"></i>
+                                        <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password" placeholder="Potwierdź hasło">
                                     </div>
                                 </div>
         
-                                <div class="form-group row mb-0">
-                                    <div class="col-md-6 offset-md-5">
-                                        <button type="submit" class="btn btn-primary">
-                                            {{ __('Register') }}
+                                <div class="form-group row pt-4">
+                                    <div class="col-md-8 offset-md-2">
+                                        <button type="submit" class="btn btn-outline-success">
+                                            {{ __('Zarejestruj się') }}
                                         </button>
                                     </div>
                                 </div>
