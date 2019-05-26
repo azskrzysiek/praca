@@ -46,4 +46,14 @@
         
 @endsection
 
+@section('script')
+
+// Refresh page on top
+
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+}
+    
+@endsection
+
 

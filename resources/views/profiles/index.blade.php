@@ -6,30 +6,29 @@
    <div class="row">
        <div class="col-12 col-md-7 text-center">
             <img src="{{ $user->profile->profileImage() }}" style="max-height: 400px; max-width: 400px;" class=" rounded-circle w-100 mb-3" alt="">
-            <div class="row justify-content-center">
-                <div class="col-6 offset-4">
-                    <a class="d-flex text-dark" target="_blank" href="https://www.instagram.com/">
+            <div class="row d-flex flex-column justify-content-center">
+                <div class="col-6 offset-3">
+                    <a class="d-flex text-dark mx-auto" style="width: 30%;" target="_blank" href="https://www.instagram.com/">
                         <i class="fab fa-instagram pt-1 mr-2"></i>
                         <div>Instagram</div>
                     </a>
                 </div>
-                <div class="col-6 offset-4">
-                    <a class="d-flex text-dark" target="_blank" href="https://www.facebook.com/">
+                <div class="col-6 offset-3">
+                    <a class="d-flex text-dark mx-auto" style="width: 30%;" target="_blank" href="https://www.facebook.com/">
                         <i class="fab fa-facebook pt-1 mr-2"></i>
                         <div>Facebook</div>
                     </a>
                 </div>
-                <div class="col-6 offset-4">
-                    <a class="d-flex text-dark" target="_blank" href="https://twitter.com/?lang=pl">
+                <div class="col-6 offset-3">
+                    <a class="d-flex text-dark mx-auto" style="width: 30%;" target="_blank" href="https://twitter.com/?lang=pl">
                         <i class="fab fa-twitter pt-1 mr-2"></i>
                         <div>Twitter</div>
                     </a>
-                    <social-facebook></social-facebook>
                 </div>
             </div>
        </div>
-       <div class="col-12 col-md-5 text-center">
-           <div class="pt-5 d-block">
+       <div class="col-12 col-md-5">
+           <div class="pt-5 text-center d-block">
                <h1 class="pb-2">{{ $user->profile->name }} {{ $user->profile->lastname }}</h1>
 
                <div class="row pb-4">
@@ -59,22 +58,28 @@
                    </div>
                </div>
             </div>
-           <div>
-               <div><strong class="mr-3">Pozycja:</strong>{{ $user->profile->positione ?? 'Brak' }}</div>
+           <div class="d-flex flex-column justify-content-start">
+               <div><strong class="mr-3">Pozycja:</strong>{{ $user->profile->positione }}</div>
                <div><strong class="mr-3">Wiek:</strong>{{ $user->profile->age ?? 'Brak' }}</div>
-               <div><strong class="mr-3">Doświadczenie:</strong>{{ $user->profile->experience ?? 'Brak' }}</div>
-               <div><strong class="mr-3">Wzrost:</strong>{{ $user->profile->height ?? 'Brak' }}</div>
-               <div><strong class="mr-3">Aktualny klub:</strong>{{ $user->profile->club ?? 'Brak' }}</div>
+           <div><strong class="mr-3">Doświadczenie:</strong>
+                {{ $user->profile->experience ?? 'Brak' }} 
+                {{ ($user->profile->experience == 0) ? '': 
+                (($user->profile->experience) < 2 ? 'rok' : 
+                (($user->profile->experience < 5) ? 'lata' : 'lat')) }}
+            </div>
+               <div><strong class="mr-3">Wzrost:</strong>{{ $user->profile->height ?? 'Brak' }} cm</div>
+               <div><strong class="mr-3">Aktualny klub:</strong>{{ $user->profile->clube }}</div>
                <div><strong class="mr-3">Dodanych filmów:</strong>{{ $user->posts->count() }}</div>
            </div>
-           <div class="pt-5 font-weight-bold">Parę słów o sobie:</div>
+           <div class="pt-5 font-weight-bold">Osiągnięcia:</div>
            <div class="text-justify">
             <ul>
-                <li>{{ $user->profile->description ?? 'Brak' }}</li>
+                    @foreach($user->profile->descriptione as $item) 
+                      <li>{{$item == null ? 'Brak': $item}}</li>
+                    @endforeach    
             </ul>   
             </div>
-
-       </div>
+            </div>
     </div>
 
 </div>

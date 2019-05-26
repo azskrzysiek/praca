@@ -48,6 +48,10 @@ class ProfilesController extends Controller
             'lastname' => '',
             'description' => '',
             'position' => '',
+            'age' => '',
+            'height' => '',
+            'experience' => '',
+            'club' => '',
             'image' => '',
         ]);
 

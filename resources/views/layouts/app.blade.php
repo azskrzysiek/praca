@@ -29,21 +29,21 @@
     <div id="app">
         <div class="wrapper">
             @include('layouts.nav')
-                
+            
             @guest
-
-                <main class="bg-guest">
-                    @yield('content')
-                </main>
+            
+            <main class="bg-guest">
+                @yield('content')
+            </main>
             @else
-                <main class="bg-text">
-                    @yield('content')
-                </main>
-
+            <main class="bg-text">
+                @yield('content')
+            </main>
             @endguest
-
-     
+            
+            
         </div>
     </div>
+    
 </body>
 </html>

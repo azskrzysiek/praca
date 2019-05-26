@@ -12,7 +12,7 @@
             <h1>Edit Profile</h1>
         </div>
         <div class="form-group row">
-            <label for="name" class="col-md-4 col-form-label pl-0">Profile name</label>
+            <label for="name" class="col-md-4 col-form-label pl-0">Imię</label>
                 <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') ?? $user->profile->name }}" autocomplete="name" autofocus>
 
                 @error('name')
@@ -22,7 +22,7 @@
                 @enderror
         </div>
         <div class="form-group row">
-            <label for="lastname" class="col-md-4 col-form-label pl-0">Profile lastname</label>
+            <label for="lastname" class="col-md-4 col-form-label pl-0">Nazwisko</label>
                 <input id="lastname" type="text" class="form-control @error('lastname') is-invalid @enderror" name="lastname" value="{{ old('lastname') ?? $user->profile->lastname }}" autocomplete="lastname" autofocus>
 
                 @error('lastname')
@@ -32,7 +32,7 @@
                 @enderror
         </div>
         <div class="form-group row">
-            <label for="position" class="col-md-4 col-form-label pl-0">Profile position</label>
+            <label for="position" class="col-md-4 col-form-label pl-0">Pozycja</label>
                 <select id="position" type="text" rows="5" class="form-control @error('position') is-invalid @enderror" name="position">
 
                     @php
@@ -53,7 +53,58 @@
                 @enderror
         </div>
         <div class="form-group row">
-            <label for="description" class="col-md-4 col-form-label pl-0">Profile description</label>
+            <label for="age" class="col-md-4 col-form-label pl-0">Wiek</label>
+                <input id="age" type="number" rows="5" class="form-control @error('age') is-invalid @enderror" name="age" min="5" max="110" value="{{ old('age') ?? $user->profile->age}}" autocomplete="age" autofocus>
+
+                @error('age')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+        </div>
+        <div class="form-group row">
+            <label for="height" class="col-md-4 col-form-label pl-0">Wzrost</label>
+                <input id="height" type="number" rows="5" class="form-control @error('height') is-invalid @enderror" name="height" min="80" max="300" value="{{ old('height') ?? $user->profile->height}}" autocomplete="height" autofocus>
+
+                @error('height')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+        </div>
+        <div class="form-group row">
+            <label for="experience" class="col-md-4 col-form-label pl-0">Doświadczenie</label>
+                <input id="experience" type="number" rows="5" class="form-control @error('experience') is-invalid @enderror" name="experience" min="0" max="90" value="{{ old('experience') ?? $user->profile->experience}}" autocomplete="experience" autofocus>
+
+                @error('experience')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+        </div>
+        <div class="form-group row">
+            <label for="club" class="col-md-4 col-form-label pl-0">Sktualny klub</label>
+                <select id="club" type="text" rows="5" class="form-control @error('club') is-invalid @enderror" name="club">
+                    
+                    @php
+                        $club = ['Stal Gorzów', 'Nielba Wągrowiec', 'Jurand Ciechanów', 'SMS Gdańsk', 'Gwardia Koszalin', 'Sambor Tczew', 'Sokół Kościerzyna', 'Warmia Olsztyn', 'GKS Żukowo', 'Mazur Sierpc','Wójcik Elbląg','Pomozenia Malbork'];
+                    @endphp
+                    <option value="">Wybierz drużynę</option>
+                    @foreach ($club as $item)
+                        <option value="{{$loop->iteration}}" {{!empty($user->profile->club) && ($user->profile->club == $loop->iteration) ? 'selected' : '' }}>{{$item}}
+                        </option>
+                    @endforeach
+                
+                </select>
+
+                @error('position')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+        </div>
+        <div class="form-group row">
+            <label for="description" class="col-md-4 col-form-label pl-0">Osiągnięcia(Oddzielaj enterem)</label>
                 <textarea id="description" type="text" rows="5" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description')}}" autocomplete="description" autofocus>{{ $user->profile->description }}</textarea>
 
                 @error('description')

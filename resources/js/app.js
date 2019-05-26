@@ -51,11 +51,11 @@ function myFunction() {
   }
 } 
 
-// Refresh page on top
+// // Refresh page on top
 
-window.onbeforeunload = function () {
-  window.scrollTo(0, 0);
-}
+// window.onbeforeunload = function () {
+//   window.scrollTo(0, 0);
+// }
 
 
 // Scroll to sections

@@ -40181,7 +40181,10 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", [
     _c("a", { on: { click: _vm.favoritePost } }, [
-      _c("i", { staticClass: "fas fa-star", class: { active: _vm.status } })
+      _c("i", {
+        staticClass: "fas fa-3x fa-star",
+        class: { active: _vm.status }
+      })
     ])
   ])
 }
@@ -52465,12 +52468,11 @@ function myFunction() {
   } else {
     navbar.classList.remove("sticky");
   }
-} // Refresh page on top
-
-
-window.onbeforeunload = function () {
-  window.scrollTo(0, 0);
-}; // Scroll to sections
+} // // Refresh page on top
+// window.onbeforeunload = function () {
+//   window.scrollTo(0, 0);
+// }
+// Scroll to sections
 
 
 $('a[href*="#"]') // Remove links that don't actually link to anything

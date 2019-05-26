@@ -8,7 +8,7 @@ class Profile extends Model
 {
 
     protected $fillable = [
-        'name', 'lastname', 'description','position', 'image',
+        'name', 'lastname', 'description','position','age','height','experience','club', 'image',
     ];
 
     public function profileImage()
@@ -28,6 +28,32 @@ class Profile extends Model
         $where = $this->position;
 
         return $position[$where - 1];
+
+    }
+
+    public function getClubeAttribute()
+    {
+        $club = ['Brak','Stal Gorzów', 'Nielba Wągrowiec', 'Jurand Ciechanów', 'SMS Gdańsk', 'Gwardia Koszalin', 'Sambor Tczew', 'Sokół Kościerzyna', 'Warmia Olsztyn', 'GKS Żukowo', 'Mazur Sierpc','Wójcik Elbląg','Pomozenia Malbork'];
+
+        $where = $this->club;
+
+        return $club[$where];
+
+    }
+
+    public function getDescriptioneAttribute()
+    {
+
+        $items = nl2br($this->description);
+        $array = explode('<br />', $items);
+
+        if (empty($array))
+        {
+            return null;
+        } else {
+            return $array;
+        }
+
 
     }
     

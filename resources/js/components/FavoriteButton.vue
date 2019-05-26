@@ -2,7 +2,7 @@
   <div>
     <!-- <button @click="favoritePost" class="btn btn-secondary ml-3" v-text="buttonText"></button> -->
     <a @click="favoritePost">
-        <i :class="{active: status }" class="fas fa-star"></i>
+        <i :class="{active: status }" class="fas fa-3x fa-star"></i>
     </a>
   </div>
 </template>
