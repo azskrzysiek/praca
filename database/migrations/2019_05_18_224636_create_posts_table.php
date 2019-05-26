@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('title');
             $table->text('caption');
-            $table->string('image');
+            $table->string('video');
 
             $table->timestamps();
 

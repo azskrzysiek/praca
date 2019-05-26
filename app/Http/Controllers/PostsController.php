@@ -39,21 +39,37 @@ class PostsController extends Controller
          $data = request()->validate([
             'title' => ['required'],
             'caption' => 'required',
-            'image' => ['required','image'],
+            'video' => '',
             ],
             [
                 'title.required' => 'Tytuł jest wymagany',
             ]);
 
-         $imagePath = request('image')->store('uploads', 'public');
+        //  $imagePath = request('image')->store('uploads', 'public');
 
-         $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
-         $image->save();
+        //  $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
+        //  $image->save();
+
+                if (request('video'))
+                {
+                    //Get filename with the extension
+                    $filenameWithExt = request()->file('video')->getClientOriginalName();
+                    //Get just filename
+                    $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                    // Get just extension
+                    $extension = request()->file('video')->getClientOriginalExtension();
+                    // Filename to store
+                    $fileNameToStore = $filename.'_'.time().'.'.$extension;
+                    // Upload
+                    $path = request('video')->storeAs('public/video', $fileNameToStore);
+                } else {
+                    $fileNameToStore = 'noimage.jpg';
+                }
 
          auth()->user()->posts()->create([
              'title' => $data['title'],
              'caption' => $data['caption'],
-             'image' => $imagePath
+             'video' => $fileNameToStore
          ]);
 
          return redirect('/profile/' . auth()->user()->id);

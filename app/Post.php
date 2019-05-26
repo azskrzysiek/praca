@@ -8,7 +8,7 @@ class Post extends Model
 {
 
     protected $fillable = [
-        'title', 'caption', 'image',
+        'title', 'caption', 'video',
     ];
 
     // protected $guarded = [];

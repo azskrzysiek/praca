@@ -16,7 +16,7 @@
                     @else
                         <div class="d-flex text-dark mx-auto" style="width: 30%;">
                             <i class="fab fa-instagram pt-1 mr-2"></i>
-                            <div>Instagram</div>
+                            <div>Brak</div>
                         </div>
                     @endif
                 </div>
@@ -29,7 +29,7 @@
                         @else
                             <div class="d-flex text-dark mx-auto" style="width: 30%;">
                                 <i class="fab fa-facebook pt-1 mr-2"></i>
-                                <div>Facebook</div>
+                                <div>Brak</div>
                             </div>
                         @endif
                 </div>
@@ -42,7 +42,7 @@
                         @else
                             <div class="d-flex text-dark mx-auto" style="width: 30%;">
                                 <i class="fab fa-twitter pt-1 mr-2"></i>
-                                <div>Twitter</div>
+                                <div>Brak</div>
                             </div>
                         @endif
                 </div>
@@ -120,7 +120,7 @@
                         {{ $post->title }}
                     </div>
                     <a href="/p/{{ $post->id }}">
-                        <img src="/storage/{{ $post->image }}" class="w-100 card-img-top" alt="">
+                        <video src="/storage/video/{{ $post->video }}" class="w-100 card-img-top" alt="">
                     </a>
                 </div>
             </div>

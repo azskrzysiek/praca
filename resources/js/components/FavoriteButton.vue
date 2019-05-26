@@ -1,10 +1,10 @@
 <template>
-  <div>
+  
     <!-- <button @click="favoritePost" class="btn btn-secondary ml-3" v-text="buttonText"></button> -->
     <a @click="favoritePost">
-        <i :class="{active: status }" class="fas fa-3x fa-star"></i>
+        <i :class="{active: status }" class="fas pt-3 fa-2x fa-star"></i>
     </a>
-  </div>
+  
 </template>
 
 <script>

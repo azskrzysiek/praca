@@ -40179,13 +40179,11 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("a", { on: { click: _vm.favoritePost } }, [
-      _c("i", {
-        staticClass: "fas fa-3x fa-star",
-        class: { active: _vm.status }
-      })
-    ])
+  return _c("a", { on: { click: _vm.favoritePost } }, [
+    _c("i", {
+      staticClass: "fas pt-3 fa-2x fa-star",
+      class: { active: _vm.status }
+    })
   ])
 }
 var staticRenderFns = []
@@ -52507,7 +52505,7 @@ $('a[href*="#"]') // Remove links that don't actually link to anything
       });
     }
   }
-});
+}); // Progress bar
 
 /***/ }),
 

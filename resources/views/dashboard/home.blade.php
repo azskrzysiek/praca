@@ -27,7 +27,7 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Tytuł</th>
                                     <th scope="col">Opis</th>
-                                    <th scope="col">Zdjęcie</th>
+                                    <th scope="col">Video</th>
                                     <th scope="col">Akcje</th>
                                 </tr>
                                 </thead>
@@ -36,9 +36,15 @@
                                 @foreach ($posts as $post)
                                     <tr>
                                     <th scope="row">{{ $post->id }}</th>
-                                    <td><a href="/p/{{ $post->user->id }}">{{ $post->title }}</a></td>
+                                    <td><a href="/p/{{ $post->id }}">{{ $post->title }}</a></td>
                                     <td>{{ $post->caption}}</td>
-                                    <td><img src="/storage/{{ $post->image}}" width="50px" height="50px" alt=""></td>
+                                    <td>
+                                        @if (  $post->video  !== 'noimage.jpg' )
+                                            <video src="/storage/video/{{ $post->video}}" width="50px" height="50px" alt="">
+                                        @else
+                                            <img src="/storage/video/{{ $post->video}}" width="50px" height="50px" alt="">
+                                        @endif
+                                    </td>
                                     <td>
                                         <a title="Edytuj ten post" href="/p/{{$post->id}}/edit"><i class="fas fa-lg fa-pen-square pr-1" style="font-size: 150%;"></i></a> 
                                         &#8260; 

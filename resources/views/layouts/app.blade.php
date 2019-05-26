@@ -11,9 +11,10 @@
 
     <!-- Scripts -->
     <script
-			  src="https://code.jquery.com/jquery-3.2.0.js"
-			  integrity="sha256-wPFJNIFlVY49B+CuAIrDr932XSb6Jk3J1M22M3E2ylQ="
-			  crossorigin="anonymous"></script>
+    src="https://code.jquery.com/jquery-3.2.0.js"
+    integrity="sha256-wPFJNIFlVY49B+CuAIrDr932XSb6Jk3J1M22M3E2ylQ="
+    crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script src="{{ asset('js/app.js') }}" defer></script>
     
     
@@ -44,6 +45,6 @@
             
         </div>
     </div>
-    
+
 </body>
 </html>

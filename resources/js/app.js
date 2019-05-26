@@ -95,3 +95,6 @@ $('a[href*="#"]')
       }
     }
   });
+
+  // Progress bar
+  
