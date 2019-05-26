@@ -6,6 +6,7 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -31,5 +32,18 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Carbon::setLocale('pl');
+
+        Validator::extend('domain', function($attribute, $value, $parameters)
+        {
+            if(empty($value))
+            {
+                return true;
+
+            } else {
+                $domain = $parameters[0];
+                $pattern = "#^https?://([a-z0-9-]+\.)*".preg_quote($domain)."(/.*)?$#";
+                return !! preg_match($pattern, $value);
+            }
+        });
     }
 }

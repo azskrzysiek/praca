@@ -24,6 +24,9 @@ class CreateProfilesTable extends Migration
             $table->integer('height')->nullable();
             $table->string('club')->nullable()->default(0);
             $table->string('image')->nullable();
+            $table->string('urlFacebook')->nullable();
+            $table->string('urlTwitter')->nullable();
+            $table->string('urlInstagram')->nullable();
             $table->text('description')->nullable();
             $table->timestamps();
 

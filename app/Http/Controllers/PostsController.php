@@ -37,10 +37,13 @@ class PostsController extends Controller
     {
         
          $data = request()->validate([
-            'title' => 'required',
+            'title' => ['required'],
             'caption' => 'required',
             'image' => ['required','image'],
-         ]);
+            ],
+            [
+                'title.required' => 'Tytuł jest wymagany',
+            ]);
 
          $imagePath = request('image')->store('uploads', 'public');
 

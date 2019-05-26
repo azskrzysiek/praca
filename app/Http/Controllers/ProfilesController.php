@@ -52,7 +52,15 @@ class ProfilesController extends Controller
             'height' => '',
             'experience' => '',
             'club' => '',
+            'urlFacebook' => 'domain:facebook.com',
+            'urlTwitter' => 'domain:twitter.com',
+            'urlInstagram' => 'domain:www.instagram',
             'image' => '',
+        ],
+        [
+            'urlFacebook.domain' => 'Podaj pasujący URL: <br> https://www.facebook.com/twojanazwakonta',
+            'urlTwitter.domain' => 'Podaj pasujący URL: <br> https://twitter.com/twojanazwakonta',
+            'urlInstagram.domain' => 'Podaj pasujący URL: <br> https://www.instagram.com/twojanazwakonta',
         ]);
 
         if (request('image')) {

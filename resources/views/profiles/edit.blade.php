@@ -83,13 +83,13 @@
                 @enderror
         </div>
         <div class="form-group row">
-            <label for="club" class="col-md-4 col-form-label pl-0">Sktualny klub</label>
+            <label for="club" class="col-md-4 col-form-label pl-0">Aktualny klub</label>
                 <select id="club" type="text" rows="5" class="form-control @error('club') is-invalid @enderror" name="club">
                     
                     @php
                         $club = ['Stal Gorzów', 'Nielba Wągrowiec', 'Jurand Ciechanów', 'SMS Gdańsk', 'Gwardia Koszalin', 'Sambor Tczew', 'Sokół Kościerzyna', 'Warmia Olsztyn', 'GKS Żukowo', 'Mazur Sierpc','Wójcik Elbląg','Pomozenia Malbork'];
                     @endphp
-                    <option value="">Wybierz drużynę</option>
+                    <option value="0">Wybierz drużynę</option>
                     @foreach ($club as $item)
                         <option value="{{$loop->iteration}}" {{!empty($user->profile->club) && ($user->profile->club == $loop->iteration) ? 'selected' : '' }}>{{$item}}
                         </option>
@@ -97,11 +97,47 @@
                 
                 </select>
 
-                @error('position')
+                @error('club')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
                 @enderror
+        </div>
+        <div class="form-group p-3 d-flex flex-column row text-center" style="border: 1px dotted black;">
+            <h4 class="p-0 m-0">Social media</h4>
+            <div class="d-flex">
+                <div class="flex-grow-1">
+                    <label for="urlFacebook" class="col-md-4 col-form-label pl-0">Facebook</label>
+                    <input id="urlFacebook" type="text" class="form-control @error('urlFacebook') is-invalid @enderror" name="urlFacebook" value="{{ old('urlFacebook') ?? $user->profile->urlFacebook }}" autocomplete="urlFacebook" autofocus>
+    
+                    @error('urlFacebook')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{!! $message !!}</strong>
+                        </span>
+                    @enderror
+                </div>
+               
+                <div class="flex-grow-1 pr-2 pl-2">
+                    <label for="urlTwitter"  class="col-md-4 col-form-label pl-0">Twitter</label>
+                    <input  id="urlTwitter" type="text" class="form-control @error('urlTwitter') is-invalid @enderror" name="urlTwitter" value="{{ old('urlTwitter') ?? $user->profile->urlTwitter }}" autocomplete="urlTwitter" autofocus>
+    
+                    @error('urlTwitter')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{!! $message !!}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="flex-grow-1">
+                    <label for="urlInstagram"  class="col-md-4 col-form-label pl-0">Instagram</label>
+                    <input  id="urlInstagram" type="text" class="form-control @error('urlInstagram') is-invalid @enderror" name="urlInstagram" value="{{ old('urlInstagram') ?? $user->profile->urlInstagram }}" autocomplete="urlInstagram" autofocus>
+    
+                    @error('urlInstagram')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{!! $message !!}</strong>
+                        </span>
+                    @enderror
+                </div>
+            </div>
         </div>
         <div class="form-group row">
             <label for="description" class="col-md-4 col-form-label pl-0">Osiągnięcia(Oddzielaj enterem)</label>

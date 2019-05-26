@@ -8,22 +8,43 @@
             <img src="{{ $user->profile->profileImage() }}" style="max-height: 400px; max-width: 400px;" class=" rounded-circle w-100 mb-3" alt="">
             <div class="row d-flex flex-column justify-content-center">
                 <div class="col-6 offset-3">
-                    <a class="d-flex text-dark mx-auto" style="width: 30%;" target="_blank" href="https://www.instagram.com/">
-                        <i class="fab fa-instagram pt-1 mr-2"></i>
-                        <div>Instagram</div>
-                    </a>
+                    @if (isset($user->profile->urlInstagram))
+                        <a class="d-flex text-dark mx-auto" style="width: 30%;" target="_blank" href="{{ $user->profile->urlInstagram}}">
+                            <i class="fab fa-instagram pt-1 mr-2"></i>
+                            <div>Instagram</div>
+                        </a>
+                    @else
+                        <div class="d-flex text-dark mx-auto" style="width: 30%;">
+                            <i class="fab fa-instagram pt-1 mr-2"></i>
+                            <div>Instagram</div>
+                        </div>
+                    @endif
                 </div>
                 <div class="col-6 offset-3">
-                    <a class="d-flex text-dark mx-auto" style="width: 30%;" target="_blank" href="https://www.facebook.com/">
-                        <i class="fab fa-facebook pt-1 mr-2"></i>
-                        <div>Facebook</div>
-                    </a>
+                        @if (isset($user->profile->urlFacebook))
+                            <a class="d-flex text-dark mx-auto" style="width: 30%;" target="_blank" href="{{ $user->profile->urlFacebook}}">
+                                <i class="fab fa-facebook pt-1 mr-2"></i>
+                                <div>Facebook</div>
+                            </a>
+                        @else
+                            <div class="d-flex text-dark mx-auto" style="width: 30%;">
+                                <i class="fab fa-facebook pt-1 mr-2"></i>
+                                <div>Facebook</div>
+                            </div>
+                        @endif
                 </div>
                 <div class="col-6 offset-3">
-                    <a class="d-flex text-dark mx-auto" style="width: 30%;" target="_blank" href="https://twitter.com/?lang=pl">
-                        <i class="fab fa-twitter pt-1 mr-2"></i>
-                        <div>Twitter</div>
-                    </a>
+                        @if (isset($user->profile->urlTwitter))
+                            <a class="d-flex text-dark mx-auto" style="width: 30%;" target="_blank" href="{{ $user->profile->urlTwitter}}">
+                                <i class="fab fa-twitter pt-1 mr-2"></i>
+                                <div>Twitter</div>
+                            </a>
+                        @else
+                            <div class="d-flex text-dark mx-auto" style="width: 30%;">
+                                <i class="fab fa-twitter pt-1 mr-2"></i>
+                                <div>Twitter</div>
+                            </div>
+                        @endif
                 </div>
             </div>
        </div>
@@ -67,7 +88,7 @@
                 (($user->profile->experience) < 2 ? 'rok' : 
                 (($user->profile->experience < 5) ? 'lata' : 'lat')) }}
             </div>
-               <div><strong class="mr-3">Wzrost:</strong>{{ $user->profile->height ?? 'Brak' }} cm</div>
+        <div><strong class="mr-3">Wzrost:</strong>{{ $user->profile->height ?? 'Brak' }} {{ $user->profile->height == null ? '' : 'cm' }}</div>
                <div><strong class="mr-3">Aktualny klub:</strong>{{ $user->profile->clube }}</div>
                <div><strong class="mr-3">Dodanych filmów:</strong>{{ $user->posts->count() }}</div>
            </div>
