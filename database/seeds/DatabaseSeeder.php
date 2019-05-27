@@ -13,7 +13,7 @@ class DatabaseSeeder extends Seeder
     { 
         $this->call(ClubsTableSeeder::class);
         
-            factory(App\User::class, 3)
+            factory(App\User::class, 12*16)
            ->create();
         //    ->each(function ($user) {
         //         $user->profile()->save(factory(App\Profile::class)->make());

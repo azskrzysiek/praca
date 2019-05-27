@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container d-flex flex-column justify-content-center" style="height: 100vh;">
+<div class="container d-flex flex-column justify-content-center" style="height: 90vh; margin-top: 10rem; margin-bottom: 10rem;">
     <div class="jumbotron">
         <div class="row">
 
@@ -85,7 +85,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="scoreHalf" class="col-md-4 col-form-label pl-0">Do przerwy</label>
+                        <label for="scoreHalf" class="col-md-4 col-form-label pl-0">Wynik do przerwy</label>
                             <input id="scoreHalf" type="text" class="form-control @error('scoreHalf') is-invalid @enderror" name="scoreHalf" value="{{ old('scoreHalf') }}" autocomplete="scoreHalf" autofocus>
 
                             @error('scoreHalf')
@@ -107,7 +107,7 @@
                     </div>
 
                     <div class="row">
-                        <label for="video" class="col-md-4 col-form-label pl-0">Post video</label>
+                        <label for="video" class="col-md-4 col-form-label pl-0">Wideo z meczu</label>
                         <input type="file" class="form-control-file" id="video" name="video">
 
                         @error('video')
@@ -118,7 +118,7 @@
 
                     <div class="row pt-3 d-flex">
                         <button class="btn btn-outline-primary mr-3">Add New Post</button>
-                        <a href="javascript:history.back()" class="btn btn-outline-primary ml-3">Back</a>
+                        <a href="javascript:history.back()" class="btn btn-outline-secondary ml-3">Back</a>
                     </div>
                 </form>
             </div>

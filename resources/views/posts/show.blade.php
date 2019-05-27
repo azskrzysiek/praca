@@ -27,8 +27,29 @@
    <div class="row">
        <div class="col-12 text-center">
            <div class="jumbotron">
-               <div>
-                   <h1 class="pb-5">{{ $post->title }}</h1>
+               <div class="pt-0">
+                   <h1>Wynik</h1>
+               </div>
+               <div class="d-flex justify-content-between pb-5">
+                   <div 
+                   class="flex-grow-1
+                   {{ ($post->scoreHomeFull() > $post->scoreAwayFull()) ? 'winner' : 'loser' }}" 
+                   style="padding: 10px 0;">
+                       <img src="/storage/logos/{{ $clubHome->logo }}" style="height:50px;" class="img-fluid"  alt="">
+                       <h1>{{ $clubHome->name }}</h1>
+                   </div>
+                   <div class="d-flex align-items-end"
+                   style="padding: 10px 2rem;">
+                    <h1>({{$post->scoreHomeHalf()}}) {{ $post->scoreHomeFull() }} </h1>
+                    <h1>:</h1>
+                    <h1>{{ $post->scoreAwayFull() }} ({{$post->scoreAwayHalf()}})</h1>
+                   </div>
+                   <div class="flex-grow-1
+                   {{ ($post->scoreHomeFull() < $post->scoreAwayFull()) ? 'winner' : 'loser' }}"
+                   style="padding: 10px 0;">
+                        <img src="/storage/logos/{{ $clubAway->logo }}" style="height: 50px;" class="img-fluid" alt="">
+                        <h1>{{ $clubAway->name }}</h1>
+                    </div>
                </div>
                @if ($post->video !== 'noimage.jpg')
                     <video class="" style="width: auto; height: auto; max-width: 1000px; margin: 0 auto;" src="/storage/video/{{ $post->video }}" controls>
@@ -38,34 +59,21 @@
            </div>
        </div>
    </div>
-    <div class="row pt-5">
+    <div class="row">
        <div class="col-12">
            <div class="card">
                <div class="card-header d-flex justify-content-center">
                 <div class="d-flex align-items-center">
                     <div class="pr-3">
-                        <img style="max-width: 40px;" src="{{ $post->user->profile->profileImage() }}" class="rounded-circle w-100" alt="">
+                        
                     </div>
                     <div>
-                        <div class="font-weight-bold d-flex align-items-center">
-                            <a href="/profile/{{ $post->user->id }}">
-                                <span class="text-dark">{{ $post->user->username }}</span>
-                            </a>
-                                
-                            </div>
+                        
                     </div>
                 </div>
                </div> {{-- card head --}}
                <div class="card-body">
-                    <div>
-                        <p>
-                        <span class="font-weight-bold">
-                            <a href="/profile/{{ $post->user->id }}">
-                                    <span class="text-dark">{{ $post->user->username }}</span>
-                                </a>
-                            </span> {{ $post->caption }}
-                        </p>
-                    </div>
+                    <chart></chart>
                </div>
            </div>
            
@@ -73,3 +81,4 @@
    </div>
 </div>
 @endsection
+

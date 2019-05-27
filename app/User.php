@@ -42,11 +42,22 @@ class User extends Authenticatable
         parent::boot();
 
         static::created(function ($user) {
-            $user->profile()->create([
-                'name' => $user->splitName(),
-                'lastname' => $user->splitLastname(),
-                'club_id' => rand(0,12),
-            ]);
+            $i = $user->id;
+
+            // if ($i % 12 !== 0)
+            // {
+                $user->profile()->create([
+                    'name' => $user->splitName(),
+                    'lastname' => $user->splitLastname(),
+                    'club_id' => $i % 12 == 0 ? 12 : $i % 12,
+                ]);
+            // } else {
+            //     $user->profile()->create([
+            //         'name' => $user->splitName(),
+            //         'lastname' => $user->splitLastname(),
+            //         'club_id' => 12,
+            //     ]);
+            // }
         });
     }
 
@@ -54,7 +65,12 @@ class User extends Authenticatable
     {
         $userWholeName = $this->name;
         $pieces = explode(" ", $userWholeName);
-        return $pieces[0];
+        if (count($pieces) < 3 && strpos($pieces[0], '.') !== true)
+        {
+            return $pieces[0];
+        } else {
+            return $pieces[1];
+        }
     }
 
     public function splitLastname()
@@ -63,7 +79,12 @@ class User extends Authenticatable
 
         if (strpos($userWholeName, " ") !== false) {
             $pieces = explode(" ", $userWholeName);
-            return $pieces[1];
+                if (count($pieces) < 3 && strpos($pieces[0], '.') !== true)
+                {
+                    return $pieces[1];
+                } else {
+                    return $pieces[2];
+                }
         } else {
             return "";
         }

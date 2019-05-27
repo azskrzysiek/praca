@@ -9,6 +9,10 @@ require("slick-carousel");
 
 window.Vue = require("vue");
 
+import VueApexCharts from 'vue-apexcharts'
+
+Vue.component('apexchart', VueApexCharts)
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -22,6 +26,7 @@ window.Vue = require("vue");
 
 Vue.component("favorite-button",require("./components/FavoriteButton.vue").default);
 Vue.component("social-facebook",require("./components/SocialFacebook.vue").default);
+Vue.component("chart",require("./components/Chart.vue").default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -96,5 +101,5 @@ $('a[href*="#"]')
     }
   });
 
- 
+
   

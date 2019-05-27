@@ -50,12 +50,22 @@ class PostsController extends Controller
         
          $data = request()->validate([
             'club_id_home' => 'required',
+            'id_home_player' => 'required',
             'club_id_away' => 'required',
+            'id_away_player' => 'required',
+            'scoreFull' => 'required',
+            'scoreHalf' => 'required',
+            'description' => 'required',
             'video' => '',
             ],
             [
-                'club_id_home.required' => 'Wybierz drużynę',
-                'club_id_away.required' => 'Wybierz drużynę',
+                'club_id_home.required' => 'Wybierz drużynę z listy',
+                'id_home_player.required' => 'Wybierz gracza z listy',
+                'club_id_away.required' => 'Wybierz drużynę z listy',
+                'id_away_player.required' => 'Wybierz gracza z listy',
+                'scoreFull.required' => 'Dodaj wynik po zakończeniu meczu',
+                'scoreHalf.required' => 'Dodaj wynik po połowie meczu',
+                'description.required' => 'Dodaj opis meczu',
             ]);
 
         //  $imagePath = request('image')->store('uploads', 'public');
@@ -80,8 +90,13 @@ class PostsController extends Controller
                 }
 
          auth()->user()->posts()->create([
-             'title' => $data['title'],
-             'caption' => $data['caption'],
+             'club_id_home' => $data['club_id_home'],
+             'id_home_player' => $data['id_home_player'],
+             'club_id_away' => $data['club_id_away'],
+             'id_away_player' => $data['id_away_player'],
+             'scoreFull' => $data['scoreFull'],
+             'scoreHalf' => $data['scoreHalf'],
+             'description' => $data['description'],
              'video' => $fileNameToStore
          ]);
 
@@ -93,7 +108,12 @@ class PostsController extends Controller
     {
         $favorit = (auth()->user()) ? auth()->user()->favoriting->contains($post->id) : false;
 
-        return view('posts.show', compact('post', 'favorit'));
+        $clubHome = Club::findOrFail($post->club_id_home);
+        $clubAway = Club::findOrFail($post->club_id_away);
+
+        $count = Club::count();
+
+        return view('posts.show', compact('post', 'favorit', 'clubHome','clubAway','count'));
     }
 
     public function edit(Post $post)
