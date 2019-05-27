@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Club;
 use App\Post;
+use App\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
@@ -15,6 +16,8 @@ class PostsController extends Controller
     {
         $this->middleware('auth');
     }
+
+    
 
     public function index(Post $post)
     {
@@ -31,8 +34,15 @@ class PostsController extends Controller
 
     public function create()
     {
-         $clubs = Club::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');;
+         $clubs = Club::all();
          return view('posts.create',compact('clubs'));
+    }
+
+    public function get_by_club($id)
+    {
+        $profile = Profile::where('club_id', $id)->get();
+
+        return response()->json($profile);
     }
 
     public function store()

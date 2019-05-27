@@ -17,16 +17,7 @@ class ProfilesController extends Controller
         $this->middleware('auth');
     }
 
-    public function get_by_club(Request $request)
-    {
-        $html = '';
-        $profiles = Profile::where('club_id', $request->club_id)->get();
-        foreach ($profiles as $profile) {
-            $html .= '<option value="'.$profile->id.'">'.$profile->name.'</option>';
-        }
-
-    return response()->json(['html' => $html]);
-}
+   
 
     /**
      * Show the application dashboard.

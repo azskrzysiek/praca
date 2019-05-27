@@ -7,20 +7,20 @@
 
             <div class="col-8 offset-2">
                 <div class="row">
-                    <h1>Add New Post</h1>
+                    <h1>Dodaj nowy mecz</h1>
                 </div>
+
                 <form action="/p" enctype="multipart/form-data" method="POST">
                     @csrf
                     <div class="form-group row">
                         <label for="club_id_home" class="col-md-4 col-form-label pl-0">Drużyna Gospodarzy</label>
                             <select id="club_id_home" type="text" rows="5" class="form-control @error('club_id_home') is-invalid @enderror" name="club_id_home">
-                                
-                                @foreach($clubs as $id => $club)
-                                    <option value="{{ $id }}">
-                                        {{ $club }}
+                                <option value="0">Wybierz klub</option>
+                                @foreach($clubs as $club)
+                                    <option value="{{ $club->id }}">
+                                        {{ $club->name }}
                                     </option>
                                 @endforeach
-                            
                             </select>
             
                             @error('club_id_home')
@@ -29,14 +29,27 @@
                                 </span>
                             @enderror
                     </div>
+
+                    <div class="form-group row">
+                        <label for="id_home_player" class="col-md-4 col-form-label pl-0">Najlepszy zawodnik gospodarzy</label>
+                            <select id="id_home_player" type="text" rows="5" class="form-control @error('id_home_player') is-invalid @enderror" name="id_home_player">
+                            </select>
+                            @error('id_home_player')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                    </div>
+
                     <div class="form-group row">
                         <label for="club_id_away" class="col-md-4 col-form-label pl-0">Drużyna Gości</label>
                             <select id="club_id_away" type="text" rows="5" class="form-control @error('club_id_away') is-invalid @enderror" name="club_id_away">
                                 
-                                    @foreach($clubs as $id => $club)
-                                        <option value="{{ $id }}">
-                                            {{ $club }}
-                                        </option>
+                                    <option value="0">Wybierz klub</option>
+                                    @foreach($clubs as $club)
+                                    <option value="{{ $club->id }}">
+                                        {{ $club->name }}
+                                    </option>
                                     @endforeach
                             
                             </select>
@@ -47,24 +60,19 @@
                                 </span>
                             @enderror
                     </div>
+
                     <div class="form-group row">
-                        <label for="id_home_player" class="col-md-4 col-form-label pl-0">Zawodnik gospodarzy</label>
-                            <select id="id_home_player" type="text" rows="5" class="form-control @error('id_home_player') is-invalid @enderror" name="id_home_player">
-                                
-                                {{-- <option value="">Wybierz drużynę</option> --}}
-                                {{-- @foreach ($clubs as $club)
-                                    <option value="{{$club->id}}">{{$club->name}}
-                                    </option>
-                                @endforeach --}}
-                            
+                        <label for="id_away_player" class="col-md-4 col-form-label pl-0">Najlepszy zawodnik gości</label>
+                            <select id="id_away_player" type="text" rows="5" class="form-control @error('id_away_player') is-invalid @enderror" name="id_away_player">
                             </select>
-            
-                            @error('club_id_away')
+
+                            @error('id_away_player')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                     </div>
+                   
                     <div class="form-group row">
                         <label for="scoreFull" class="col-md-4 col-form-label pl-0">Wynik meczu</label>
                             <input id="scoreFull" type="text" class="form-control @error('scoreFull') is-invalid @enderror" name="scoreFull" value="{{ old('scoreFull') }}" autocomplete="scoreFull" autofocus>
@@ -75,6 +83,7 @@
                                 </span>
                             @enderror
                     </div>
+
                     <div class="form-group row">
                         <label for="scoreHalf" class="col-md-4 col-form-label pl-0">Do przerwy</label>
                             <input id="scoreHalf" type="text" class="form-control @error('scoreHalf') is-invalid @enderror" name="scoreHalf" value="{{ old('scoreHalf') }}" autocomplete="scoreHalf" autofocus>
@@ -85,26 +94,18 @@
                                 </span>
                             @enderror
                     </div>
+        
                     <div class="form-group row">
-                        <label for="title" class="col-md-4 col-form-label pl-0">Post title</label>
-                            <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" autocomplete="title" autofocus>
+                        <label for="description" class="col-md-4 col-form-label pl-0">Opis meczu</label>
+                            <textarea id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" autocomplete="description" autofocus></textarea>
 
-                            @error('title')
+                            @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                     </div>
-                    <div class="form-group row">
-                        <label for="caption" class="col-md-4 col-form-label pl-0">Post Caption</label>
-                            <input id="caption" type="text" class="form-control @error('caption') is-invalid @enderror" name="caption" value="{{ old('caption') }}" autocomplete="caption" autofocus>
 
-                            @error('caption')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                    </div>
                     <div class="row">
                         <label for="video" class="col-md-4 col-form-label pl-0">Post video</label>
                         <input type="file" class="form-control-file" id="video" name="video">
@@ -125,6 +126,70 @@
 
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script>
+    $(document).ready(function() {
+      $('#club_id_home').on('change', function() {
+          var stateID = $(this).val();
+          if(stateID) {
+              $.ajax({
+                  url: '/p/get_by_club/'+stateID,
+                  type: "GET",
+                  data : {"_token":"{{ csrf_token() }}"},
+                  dataType: "json",
+                  success:function(data) {
+                      // console.log(data);
+                    if(data){
+                      $('#id_home_player').empty();
+                      $('#id_home_player').focus;
+                      $('#id_home_player').append('<option value="">-- Wybierz zawodnika --</option>'); 
+                      $.each(data, function(key, value){
+                        key = key + 1;
+                      $('select[name="id_home_player"]').append('<option value="'+ value.id +'">' + value.name +' '+ value.lastname + '</option>');
+                  });
+                }else{
+                  $('#id_home_player').empty();
+                }
+                }
+              });
+          }else{
+            $('#id_home_player').empty();
+          }
+      });
+    });
+
+    $(document).ready(function() {
+      $('#club_id_away').on('change', function() {
+          var stateID = $(this).val();
+          if(stateID) {
+              $.ajax({
+                  url: '/p/get_by_club/'+stateID,
+                  type: "GET",
+                  data : {"_token":"{{ csrf_token() }}"},
+                  dataType: "json",
+                  success:function(data) {
+                      // console.log(data);
+                    if(data){
+                      $('#id_away_player').empty();
+                      $('#id_away_player').focus;
+                      $('#id_away_player').append('<option value="">-- Wybierz zawodnika --</option>'); 
+                      $.each(data, function(key, value){
+                        key = key + 1;
+                      $('select[name="id_away_player"]').append('<option value="'+ value.id +'">' + value.name +' '+ value.lastname + '</option>');
+                  });
+                }else{
+                  $('#id_away_player').empty();
+                }
+                }
+              });
+          }else{
+            $('#id_away_player').empty();
+          }
+      });
+    });
+</script>
 @endsection
 
 
