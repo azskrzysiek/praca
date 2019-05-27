@@ -10,7 +10,14 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
+    { 
         $this->call(ClubsTableSeeder::class);
+        
+            factory(App\User::class, 3)
+           ->create();
+        //    ->each(function ($user) {
+        //         $user->profile()->save(factory(App\Profile::class)->make());
+        //     });
+
     }
 }

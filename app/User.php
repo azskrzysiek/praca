@@ -45,6 +45,7 @@ class User extends Authenticatable
             $user->profile()->create([
                 'name' => $user->splitName(),
                 'lastname' => $user->splitLastname(),
+                'club_id' => rand(0,12),
             ]);
         });
     }
