@@ -8,7 +8,7 @@ class Profile extends Model
 {
 
     protected $fillable = [
-        'name', 'lastname', 'description','position','age','height','experience','club', 'image','urlFacebook','urlTwitter','urlInstagram',
+        'name', 'lastname', 'description','position','age','height','experience','club_id', 'image','urlFacebook','urlTwitter','urlInstagram',
     ];
 
     public function profileImage()
@@ -19,6 +19,11 @@ class Profile extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function club()
+    {
+        return $this->belongsTo(Club::class);
     }
 
     public function getPositioneAttribute()
@@ -33,9 +38,9 @@ class Profile extends Model
 
     public function getClubeAttribute()
     {
-        $club = ['Brak','Stal Gorzów', 'Nielba Wągrowiec', 'Jurand Ciechanów', 'SMS Gdańsk', 'Gwardia Koszalin', 'Sambor Tczew', 'Sokół Kościerzyna', 'Warmia Olsztyn', 'GKS Żukowo', 'Mazur Sierpc','Wójcik Elbląg','Pomozenia Malbork'];
+        $club = ['Brak','Kupa', 'Nielba Wągrowiec', 'Jurand Ciechanów', 'SMS Gdańsk', 'Gwardia Koszalin', 'Sambor Tczew', 'Sokół Kościerzyna', 'Warmia Olsztyn', 'GKS Żukowo', 'Mazur Sierpc','Wójcik Elbląg','Pomozenia Malbork'];
 
-        $where = $this->club;
+        $where = $this->club_id;
 
         return $club[$where];
 

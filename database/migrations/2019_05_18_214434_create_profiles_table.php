@@ -22,7 +22,7 @@ class CreateProfilesTable extends Migration
             $table->integer('age')->nullable();
             $table->integer('experience')->nullable();
             $table->integer('height')->nullable();
-            $table->string('club')->nullable()->default(0);
+            $table->integer('club_id')->nullable()->default(0);
             $table->string('image')->nullable();
             $table->string('urlFacebook')->nullable();
             $table->string('urlTwitter')->nullable();

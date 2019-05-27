@@ -12,6 +12,80 @@
                 <form action="/p" enctype="multipart/form-data" method="POST">
                     @csrf
                     <div class="form-group row">
+                        <label for="club_id_home" class="col-md-4 col-form-label pl-0">Drużyna Gospodarzy</label>
+                            <select id="club_id_home" type="text" rows="5" class="form-control @error('club_id_home') is-invalid @enderror" name="club_id_home">
+                                
+                                @foreach($clubs as $id => $club)
+                                    <option value="{{ $id }}">
+                                        {{ $club }}
+                                    </option>
+                                @endforeach
+                            
+                            </select>
+            
+                            @error('club_id_home')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                    </div>
+                    <div class="form-group row">
+                        <label for="club_id_away" class="col-md-4 col-form-label pl-0">Drużyna Gości</label>
+                            <select id="club_id_away" type="text" rows="5" class="form-control @error('club_id_away') is-invalid @enderror" name="club_id_away">
+                                
+                                    @foreach($clubs as $id => $club)
+                                        <option value="{{ $id }}">
+                                            {{ $club }}
+                                        </option>
+                                    @endforeach
+                            
+                            </select>
+            
+                            @error('club_id_away')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                    </div>
+                    <div class="form-group row">
+                        <label for="id_home_player" class="col-md-4 col-form-label pl-0">Zawodnik gospodarzy</label>
+                            <select id="id_home_player" type="text" rows="5" class="form-control @error('id_home_player') is-invalid @enderror" name="id_home_player">
+                                
+                                {{-- <option value="">Wybierz drużynę</option> --}}
+                                {{-- @foreach ($clubs as $club)
+                                    <option value="{{$club->id}}">{{$club->name}}
+                                    </option>
+                                @endforeach --}}
+                            
+                            </select>
+            
+                            @error('club_id_away')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                    </div>
+                    <div class="form-group row">
+                        <label for="scoreFull" class="col-md-4 col-form-label pl-0">Wynik meczu</label>
+                            <input id="scoreFull" type="text" class="form-control @error('scoreFull') is-invalid @enderror" name="scoreFull" value="{{ old('scoreFull') }}" autocomplete="scoreFull" autofocus>
+
+                            @error('scoreFull')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                    </div>
+                    <div class="form-group row">
+                        <label for="scoreHalf" class="col-md-4 col-form-label pl-0">Do przerwy</label>
+                            <input id="scoreHalf" type="text" class="form-control @error('scoreHalf') is-invalid @enderror" name="scoreHalf" value="{{ old('scoreHalf') }}" autocomplete="scoreHalf" autofocus>
+
+                            @error('scoreHalf')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                    </div>
+                    <div class="form-group row">
                         <label for="title" class="col-md-4 col-form-label pl-0">Post title</label>
                             <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}" autocomplete="title" autofocus>
 
@@ -39,10 +113,6 @@
                                 <strong>{{ $message }}</strong>
                         @enderror
 
-                        <div class="progress">
-                            <div class="bar"></div >
-                            <div class="percent">0%</div >
-                        </div>
                     </div>
 
                     <div class="row pt-3 d-flex">
@@ -56,5 +126,7 @@
     </div>
 </div>
 @endsection
+
+
 
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Club;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,19 +31,21 @@ class PostsController extends Controller
 
     public function create()
     {
-         return view('posts.create');
+         $clubs = Club::all()->pluck('name', 'id')->prepend(trans('global.pleaseSelect'), '');;
+         return view('posts.create',compact('clubs'));
     }
 
     public function store()
     {
         
          $data = request()->validate([
-            'title' => ['required'],
-            'caption' => 'required',
+            'club_id_home' => 'required',
+            'club_id_away' => 'required',
             'video' => '',
             ],
             [
-                'title.required' => 'Tytuł jest wymagany',
+                'club_id_home.required' => 'Wybierz drużynę',
+                'club_id_away.required' => 'Wybierz drużynę',
             ]);
 
         //  $imagePath = request('image')->store('uploads', 'public');

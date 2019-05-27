@@ -96,5 +96,15 @@ $('a[href*="#"]')
     }
   });
 
-  // Progress bar
+  // Dropdown dynamic
+
+  $("#club_id_home").change(function(){
+    $.ajax({
+        url: "{{ route('profile.get_by_club') }}?club_id=" + $(this).val(),
+        method: 'GET',
+        success: function(data) {
+            $('#id_home_player').html(data.html);
+        }
+    });
+});
   

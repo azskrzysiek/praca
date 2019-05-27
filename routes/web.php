@@ -37,6 +37,7 @@ Route::get('/p/{post}/edit', 'PostsController@edit')->name('posts.edit');
 Route::get('/p/{post}', 'PostsController@show')->name('posts.show');
 Route::patch('/p/{post}', 'PostsController@update')->name('posts.update');
 Route::delete('/p/{post}', 'PostsController@destroy')->name('posts.delete');
+Route::get('profile/get_by_club', 'ProfilesController@get_by_club')->name('profile.get_by_club');
 
 Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
 Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');

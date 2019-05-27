@@ -89,7 +89,13 @@
                 (($user->profile->experience < 5) ? 'lata' : 'lat')) }}
             </div>
         <div><strong class="mr-3">Wzrost:</strong>{{ $user->profile->height ?? 'Brak' }} {{ $user->profile->height == null ? '' : 'cm' }}</div>
-               <div><strong class="mr-3">Aktualny klub:</strong>{{ $user->profile->clube }}</div>
+               <div>
+                   <strong class="mr-3">Aktualny klub:</strong>
+                   @if ($user->profile->club_id !== 0)
+                    <img src="/storage/logos/{{ $user->profile->club->logo }}" style="height: 25px;" alt="">
+                   @endif
+                   {{ $user->profile->club->name ?? 'Brak' }}
+                </div>
                <div><strong class="mr-3">Dodanych filmów:</strong>{{ $user->posts->count() }}</div>
            </div>
            <div class="pt-5 font-weight-bold">Osiągnięcia:</div>

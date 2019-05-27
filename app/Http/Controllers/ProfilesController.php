@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Club;
 use App\Post;
 use App\User;
+use App\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
@@ -14,6 +16,17 @@ class ProfilesController extends Controller
     {
         $this->middleware('auth');
     }
+
+    public function get_by_club(Request $request)
+    {
+        $html = '';
+        $profiles = Profile::where('club_id', $request->club_id)->get();
+        foreach ($profiles as $profile) {
+            $html .= '<option value="'.$profile->id.'">'.$profile->name.'</option>';
+        }
+
+    return response()->json(['html' => $html]);
+}
 
     /**
      * Show the application dashboard.
@@ -36,7 +49,9 @@ class ProfilesController extends Controller
     {
         $this->authorize('update', $user->profile);
 
-        return view('profiles.edit', compact('user'));
+        $clubs = Club::all();
+
+        return view('profiles.edit', compact('user','clubs'));
     }
 
     public function update(User $user)
@@ -51,7 +66,7 @@ class ProfilesController extends Controller
             'age' => '',
             'height' => '',
             'experience' => '',
-            'club' => '',
+            'club_id' => '',
             'urlFacebook' => 'domain:facebook.com',
             'urlTwitter' => 'domain:twitter.com',
             'urlInstagram' => 'domain:www.instagram',

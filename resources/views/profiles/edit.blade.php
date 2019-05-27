@@ -83,21 +83,21 @@
                 @enderror
         </div>
         <div class="form-group row">
-            <label for="club" class="col-md-4 col-form-label pl-0">Aktualny klub</label>
-                <select id="club" type="text" rows="5" class="form-control @error('club') is-invalid @enderror" name="club">
+            <label for="club_id" class="col-md-4 col-form-label pl-0">Aktualny klub</label>
+                <select id="club_id" type="text" rows="5" class="form-control @error('club_id') is-invalid @enderror" name="club_id">
                     
                     @php
                         $club = ['Stal Gorzów', 'Nielba Wągrowiec', 'Jurand Ciechanów', 'SMS Gdańsk', 'Gwardia Koszalin', 'Sambor Tczew', 'Sokół Kościerzyna', 'Warmia Olsztyn', 'GKS Żukowo', 'Mazur Sierpc','Wójcik Elbląg','Pomozenia Malbork'];
                     @endphp
                     <option value="0">Wybierz drużynę</option>
-                    @foreach ($club as $item)
-                        <option value="{{$loop->iteration}}" {{!empty($user->profile->club) && ($user->profile->club == $loop->iteration) ? 'selected' : '' }}>{{$item}}
+                    @foreach ($clubs as $club)
+                        <option value="{{$club->id}}" {{!empty($user->profile->club_id) && ($user->profile->club_id == $club->id) ? 'selected' : '' }}>{{$club->name}}
                         </option>
                     @endforeach
                 
                 </select>
 
-                @error('club')
+                @error('club_id')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>
