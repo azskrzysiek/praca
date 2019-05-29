@@ -121,12 +121,16 @@
         <div class="card-deck">
            @foreach($posts as $post)
             <div class="col-12 col-md-4 pb-4">
-                <div class="card" style="">
+                <div class="card" style="min-height: 220px; max-height: 220px padding: 10px;">
                     <div class="card-header text-center">
                         {{ $post->title }}
                     </div>
                     <a href="/p/{{ $post->id }}">
-                        <video src="/storage/video/{{ $post->video }}" class="w-100 card-img-top" alt="">
+                        @if ( $post->video !== 'noimage.jpg')
+                        <video src="/storage/video/{{ $post->video }}" class="card-img-top" alt="">
+                        @else
+                        <img src="/storage/video/{{ $post->video }}" class="card-img-top" alt="">
+                        @endif
                     </a>
                 </div>
             </div>

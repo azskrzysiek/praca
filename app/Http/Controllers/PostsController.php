@@ -120,7 +120,9 @@ class PostsController extends Controller
     {
         $this->authorize('update', $post);
 
-        return view('posts.edit', compact('post'));
+        $clubs = Club::all();
+
+        return view('posts.edit', compact('post','clubs'));
     }
 
     public function update(Post $post)
@@ -128,20 +130,43 @@ class PostsController extends Controller
         $this->authorize('update', $post);
 
         $data = request()->validate([
-            'title' => 'required',
-            'caption' => 'required',
-            'image' => ['image'],
-         ]);
+            'club_id_home' => 'required',
+            'id_home_player' => 'required',
+            'club_id_away' => 'required',
+            'id_away_player' => 'required',
+            'scoreFull' => 'required',
+            'scoreHalf' => 'required',
+            'description' => 'required',
+            'video' => '',
+            ],
+            [
+                'club_id_home.required' => 'Wybierz drużynę z listy',
+                'id_home_player.required' => 'Wybierz gracza z listy',
+                'club_id_away.required' => 'Wybierz drużynę z listy',
+                'id_away_player.required' => 'Wybierz gracza z listy',
+                'scoreFull.required' => 'Dodaj wynik po zakończeniu meczu',
+                'scoreHalf.required' => 'Dodaj wynik po połowie meczu',
+                'description.required' => 'Dodaj opis meczu',
+            ]);
 
-        if (request('image')) {
-            $imagePath = request('image')->store('posts', 'public');
+            if (request('video'))
+            {
+                //Get filename with the extension
+                $filenameWithExt = request()->file('video')->getClientOriginalName();
+                //Get just filename
+                $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                // Get just extension
+                $extension = request()->file('video')->getClientOriginalExtension();
+                // Filename to store
+                $fileNameToStore = $filename.'_'.time().'.'.$extension;
+                // Upload
+                $path = request('video')->storeAs('public/video', $fileNameToStore);
+                
+                $videoArray = ['video' => $fileNameToStore];
+            } 
 
-            $image = Image::make(public_path("storage/{$imagePath}"))->fit(800, 800);
-            $image->save();
 
-            $imageArray = ['image' => $imagePath];
-
-        }
+        
 
         $post->update(array_merge(
             $data,

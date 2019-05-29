@@ -64101,7 +64101,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.btn[data-v-56504838] {\r\n    box-sizing: border-box;\r\n    max-height: 77px;\r\n    min-width: 125px;\r\n    width: 130px;\n}\n.btn1[data-v-56504838] {\r\n    position: relative;\r\n    display: inline-block;\r\n    padding: 20px 30px;\r\n    font-size: 1.4rem;\r\n    transition: all ease 0.3;\n}\n.btn1[data-v-56504838]::after {\r\n    position: absolute;\r\n    top: 60%;\r\n    left: 47%;\r\n    content: \">\";\r\n    -webkit-transform: rotate(90deg);\r\n            transform: rotate(90deg);\r\n    transition: all ease 0.3s;\r\n    opacity: 0;\n}\n.btn1[data-v-56504838]:hover {\r\n    padding: 10px 20px 40px 20px;\n}\n.btn1[data-v-56504838]:hover::after {\r\n    top: 65%;\r\n    opacity: 1;\n}\n.btnActive[data-v-56504838] {\r\n    background-color: blue;\r\n    padding: 10px 20px 40px 20px;\n}\n.btnActive[data-v-56504838]::after {\r\n    top: 65%;\r\n    opacity: 1;\n}\r\n\r\n", ""]);
+exports.push([module.i, "\n.btn[data-v-56504838] {\r\n    box-sizing: border-box;\r\n    max-height: 77px;\r\n    min-width: 145px;\n}\n.btn1[data-v-56504838] {\r\n    position: relative;\r\n    display: inline-block;\r\n    padding: 20px 30px;\r\n    font-size: 1.4rem;\r\n    transition: all ease 0.3;\n}\n.btn1[data-v-56504838]::after {\r\n    position: absolute;\r\n    top: 60%;\r\n    left: 47%;\r\n    content: \">\";\r\n    -webkit-transform: rotate(90deg);\r\n            transform: rotate(90deg);\r\n    transition: all ease 0.3s;\r\n    opacity: 0;\n}\n.btn1[data-v-56504838]:hover {\r\n    padding: 10px 30px 40px 30px;\n}\n.btn1[data-v-56504838]:hover::after {\r\n    top: 65%;\r\n    opacity: 1;\n}\n.btnActive[data-v-56504838] {\r\n    background-color: blue;\r\n    padding: 10px 30px 40px 30px;\n}\n.btnActive[data-v-56504838]::after {\r\n    top: 65%;\r\n    opacity: 1;\n}\n.skill-bar[data-v-56504838] {\r\n    height: 1000px;\n}\r\n\r\n\r\n", ""]);
 
 // exports
 
@@ -99205,81 +99205,83 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "card" },
-    [
-      _c("div", { staticClass: "card-header" }, [
-        _c("div", { staticClass: "d-flex justify-content-around" }, [
-          _c("div", [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn1 btn-primary",
-                class: { btnActive: _vm.score === 1 },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    return _vm.showHalf()
+  return _c("div", [
+    _c(
+      "div",
+      { staticClass: "card" },
+      [
+        _c("div", { staticClass: "card-header" }, [
+          _c("div", { staticClass: "d-flex justify-content-around" }, [
+            _c("div", [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn1 btn-primary",
+                  class: { btnActive: _vm.score === 1 },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.showHalf()
+                    }
                   }
-                }
-              },
-              [_vm._v("Half")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn1 btn-primary",
-                class: { btnActive: _vm.score === 2 },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    return _vm.showFull()
+                },
+                [_vm._v("Połowa")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn1 btn-primary",
+                  class: { btnActive: _vm.score === 2 },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.showFull()
+                    }
                   }
-                }
-              },
-              [_vm._v("Full")]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn1 btn-primary",
-                class: { btnActive: _vm.score === 3 },
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    return _vm.showChart()
+                },
+                [_vm._v("Cały mecz")]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn1 btn-primary",
+                  class: { btnActive: _vm.score === 3 },
+                  on: {
+                    click: function($event) {
+                      $event.preventDefault()
+                      return _vm.showChart()
+                    }
                   }
-                }
-              },
-              [_vm._v("Chart")]
-            )
+                },
+                [_vm._v("Wykresy")]
+              )
+            ])
           ])
-        ])
-      ]),
-      _vm._v(" "),
-      _vm.score === 1
-        ? _c("half", {
-            key: _vm.score,
-            attrs: { post: _vm.post, score: _vm.score }
-          })
-        : _vm.score === 2
-        ? _c("full", { key: _vm.score, attrs: { score: _vm.score } })
-        : _vm.score === 3
-        ? _c("chart", {
-            key: _vm.score,
-            attrs: { post: _vm.post, score: _vm.score }
-          })
-        : _vm._e()
-    ],
-    1
-  )
+        ]),
+        _vm._v(" "),
+        _vm.score === 1
+          ? _c("half", {
+              key: _vm.score,
+              attrs: { post: _vm.post, score: _vm.score }
+            })
+          : _vm.score === 2
+          ? _c("full", { key: _vm.score, attrs: { score: _vm.score } })
+          : _vm.score === 3
+          ? _c("chart", {
+              key: _vm.score,
+              attrs: { post: _vm.post, score: _vm.score }
+            })
+          : _vm._e()
+      ],
+      1
+    )
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true

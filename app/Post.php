@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Club;
 use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
@@ -66,6 +67,30 @@ class Post extends Model
     public function scoreAwayHalf()
     {
        return  $score = $this->score($this->scoreHalf, 1);
+    }
+    public function clubHome()
+    {
+        $club = $this->club_id_home;
+
+        $club_home = Club::whereId($club)->get('name');
+
+        foreach ($club_home as $d)
+        {
+            $name = $d['name'];
+        }
+        return $name;
+    }
+    public function clubAway()
+    {
+        $club = $this->club_id_away;
+
+        $club_home = Club::whereId($club)->get('name');
+
+        foreach ($club_home as $d)
+        {
+            $name = $d['name'];
+        }
+        return $name;
     }
     
 }

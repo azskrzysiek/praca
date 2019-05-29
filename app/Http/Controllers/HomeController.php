@@ -28,7 +28,7 @@ class HomeController extends Controller
 
         $user = auth()->user();
 
-        $posts = Post::whereIn('user_id', $user)->latest()->get();
+        $posts = Post::whereIn('user_id', $user)->latest()->paginate(10);
 
         return view('dashboard.home', compact('posts'));
     }

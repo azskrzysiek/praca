@@ -24,9 +24,13 @@
                             <table class="table table-hover">
                                 <thead>
                                 <tr>
+                                    <th scope="col"></th>
                                     <th scope="col">#</th>
-                                    <th scope="col">Tytuł</th>
-                                    <th scope="col">Opis</th>
+                                    <th scope="col">Gospdodarze</th>
+                                    <th scope="col">Goście</th>
+                                    <th scope="col">Wynik meczu</th>
+                                    <th scope="col">Wynik do połowy</th>
+                                    <th scope="col">Opis meczu</th>
                                     <th scope="col">Video</th>
                                     <th scope="col">Akcje</th>
                                 </tr>
@@ -35,9 +39,19 @@
                             
                                 @foreach ($posts as $post)
                                     <tr>
+                                    <th scope="row"><a href="/p/{{ $post->id }}">Pokaż</a></th>
                                     <th scope="row">{{ $post->id }}</th>
-                                    <td><a href="/p/{{ $post->id }}">{{ $post->title }}</a></td>
-                                    <td>{{ $post->caption}}</td>
+                                    <td 
+                                    class="{{ $post->scoreHomeFull() > $post->scoreAwayFull() ? 'winner-home' : 'loser-home' }}">
+                                        {{ $post->clubHome() }}
+                                    </td>
+                                    <td 
+                                    class="{{ $post->scoreHomeFull() < $post->scoreAwayFull() ? 'winner-home' : 'loser-home' }}">
+                                        {{ $post->clubAway()}}
+                                    </td>
+                                    <td>{{ $post->scoreFull}}</td>
+                                    <td>{{ $post->scoreHalf}}</td>
+                                    <td>{{ $post->description}}</td>
                                     <td>
                                         @if (  $post->video  !== 'noimage.jpg' )
                                             <video src="/storage/video/{{ $post->video}}" width="50px" height="50px" alt="">
@@ -75,6 +89,12 @@
                             <h1>Nie ma żadnych filmów do wyświetlenia</h1>
                         </div>
                         @endif
+
+                        <div class="row">
+                                <div class="col-12 d-flex justify-content-center">
+                                    {{ $posts->links() }}
+                                </div>
+                            </div>
                     </div>
                 </div>
             </div>

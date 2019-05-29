@@ -1,31 +1,31 @@
 <template>
-
+<div>
     <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-around">
                 <div>
                     <button class="btn btn1 btn-primary" 
                     :class="{'btnActive':score === 1}" 
-                    @click.prevent="showHalf()">Half</button>
+                    @click.prevent="showHalf()">Połowa</button>
                 </div>
                 <div>
                     <button class="btn btn1 btn-primary" 
                     :class="{'btnActive':score === 2}"
-                    @click.prevent="showFull()">Full</button>
+                    @click.prevent="showFull()">Cały mecz</button>
                 </div>
                 <div>
                     <button class="btn btn1 btn-primary" 
                     :class="{'btnActive':score === 3}"
-                    @click.prevent="showChart()">Chart</button>
+                    @click.prevent="showChart()">Wykresy</button>
                 </div>
             </div>
         </div>
-                <half :post="post" :score="score" v-if="score === 1" :key="score"></half>
-                <full :score="score" v-else-if="score === 2" :key="score"></full>
-                <chart :post="post" :score="score" v-else-if="score === 3" :key="score"></chart>
-            
+            <half :post="post" :score="score" v-if="score === 1" :key="score"></half>
+            <full :score="score" v-else-if="score === 2" :key="score"></full>
+            <chart :post="post" :score="score" v-else-if="score === 3" :key="score"></chart>
     </div>
-
+</div>
+    
    
     
 
@@ -64,8 +64,7 @@ export default {
 .btn {
     box-sizing: border-box;
     max-height: 77px;
-    min-width: 125px;
-    width: 130px;
+    min-width: 145px;
 }
 .btn1 {
     position: relative;
@@ -86,7 +85,7 @@ export default {
 }
 
 .btn1:hover {
-    padding: 10px 20px 40px 20px;
+    padding: 10px 30px 40px 30px;
 }
 
 .btn1:hover::after {
@@ -96,12 +95,16 @@ export default {
 
 .btnActive {
     background-color: blue;
-    padding: 10px 20px 40px 20px;
+    padding: 10px 30px 40px 30px;
 }
 
 .btnActive::after {
     top: 65%;
     opacity: 1;
 }
+.skill-bar {
+    height: 1000px;
+}
+
 
 </style>

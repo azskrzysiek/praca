@@ -28,7 +28,11 @@
                 </span>
             </div>
             <a href="/p/{{ $postFavorite->id }}">
-                <img src="/storage/{{ $postFavorite->image }}" class="card-img-top" alt="...">
+                @if ( $postFavorite->video !== 'noimage.jpg')
+                    <video src="/storage/video/{{ $postFavorite->video }}" class="card-img-top" style="padding-bottom:0; margin-bottom: 0;" alt="">
+                @else
+                    <img src="/storage/video/{{ $postFavorite->video }}" class="card-img-top" style="padding-bottom: 6px;" alt="">
+                @endif
             </a>
             <div class="card-body">
                 <p class="card-text text-center">

@@ -17028,3 +17028,11 @@ img.hov:hover {
   background-color: #b30000;
 }
 
+.winner-home {
+  color: #4caf50;
+}
+
+.loser-home {
+  color: #b30000;
+}
+
