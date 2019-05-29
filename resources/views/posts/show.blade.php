@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container" style="margin-bottom: 20px">
     <div class="row text-center">
         <div class="col-12" style="margin: 5vh 0;">
             <div class="card d-flex flex-row align-items-center">
@@ -61,22 +61,7 @@
    </div>
     <div class="row">
        <div class="col-12">
-           <div class="card">
-               <div class="card-header d-flex justify-content-center">
-                <div class="d-flex align-items-center">
-                    <div class="pr-3">
-                        
-                    </div>
-                    <div>
-                        
-                    </div>
-                </div>
-               </div> {{-- card head --}}
-               <div class="card-body">
-                    <chart></chart>
-               </div>
-           </div>
-           
+           <show :post="{{ $post }}"></show>
        </div>
    </div>
 </div>

@@ -11,6 +11,7 @@ class Post extends Model
         'club_id_home', 'id_home_player', 'club_id_away','id_away_player','scoreFull','scoreHalf','description','video',
     ];
 
+
     // protected $guarded = [];
 
     public function user()

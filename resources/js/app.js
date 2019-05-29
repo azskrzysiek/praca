@@ -26,7 +26,10 @@ Vue.component('apexchart', VueApexCharts)
 
 Vue.component("favorite-button",require("./components/FavoriteButton.vue").default);
 Vue.component("social-facebook",require("./components/SocialFacebook.vue").default);
-Vue.component("chart",require("./components/Chart.vue").default);
+Vue.component("chart",require("./components/posts/Chart.vue").default);
+Vue.component("half",require("./components/posts/HalfTime.vue").default);
+Vue.component("full",require("./components/posts/FullTime.vue").default);
+Vue.component("show",require("./components/posts/Show.vue").default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
