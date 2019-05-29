@@ -40,17 +40,21 @@
                                 </a>
                                 <a class="dropdown-item d-flex align-items-baseline" href="{{ route('home') }}">
                                         <i class="fas fa-columns"></i>
-                                    <div class="ml-3">Dashboard</div>
+                                    <div class="ml-3">Zarządzaj filmami</div>
+                                </a>
+                                <a class="dropdown-item d-flex align-items-baseline" href="{{ route('home') }}">
+                                        <i class="fas fa-futbol"></i>
+                                    <div class="ml-3">Drużyny</div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-baseline" href="{{ route('profile.show', $user->id) }}">
                                     <i class="fa fa-user-circle pt-1"></i>
-                                    <div class="ml-3">Profile</div>
+                                    <div class="ml-3">Profil</div>
                                 </a>
                                 <a class="dropdown-item d-flex align-items-baseline" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
                                     <i class="fa fa-power-off pt-1"></i>
-                                    <div class="ml-3">{{ __('Logout') }}</div>
+                                    <div class="ml-3">{{ __('Wyloguj') }}</div>
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

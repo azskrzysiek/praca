@@ -42,3 +42,6 @@ Route::delete('/p/{post}', 'PostsController@destroy')->name('posts.delete');
 Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
 Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
 Route::patch('/profile/{user}', 'ProfilesController@update')->name('profile.update');
+
+Route::get('/clubs/', 'ClubsController@index')->name('clubs.index');
+
