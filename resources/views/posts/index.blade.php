@@ -39,8 +39,14 @@
             @endforeach
         </div>
     </div>
-<div class="" style="position:absolute; left: 47%; bottom: 0;">
+{{-- <div class="" style="position:absolute; left: 47%; bottom: 0;">
     {{ $posts->links() }}
+</div> --}}
+
+<div class="row">
+    <div class="col-12 d-flex justify-content-center">
+        {{ $posts->links() }}
+    </div>
 </div>
     
 </div>

@@ -17,13 +17,13 @@ class CreatePostsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('club_id_home');
-            $table->unsignedBigInteger('id_home_player');
+            $table->unsignedBigInteger('id_home_player')->nullable();
             $table->unsignedBigInteger('club_id_away');
-            $table->unsignedBigInteger('id_away_player');
+            $table->unsignedBigInteger('id_away_player')->nullable();
             $table->string('scoreFull');
             $table->string('scoreHalf');
             $table->text('description');
-            $table->string('video');
+            $table->string('video')->default('noimage.jpg');
 
             $table->timestamps();
 

@@ -28,17 +28,21 @@
        <div class="col-12 text-center">
            <div class="jumbotron">
                <div class="pt-0 d-flex flex-row justify-content-beetwen">
+                   @if ($post->scoreHomeFull() !== $post->scoreAwayFull())
                    <div class="flex-grow-1 h2 {{ ($post->scoreHomeFull() > $post->scoreAwayFull()) ? 'winner-home' : 'loser-home' }}" 
                    style="width: 30%;">{{ ($post->scoreHomeFull() > $post->scoreAwayFull()) ? 'Zwycięzca' : 'Przegrany' }}</div>
                    <div 
                    style="width: 298px;" class="h2">Wynik</div>
                    <div class="flex-grow-1 h2 {{ ($post->scoreHomeFull() < $post->scoreAwayFull()) ? 'winner-home' : 'loser-home' }}" 
                    style="width: 30%;">{{ ($post->scoreHomeFull() < $post->scoreAwayFull()) ? 'Zwycięzca' : 'Przegrany' }}</div>
+                   @else
+                    <div class=" w-100 h2 text-info">Remis</div>
+                   @endif
                </div>
                <div class="d-flex justify-content-between pb-5">
                    <div 
                         class="flex-grow-1
-                        {{ ($post->scoreHomeFull() > $post->scoreAwayFull()) ? 'winner-home' : 'loser-home' }}" 
+                        {{ ($post->scoreHomeFull() > $post->scoreAwayFull()) ? 'winner-home' : ( ($post->scoreHomeFull() === $post->scoreAwayFull()) ? 'text-info' : 'loser-home') }}" 
                         style="padding: 10px 0; width: 30%;">
                             <img src="/storage/logos/{{ $clubHome->logo }}" style="height:50px;" class="img-fluid"  alt="">
                             <h1>{{ $clubHome->name }}</h1>
@@ -50,7 +54,7 @@
                         <h1>{{ $post->scoreAwayFull() }} ({{$post->scoreAwayHalf()}})</h1>
                    </div>
                    <div class="flex-grow-1
-                   {{ ($post->scoreHomeFull() < $post->scoreAwayFull()) ? 'winner-home' : 'loser-home' }}"
+                   {{ ($post->scoreHomeFull() < $post->scoreAwayFull()) ? 'winner-home' : ( ($post->scoreHomeFull() === $post->scoreAwayFull()) ? 'text-info' : 'loser-home') }}"
                    style="padding: 10px 0; width: 30%;">
                         <img src="/storage/logos/{{ $clubAway->logo }}" style="height: 50px;" class="img-fluid" alt="">
                         <h1>{{ $clubAway->name }}</h1>

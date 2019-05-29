@@ -361,8 +361,8 @@ img {
 #f1_container {
   position: relative;
   margin: 10px auto;
-  width: 450px;
-  height: 281px;
+  width: 500px;
+  height: 600px;
   z-index: 1;
 }
 #f1_container {
@@ -392,6 +392,11 @@ img {
   color: white;
   text-align: center;
   background-color: #aaa;
+}
+
+.front img {
+    width: 500px;
+    height: 600px;
 }
 
 

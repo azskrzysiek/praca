@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Club;
 use Illuminate\Http\Request;
 
 class ClubsController extends Controller
@@ -13,7 +14,8 @@ class ClubsController extends Controller
      */
     public function index()
     {
-        return view('clubs.index');
+        $clubs = Club::all();
+        return view('clubs.index', compact('clubs'));
     }
 
     /**

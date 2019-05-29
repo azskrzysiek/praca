@@ -36,7 +36,7 @@
                 <select id="position" type="text" rows="5" class="form-control @error('position') is-invalid @enderror" name="position">
 
                     @php
-                        $position = ['Bramkarz', 'Lewoskrzydłowy', 'Leworozgrywający', 'Środkowy', 'Praworozgrywający', 'Prawoskrzydłowy', 'Kołowy', 'Kołowy', 'Trener', 'Kibic'];
+                        $position = ['Bramkarz', 'Lewoskrzydłowy', 'Leworozgrywający', 'Środkowy', 'Praworozgrywający', 'Prawoskrzydłowy', 'Kołowy', 'Trener', 'Kibic'];
                     @endphp
 
                     @foreach ($position as $item)

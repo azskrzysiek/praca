@@ -42,7 +42,7 @@
                                         <i class="fas fa-columns"></i>
                                     <div class="ml-3">Zarządzaj filmami</div>
                                 </a>
-                                <a class="dropdown-item d-flex align-items-baseline" href="{{ route('home') }}">
+                                <a class="dropdown-item d-flex align-items-baseline" href="{{ route('clubs.index') }}">
                                         <i class="fas fa-futbol"></i>
                                     <div class="ml-3">Drużyny</div>
                                 </a>

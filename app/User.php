@@ -44,12 +44,15 @@ class User extends Authenticatable
         static::created(function ($user) {
             $i = $user->id;
 
+            
+
             // if ($i % 12 !== 0)
             // {
                 $user->profile()->create([
                     'name' => $user->splitName(),
                     'lastname' => $user->splitLastname(),
                     'club_id' => $i % 12 == 0 ? 12 : $i % 12,
+                    'position' => ($i < 25) ? 1 : (($i < 49) ? 2: (($i < 73) ? 3 : (($i < 97 ) ? 4 : (($i < 121 ) ? 5 : (( $i < 145) ? 6 : (($i < 169) ? 7 : 8)))))),
                 ]);
             // } else {
             //     $user->profile()->create([
