@@ -122,16 +122,22 @@
            @foreach($posts as $post)
             <div class="col-12 col-md-4 pb-4">
                 <div class="card" style="min-height: 220px; max-height: 220px padding: 10px;">
-                    <div class="card-header text-center">
-                        {{ $post->title }}
+                    <div class="card-header d-flex justify-content-center">
+                        <div class="flex-grow-1">{{ $post->clubHome() }}</div> 
+                        <div class="flex-grow-1">vs</div>
+                        <div class="flex-grow-1">{{ $post->clubAway() }}</div> 
                     </div>
                     <a href="/p/{{ $post->id }}">
                         @if ( $post->video !== 'noimage.jpg')
-                        <video src="/storage/video/{{ $post->video }}" class="card-img-top" alt="">
+                            <video src="/storage/video/{{ $post->video }}" class="card-img-top" alt="">
                         @else
-                        <img src="/storage/video/{{ $post->video }}" class="card-img-top" alt="">
+                            <img src="/storage/video/{{ $post->video }}" class="card-img-top" style="padding-bottom: 6px;" alt="">
                         @endif
                     </a>
+                    <div class="card-body d-flex align-items-baseline">
+                            <i class="fas fa-calendar-week pr-2"></i>
+                            <div>{{ $post->created_at }}</div>
+                    </div>
                 </div>
             </div>
            @endforeach

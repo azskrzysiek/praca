@@ -17087,3 +17087,12 @@ img.hov:hover {
   height: 600px;
 }
 
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 200px;
+  height: 200px;
+}
+

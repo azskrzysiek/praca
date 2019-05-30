@@ -10,7 +10,7 @@
                     <h1>Dodaj nowy mecz</h1>
                 </div>
 
-                <form action="/p" enctype="multipart/form-data" method="POST">
+                <form id="uploadForm" action="/p" enctype="multipart/form-data" method="POST">
                     @csrf
                     <div class="form-group row">
                         <label for="club_id_home" class="col-md-4 col-form-label pl-0">Drużyna Gospodarzy</label>
@@ -115,6 +115,7 @@
                         @enderror
 
                     </div>
+                    <div id="loader" class="pt-2" style="display: none;"><img src="/storage/logos/loader.gif" alt=""></div>
 
                     <div class="row pt-3 d-flex">
                         <button class="btn btn-outline-primary mr-3">Add New Post</button>
@@ -130,7 +131,14 @@
 
 @section('scripts')
 <script>
+
+    
+
+
     $(document).ready(function() {
+        $('#uploadForm').submit(function(e) {
+        $('#loader').show();
+    });
       $('#club_id_home').on('change', function() {
           var stateID = $(this).val();
           if(stateID) {

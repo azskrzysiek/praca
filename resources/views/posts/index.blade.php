@@ -5,6 +5,10 @@
 
 <div class="container d-flex flex-column justify-content-center" style="height:80vh;">
     <div class="row" style="padding-top: 15rem;">
+            <form action="/search" method="get">
+                <input type="search" name="search">
+                <button type="submit">Search</button>
+            </form>
         <div class="card-deck">
     @foreach ($posts as $post)
             <div class="col-lg-4 col-md-6 col-12 py-4">

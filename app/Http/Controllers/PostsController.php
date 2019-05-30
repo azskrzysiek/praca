@@ -6,6 +6,7 @@ use App\Club;
 use App\Post;
 use App\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 
@@ -29,6 +30,27 @@ class PostsController extends Controller
         $posts = Post::with('user')->latest()->paginate(6);
 
         return view('posts.index', compact('posts'));
+    }
+
+    public function search(Request $request)
+    {
+        // if ($request->ajax())
+        // {
+            $clubs = Club::where('name','LIKE','%'.$request->search."%")->get();
+
+            if($clubs)
+            {
+                foreach($clubs as $club)
+                {
+                    $posts=Post::where('club_id_home',$club->id)->paginate(6);
+                }
+
+                
+            }
+            // dd($posts);
+            return view('posts.index', compact('posts'));
+            
+        // }
     }
 
 
