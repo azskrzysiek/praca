@@ -1,8 +1,35 @@
 @extends('layouts.app')
 
+@section('style')
+<style>
+
+.container {
+    height: 100vh;
+    z-index: 0;
+}
+
+.jumbotron {
+    padding: 20px 10;
+    margin-top: 7vh;
+}
+
+i.fa-trash {
+    color: #ff0000; 
+    font-size: 130%;
+}
+i.fa-trash:hover {
+    color: #cc0000; 
+    font-size: 130%;
+}
+
+
+</style>
+
+@endsection
+
 
 @section('content')
-<div class="container d-flex flex-column justify-content-center" style="height: 96vh;">
+<div class="container d-flex flex-column justify-content-center">
     <div class="jumbotron">
         <div class="row">
             <div class="col-12">
@@ -72,7 +99,7 @@
                                         } else {
                                             return false;
                                         }">
-                                        <i class="fas fa-trash" style="color: red; font-size: 130%;"></i>
+                                        <i class="fas fa-trash"></i>
                                         </a>
                                         <form class="d-none" id="delete-post-{{ $post->id }}" action="{{ route('posts.delete', $post->id) }}" method="POST">
                                             @csrf

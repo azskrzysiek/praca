@@ -35,6 +35,8 @@ class PostsController extends Controller
     public function search(Request $request)
     {
         // if ($request->ajax())
+
+        $search = $request->search;
         // {
             $clubs = Club::where('name','LIKE','%'.$request->search."%")->get();
 
@@ -42,13 +44,13 @@ class PostsController extends Controller
             {
                 foreach($clubs as $club)
                 {
-                    $posts=Post::where('club_id_home',$club->id)->paginate(6);
+                    $posts=Post::where('club_id_home',$club->id)->orWhere('club_id_away',$club->id)->paginate(6);
                 }
 
                 
             }
             // dd($posts);
-            return view('posts.index', compact('posts'));
+            return view('posts.index', compact('posts','search'));
             
         // }
     }

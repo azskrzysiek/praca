@@ -6,7 +6,7 @@
     <div class="row pt-4">
         <div class="col-12">
             <div class="card text-center align-content-center">
-                <div class="cardheader h2 pt-2">Drużyny 1 ligi piłki ręcznej</div>
+                <div class="cardheader h2 pt-2 text-uppercase">Drużyny - I liga</div>
             </div>
         </div>
     </div>
@@ -19,66 +19,62 @@
                         <img class="" src="/storage/logos/{{ $club->logo }}"/>
                     </div>
                     <div class="back face center">
-                        <p class="h2">{{ $club->name }}</p>
-                        <hr>
-                        <div class="row text-left">
-                            <div class="col-6">
-                                <div class="text-center">Bramkarze</div>
-                                <br>
-                                @foreach ($club->profiles as $profile)
-                                    @if ($profile->position === 1)
-                                    <a class="text-dark" href="/profile/{{ $profile->user->id }}">
-                                        {{ $profile->user->name }} <br>
-                                    </a>
-                                    @endif
-                                @endforeach
-                                <hr>
-                            </div>
-                            <div class="col-6">
-                                    <div class="text-center">Rozgrywający</div>
-                                    <br>
-                                @foreach ($club->profiles as $profile)
-                                    @if ($profile->position === 3 || $profile->position === 4 || $profile->position === 5 )
-                                    <a class="text-dark" href="/profile/{{ $profile->user->id }}">
-                                        {{ $profile->user->name }} <br>
-                                    </a>
-                                    @endif
-                                @endforeach
-                                <hr>
-                            </div>
-                        
-                        
-                            <div class="col-6">
-                                    <div class="text-center">Skrzydłowi</div>
-                                    <br>
+                        <p class="h1">{{ $club->name }}</p>
+                        <br>
+                        <div class="row" style="font-size: 1.1rem;">
+
+                            <div class="col-6 text-center">
+                                <div class="text-center text-uppercase">Skrzydłowi</div>
                                 @foreach ($club->profiles as $profile)
                                     @if ($profile->position === 2 || $profile->position === 6 )
-                                    <a class="text-dark" href="/profile/{{ $profile->user->id }}">
+                                    <a style="text-decoration: none;" class="" href="/profile/{{ $profile->user->id }}">
                                         {{ $profile->user->name }} <br>
                                     </a>
                                     @endif
                                 @endforeach
-                                <hr>
                             </div>
-                            <div class="col-6">
-                                    <div class="text-center">Kołowi</div>
-                                    <br>
+
+                            <div class="col-6 text-center ">
+                                    <div class="text-center text-uppercase">Rozgrywający</div>
                                 @foreach ($club->profiles as $profile)
-                                    @if ($profile->position === 7)
-                                    <a class="text-dark" href="/profile/{{ $profile->user->id }}">
+                                    @if ($profile->position === 3 || $profile->position === 4 || $profile->position === 5 )
+                                    <a style="text-decoration: none;" class="" href="/profile/{{ $profile->user->id }}">
                                         {{ $profile->user->name }} <br>
                                     </a>
                                     @endif
                                 @endforeach
-                                <hr>
+                                <br>
                             </div>
                         
-                            <div class="col-12 text-center">
-                                    <div class="text-center">Trenerzy</div>
-                                    <br>
+                            <div class="col-6 text-center">
+                                <div class="text-center text-uppercase">Bramkarze</div>
+                                @foreach ($club->profiles as $profile)
+                                    @if ($profile->position === 1)
+                                    <a style="text-decoration: none;" class="" href="/profile/{{ $profile->user->id }}">
+                                        {{ $profile->user->name }} <br>
+                                    </a>
+                                    @endif
+                                @endforeach
+                            </div>
+                            
+
+                            <div class="col-6 text-center">
+                                    <div class="text-center text-uppercase">Kołowi</div>
+                                @foreach ($club->profiles as $profile)
+                                    @if ($profile->position === 7)
+                                    <a style="text-decoration: none;" class="" href="/profile/{{ $profile->user->id }}">
+                                        {{ $profile->user->name }} <br>
+                                    </a>
+                                    @endif
+                                @endforeach
+    
+                            </div>
+                        
+                            <div class="col-12 text-center pt-4">
+                                    <div class="text-center text-uppercase">Trenerzy</div>
                                 @foreach ($club->profiles as $profile)
                                     @if ($profile->position === 8)
-                                    <a class="text-dark" href="/profile/{{ $profile->user->id }}">
+                                    <a style="text-decoration: none;" class="" href="/profile/{{ $profile->user->id }}">
                                         {{ $profile->user->name }} <br>
                                     </a>
                                     @endif

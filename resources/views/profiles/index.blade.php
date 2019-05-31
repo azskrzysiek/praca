@@ -1,5 +1,16 @@
 @extends('layouts.app')
 
+@section('style')
+<style>
+
+.jumbotron {
+    font-size: 1.2rem;
+}
+
+</style>
+
+@endsection
+
 @section('content')
 <div class="container pt-3">
     <div class="jumbotron mt-5">
@@ -57,7 +68,7 @@
                        @can('update', $user->profile)
                         <a class="d-block badge badge-pill badge-success" href="/p/create">
                             <i class="fas fa-2x fa-plus-circle pb-1"></i>
-                            <div>Add new post</div>
+                            <div>Dodaj mecz</div>
                         </a>
                        @endcan
                    </div>
@@ -65,7 +76,7 @@
                         @can('update', $user->profile)
                             <a class="d-block badge badge-pill badge-info" href="/profile/{{ $user->id }}/edit">
                                 <i class="fas fa-2x fa-pen-square pb-1"></i>
-                                <div>Edit profile</div>
+                                <div>Edytuj profil</div>
                             </a>
                         @endcan
                    </div>

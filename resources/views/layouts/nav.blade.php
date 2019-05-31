@@ -1,6 +1,6 @@
 
 <nav id="navbar" style="max-height:60px" class="{{ Auth::guest() ? 'visible' : ''}} navbar fixed-top navbar-expand-md navbar-light bg-white shadow-sm">
-        <div class="container">
+        <div class="container" style="max-height: 60px;">
             <a title="strona główna" class="navbar-brand d-flex" href="{{ url('/') }}">
                 <div><img src="/svg/logo.svg" class="pr-1 hov" style="" alt=""></div>
                 <div class="pl-2 pt-1 hov">ReczVod</div>
