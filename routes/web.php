@@ -26,6 +26,7 @@ Route::get('/', function() {
 })->middleware('guest')->name('welcome');
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin', 'AdminController@index')->name('admin.index');
 
 Route::get('favorite/', 'FavoritesController@index');
 Route::post('favorite/{post}', 'FavoritesController@store');
