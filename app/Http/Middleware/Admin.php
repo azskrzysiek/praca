@@ -23,22 +23,11 @@ class Admin
             return redirect('/');
         }
  
-        $user = auth()->user();
-
-        $roles = array();
-        foreach ($user->roles as $role)
+        if (Auth::user()->isAdmin())
         {
-            $roles[] = $role->name;
+            return $next($request);
         }
-
-        for ($i = 0; $i < count($roles); $i++)
-        {
-            if ($roles[$i] === 'Admin') 
-            {
-                return $next($request);
-            }
-        }
-        return back();
+        return back(); 
         
     }
 }

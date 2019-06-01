@@ -10,6 +10,8 @@ class ProfilePolicy
 {
     use HandlesAuthorization;
 
+    
+
     /**
      * Determine whether the user can view the profile.
      *

@@ -97,38 +97,9 @@ class User extends Authenticatable
         // return $pieces[1];
     }
 
-    // public function hasAnyRole($roles)
-    // {
-    //     if (is_array($roles)) {
-    //         foreach ($roles as $role) {
-    //             if ($this->hasRole($role)) {
-    //                 return true;
-    //             }
-    //         }
-    //     } else {
-    //         if ($this->hasRole($role)) {
-    //             return true;
-    //         }
-    //     }
-    //     return false;
-    // }
-
-    // public function hasRole($role)
-    // {
-    //     if ($this->roles()->where('name', $role)->first()) {
-    //         return true;
-    //     }
-    //     return false;
-    // }
-
-
-    public function isAdmin()
-    {
-        if ($this->roles()->name === 'Admin')
-        {
-            return true;
-        }
-    }
+    public function isAdmin() {
+        return $this->roles()->where('name', 'Admin')->exists();
+     }
 
 
     public function roles()

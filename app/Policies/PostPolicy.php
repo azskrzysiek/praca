@@ -2,13 +2,16 @@
 
 namespace App\Policies;
 
-use App\User;
 use App\Post;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
 class PostPolicy
 {
     use HandlesAuthorization;
+
+    
 
     /**
      * Determine whether the user can view the post.
@@ -19,7 +22,9 @@ class PostPolicy
      */
     public function view(User $user, Post $post)
     {
-        //
+                
+       
+
     }
 
     /**

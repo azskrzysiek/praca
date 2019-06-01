@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Role;
+use App\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -15,11 +16,7 @@ class AdminController extends Controller
 
     public function index()
     {
-
-        $roles = Role::all();
         
-
-
-        return view('admin.index', compact('roles'));
+        return view('admin.index');
     }
 }

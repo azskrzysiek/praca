@@ -20,6 +20,22 @@ class RolePolicy
     public function view(User $user, Role $role)
     {
 
+        $roles_user = array();
+
+        foreach ($user->roles as $role)
+        {
+            $roles_user[] = $role->name;
+        }
+
+
+        for ($i = 0; $i < count($roles_user); $i++)
+        {
+            if ($roles[$i] === 'Admin') 
+            {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

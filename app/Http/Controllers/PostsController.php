@@ -36,6 +36,11 @@ class PostsController extends Controller
     {
         // if ($request->ajax())
 
+        if(empty($request->search))
+        {
+            return back();
+        }
+
         $search = $request->search;
         // {
             $clubs = Club::where('name','LIKE','%'.$request->search."%")->get();
@@ -49,8 +54,12 @@ class PostsController extends Controller
 
                 
             }
-            // dd($posts);
-            return view('posts.index', compact('posts','search'));
+            if (!empty($posts))
+            {
+                return view('posts.index', compact('posts','search'));
+            } else {
+                return back();
+            }
             
         // }
     }
