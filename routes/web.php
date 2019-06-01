@@ -26,7 +26,12 @@ Route::get('/', function() {
 })->middleware('guest')->name('welcome');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/admin', 'AdminController@index')->name('admin.index');
+Route::get('/admin/posts', 'AdminController@posts')->name('admin.posts');
+Route::get('/admin/clubs', 'AdminController@posts')->name('admin.clubs');
+Route::get('/admin/profiles', 'AdminController@posts')->name('admin.profiles');
+Route::get('/admin/users', 'AdminController@posts')->name('admin.users');
 
 Route::get('favorite/', 'FavoritesController@index');
 Route::post('favorite/{post}', 'FavoritesController@store');

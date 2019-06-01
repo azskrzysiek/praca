@@ -18,6 +18,7 @@ class CreateRoleUserTable extends Migration
             $table->integer('user_id');
             $table->integer('role_id');
             $table->timestamps();
+
         });
     }
 

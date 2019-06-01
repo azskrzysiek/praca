@@ -206,6 +206,13 @@ class PostsController extends Controller
             $imageArray ?? []
         ));
 
+        $user = auth()->user();
+
+        if ($user->isAdmin())
+        {
+            return redirect('/admin');
+        }
+
         return redirect("/home");
     }
 

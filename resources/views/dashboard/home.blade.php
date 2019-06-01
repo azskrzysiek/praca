@@ -66,9 +66,7 @@ i.fa-trash:hover {
                             
                                 @foreach ($posts as $post)
                                     <tr>
-                                    @can('view',$post)
                                         <th scope="row"><a href="/p/{{ $post->id }}">Pokaż</a></th>
-                                    @endcan
                                         <th scope="row">{{ $post->id }}</th>
                                         <td 
                                         class="{{ $post->scoreHomeFull() > $post->scoreAwayFull() ? 'winner-home' : 'loser-home' }}">
@@ -120,10 +118,10 @@ i.fa-trash:hover {
                         @endif
 
                         <div class="row">
-                                <div class="col-12 d-flex justify-content-center">
-                                    {{ $posts->links() }}
-                                </div>
+                            <div class="col-12 d-flex justify-content-center">
+                                {{ $posts->links() }}
                             </div>
+                        </div>
                     </div>
                 </div>
             </div>
