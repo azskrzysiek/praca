@@ -56,9 +56,12 @@ class ClubsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Club $club)
     {
-        //
+        // $this->authorize('update', $post);
+
+
+        return view('clubs.edit', compact('club'));
     }
 
     /**
@@ -68,9 +71,54 @@ class ClubsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Club $club)
     {
-        //
+        // $this->authorize('update', $post);
+
+        $user = auth()->user();
+
+        if ($user->isAdmin())
+        {
+            $data = request()->validate([
+                'name' => 'required',
+                'logo' => 'required|image'
+                ],
+                [
+                    'name.required' => 'Wprowadź nazwę drużyny',
+                    'logo.required' => 'Dodaj logo drużyny',
+                    'logo.image' => 'Logo musi być w zdjęciem',
+                ]);
+    
+                if (request('logo'))
+                {
+                    //Get filename with the extension
+                    $filenameWithExt = request()->file('logo')->getClientOriginalName();
+                    //Get just filename
+                    $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                    // Get just extension
+                    $extension = request()->file('logo')->getClientOriginalExtension();
+                    // Filename to store
+                    $fileNameToStore = $filename.'_'.time().'.'.$extension;
+                    // Upload
+                    $path = request('logo')->storeAs('public/logos', $fileNameToStore);
+                    
+                    $logoArray = ['logo' => $fileNameToStore];
+                } 
+    
+    
+            
+    
+            $club->update(array_merge(
+                $data,
+                $logoArray ?? []
+            ));
+            
+            return redirect('/admin/clubs');
+        } else {
+            return back();
+        }
+
+
     }
 
     /**
@@ -79,8 +127,13 @@ class ClubsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Club $club)
     {
-        //
+
+        // $this->authorize('delete', $post);
+
+        $club->delete();
+
+        return back();
     }
 }

@@ -24,6 +24,7 @@ class CreatePostsTable extends Migration
             $table->string('scoreHalf');
             $table->text('description');
             $table->string('video')->default('noimage.jpg');
+            $table->boolean('approved');
 
             $table->timestamps();
 

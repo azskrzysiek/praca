@@ -33,7 +33,7 @@ class AdminController extends Controller
     }
     public function clubs()
     {
-        $clubs = Club::latest()->paginate(10);
+        $clubs = Club::latest()->paginate(12);
         
         return view('admin.clubs', compact('clubs'));
     }

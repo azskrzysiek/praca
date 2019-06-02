@@ -29,7 +29,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/admin', 'AdminController@index')->name('admin.index');
 Route::get('/admin/posts', 'AdminController@posts')->name('admin.posts');
-Route::get('/admin/clubs', 'AdminController@posts')->name('admin.clubs');
+Route::get('/admin/clubs', 'AdminController@clubs')->name('admin.clubs');
 Route::get('/admin/profiles', 'AdminController@posts')->name('admin.profiles');
 Route::get('/admin/users', 'AdminController@posts')->name('admin.users');
 
@@ -51,6 +51,9 @@ Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edi
 Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
 Route::patch('/profile/{user}', 'ProfilesController@update')->name('profile.update');
 
+Route::get('/clubs/{club}/edit', 'ClubsController@edit')->name('clubs.edit');
+Route::patch('/clubs/{club}', 'ClubsController@update')->name('clubs.update');
 Route::get('/clubs/', 'ClubsController@index')->name('clubs.index');
+Route::delete('/clubs/{club}', 'ClubsController@destroy')->name('clubs.delete');
 
 

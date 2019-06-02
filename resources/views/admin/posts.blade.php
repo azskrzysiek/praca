@@ -11,10 +11,17 @@
     color: #ff0000; 
     font-size: 130%;
 }
-i.fa-trash:hover {
+    i.fa-trash:hover {
     color: #cc0000; 
     font-size: 130%;
-}
+    }
+    i {
+        font-size: 130%;
+    }
+
+    .fa-check-square {
+        color: #000;
+    }
 </style>
 
 @endsection
@@ -41,7 +48,7 @@ i.fa-trash:hover {
                             @endif
                             @if($posts->count() > 0)
                             <div class="table-responsive">
-                                <table class="table table-hover">
+                                <table class="table table-hover text-center">
                                     <thead>
                                     <tr>
                                         <th scope="col"></th>
@@ -52,7 +59,8 @@ i.fa-trash:hover {
                                         <th scope="col">Wynik do połowy</th>
                                         <th scope="col">Opis meczu</th>
                                         <th scope="col">Video</th>
-                                        <th scope="col">Akcje</th>
+                                        <th scope="col">Zatwierdź</th>
+                                        <th scope="col">Usuń</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -79,9 +87,10 @@ i.fa-trash:hover {
                                                 <img src="/storage/video/{{ $post->video}}" width="50px" height="50px" alt="">
                                             @endif
                                         </td>
-                                        <td class="d-flex">
-                                            <a title="Edytuj ten post" href="/p/{{$post->id}}/edit"><i class="fas fa-lg fa-pen-square pr-1" style="font-size: 150%;"></i></a> 
-                                            &#8260; 
+                                        <td class="">
+                                            <a title="Edytuj ten post" href="/p/{{$post->id}}/edit"><i class="fa fa-check-square"></i></a> 
+                                        </td>
+                                        <td>
                                             <a title="Usuń ten post"
                                             class="pl-1"
                                             onclick="event.preventDefault(); 

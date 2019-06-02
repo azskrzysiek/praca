@@ -18,7 +18,7 @@ class ClubsTableSeeder extends Seeder
                 'logo' => 'stalgorzow.jpg'
             ],
             [
-                'name' => 'Neilba Wągrowiec',
+                'name' => 'Nielba Wągrowiec',
                 'logo' => 'nielbawagrowiec.jpg'
             ],
             [
@@ -38,7 +38,7 @@ class ClubsTableSeeder extends Seeder
                 'logo' => 'mazursierpc.jpg'
             ],
             [
-                'name' => 'Gks Żukowo',
+                'name' => 'GKS Żukowo',
                 'logo' => 'gkszukowo.png'
             ],
             [
@@ -58,7 +58,7 @@ class ClubsTableSeeder extends Seeder
                 'logo' => 'sokolkoscierzyna.jpg'
             ],
             [
-                'name' => 'Mks Malbork',
+                'name' => 'MKS Malbork',
                 'logo' => 'pomezaniamalbork.jpg'
             ],
         ]);

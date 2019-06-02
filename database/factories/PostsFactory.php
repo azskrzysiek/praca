@@ -12,5 +12,6 @@ $factory->define(Post::class, function (Faker $faker) {
         'scoreFull' => rand(15,40).':'.rand(15,40),
         'scoreHalf' => rand(5,14).':'.rand(5,14),
         'description' => $faker->sentence,
+        'approved' => rand(0,1),
     ];
 });

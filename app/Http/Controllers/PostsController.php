@@ -130,7 +130,8 @@ class PostsController extends Controller
              'scoreFull' => $data['scoreFull'],
              'scoreHalf' => $data['scoreHalf'],
              'description' => $data['description'],
-             'video' => $fileNameToStore
+             'video' => $fileNameToStore,
+             'approved' => 0,
          ]);
 
          return redirect('/profile/' . auth()->user()->id);

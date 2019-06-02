@@ -9,7 +9,7 @@ class Post extends Model
 {
 
     protected $fillable = [
-        'club_id_home', 'id_home_player', 'club_id_away','id_away_player','scoreFull','scoreHalf','description','video',
+        'club_id_home', 'id_home_player', 'club_id_away','id_away_player','scoreFull','scoreHalf','description','video','approved'
     ];
 
 

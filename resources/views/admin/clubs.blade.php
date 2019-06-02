@@ -15,6 +15,14 @@ i.fa-trash:hover {
     color: #cc0000; 
     font-size: 130%;
 }
+
+i {
+    font-size: 130%;
+}
+
+img {
+    height: 50px;
+}
 </style>
 
 @endsection
@@ -26,7 +34,7 @@ i.fa-trash:hover {
         <div class="jumbotron">
             <div class="row">
                 <div class="col-12">
-                    <div class="card text-center"><h4 class="pt-2">Mecze</h4></div>    
+                    <div class="card text-center"><h4 class="pt-2">Drużyny</h4></div>    
                 </div>
             </div>
             <div class="row pt-1">
@@ -39,66 +47,49 @@ i.fa-trash:hover {
                                     {{ session('status') }}
                                 </div>
                             @endif
-                            @if($posts->count() > 0)
+                            @if($clubs->count() > 0)
                             <div class="table-responsive">
-                                <table class="table table-hover">
+                                <table class="table table-hover text-center">
                                     <thead>
                                     <tr>
                                         <th scope="col"></th>
                                         <th scope="col">#</th>
-                                        <th scope="col">Gospdodarze</th>
-                                        <th scope="col">Goście</th>
-                                        <th scope="col">Wynik meczu</th>
-                                        <th scope="col">Wynik do połowy</th>
-                                        <th scope="col">Opis meczu</th>
-                                        <th scope="col">Video</th>
-                                        <th scope="col">Akcje</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Logo</th>
+                                        <th scope="col">Edytuj</th>
+                                        <th scope="col">Usuń</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                 
-                                    @foreach ($posts as $post)
+                                    @foreach ($clubs as $club)
                                         <tr>
-                                            <th scope="row"><a href="/p/{{ $post->id }}">Pokaż</a></th>
-                                            <th scope="row">{{ $post->id }}</th>
-                                            <td 
-                                            class="{{ $post->scoreHomeFull() > $post->scoreAwayFull() ? 'winner-home' : 'loser-home' }}">
-                                                {{ $post->clubHome() }}
-                                            </td>
-                                            <td 
-                                            class="{{ $post->scoreHomeFull() < $post->scoreAwayFull() ? 'winner-home' : 'loser-home' }}">
-                                                {{ $post->clubAway()}}
-                                            </td>
-                                        <td>{{ $post->scoreFull}}</td>
-                                        <td>{{ $post->scoreHalf}}</td>
-                                        <td>{{ $post->description}}</td>
+                                            <th scope="row"><a href="{{route('clubs.index') }}">Pokaż</a></th>
+                                            <th scope="row">{{ $club->id }}</th>
+                                            <td>{{ $club->name}}</td> 
+                                            <td><img src="/storage/logos/{{ $club->logo }}" alt=""></td> 
                                         <td>
-                                            @if (  $post->video  !== 'noimage.jpg' )
-                                                <video src="/storage/video/{{ $post->video}}" width="50px" height="50px" alt="">
-                                            @else
-                                                <img src="/storage/video/{{ $post->video}}" width="50px" height="50px" alt="">
-                                            @endif
+                                            <a title="Edytuj ten post" href="{{ route('clubs.edit', $club->id) }}"><i class="fas fa-lg fa-pen-square"></i></a> 
                                         </td>
-                                        <td class="d-flex">
-                                            <a title="Edytuj ten post" href="/p/{{$post->id}}/edit"><i class="fas fa-lg fa-pen-square pr-1" style="font-size: 150%;"></i></a> 
-                                            &#8260; 
+                                        <td>
                                             <a title="Usuń ten post"
                                             class="pl-1"
                                             onclick="event.preventDefault(); 
                                             var r = confirm('Jestes pewien ?'); 
                                             if (r === true)
                                             {
-                                                document.getElementById('delete-post-{{ $post->id }}').submit();
+                                                document.getElementById('delete-club-{{ $club->id }}').submit();
                                             } else {
                                                 return false;
                                             }">
                                             <i class="fas fa-trash"></i>
                                             </a>
-                                            <form class="d-none" id="delete-post-{{ $post->id }}" action="{{ route('posts.delete', $post->id) }}" method="POST">
+                                            <form class="d-none" id="delete-club-{{ $club->id }}" action="{{ route('clubs.delete', $club->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                             </form>
                                         </td>
+                                            
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -112,7 +103,7 @@ i.fa-trash:hover {
     
                             <div class="row">
                                 <div class="col-12 d-flex justify-content-center">
-                                    {{ $posts->links() }}
+                                    {{ $clubs->links() }}
                                 </div>
                             </div>
                         </div>
