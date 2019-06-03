@@ -22,6 +22,10 @@
     .fa-check-square {
         color: #000;
     }
+
+    .accepted {
+        color: #59f442;
+    }
 </style>
 
 @endsection
@@ -87,11 +91,28 @@
                                                 <img src="/storage/video/{{ $post->video}}" width="50px" height="50px" alt="">
                                             @endif
                                         </td>
+
                                         <td class="">
-                                            <a title="Edytuj ten post" href="/p/{{$post->id}}/edit"><i class="fa fa-check-square"></i></a> 
+                                            <a title="{{ $post->approved === 1 ? 'Nieakceptuj post' : 'Zaakceptuj post'}}"
+                                            class="pl-1"
+                                            onclick="event.preventDefault(); 
+                                            var r = confirm('Jestes pewien ?'); 
+                                            if (r === true)
+                                            {
+                                                document.getElementById('update-post-{{ $post->id }}').submit();
+                                            } else {
+                                                return false;
+                                            }">
+                                            <i class="fa fa-check-square {{ $post->approved === 1 ? 'accepted' : '' }}"></i>
+                                            </a>
+                                            <form class="d-none" id="update-post-{{ $post->id }}" action="{{ route('posts.accept', $post->id) }}" method="POST">
+                                                @csrf
+                                                @method('PATCH')
+                                            </form> 
                                         </td>
+
                                         <td>
-                                            <a title="Usuń ten post"
+                                            <a title="Usuń ten mecz"
                                             class="pl-1"
                                             onclick="event.preventDefault(); 
                                             var r = confirm('Jestes pewien ?'); 

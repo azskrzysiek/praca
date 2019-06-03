@@ -27,7 +27,7 @@ class PostsController extends Controller
         //  $posts = Post::whereIn('user_id', $users)->latest()->get();
          
 
-        $posts = Post::with('user')->latest()->paginate(6);
+        $posts = Post::with('user')->latest()->where('approved',1)->paginate(6);
 
         return view('posts.index', compact('posts'));
     }
@@ -49,7 +49,12 @@ class PostsController extends Controller
             {
                 foreach($clubs as $club)
                 {
-                    $posts=Post::where('club_id_home',$club->id)->orWhere('club_id_away',$club->id)->paginate(6);
+                    $posts=Post:: where('approved', 1)
+                    ->where(function($q) use ($club) {
+                        $q->where('club_id_home', $club->id)
+                            ->orWhere('club_id_away', $club->id);
+                    })
+                    ->paginate(6);
                 }
 
                 
@@ -138,8 +143,32 @@ class PostsController extends Controller
 
     }
 
+    public function acceptPost(Post $post)
+    {
+        if ($post->approved === 0)
+        {
+            $post->update([
+                'approved' => 1,
+            ]
+            );
+            return back();
+        } else {
+            $post->update([
+                'approved' => 0,
+            ]
+            );
+            return back();
+        }
+    }
+
     public function show(Post $post)
     {
+
+        if ($post->approved === 0)
+        {
+            return abort(404);
+        }
+
         $favorit = (auth()->user()) ? auth()->user()->favoriting->contains($post->id) : false;
 
         $clubHome = Club::findOrFail($post->club_id_home);

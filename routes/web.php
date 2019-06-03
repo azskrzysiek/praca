@@ -44,6 +44,7 @@ Route::get('/search', 'PostsController@search');
 Route::get('/p/{post}/edit', 'PostsController@edit')->name('posts.edit');
 Route::get('/p/{post}', 'PostsController@show')->name('posts.show');
 Route::patch('/p/{post}', 'PostsController@update')->name('posts.update');
+Route::patch('/p/{post}', 'PostsController@acceptPost')->name('posts.accept');
 Route::delete('/p/{post}', 'PostsController@destroy')->name('posts.delete');
 
 

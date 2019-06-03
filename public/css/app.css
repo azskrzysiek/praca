@@ -16705,7 +16705,6 @@ readers do not read off random characters that represent icons */
   left: 0;
   right: 0;
   min-height: 100vh;
-  padding: 2rem 0;
 }
 
 .bg-text:before {
