@@ -28,6 +28,7 @@ class CreateProfilesTable extends Migration
             $table->string('urlTwitter')->nullable();
             $table->string('urlInstagram')->nullable();
             $table->text('description')->nullable();
+            $table->integer('number')->default(0);
             $table->timestamps();
 
             $table->index('user_id');

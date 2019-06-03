@@ -15,6 +15,9 @@ i.fa-trash:hover {
     color: #cc0000; 
     font-size: 130%;
 }
+img {
+    height: 50px;
+}
 </style>
 
 @endsection
@@ -39,66 +42,55 @@ i.fa-trash:hover {
                                     {{ session('status') }}
                                 </div>
                             @endif
-                            @if($posts->count() > 0)
+                            @if($profiles->count() > 0)
                             <div class="table-responsive">
-                                <table class="table table-hover">
+                                <table class="table table-hover text-center">
                                     <thead>
                                     <tr>
                                         <th scope="col"></th>
                                         <th scope="col">#</th>
-                                        <th scope="col">Gospdodarze</th>
-                                        <th scope="col">Goście</th>
-                                        <th scope="col">Wynik meczu</th>
-                                        <th scope="col">Wynik do połowy</th>
-                                        <th scope="col">Opis meczu</th>
-                                        <th scope="col">Video</th>
-                                        <th scope="col">Akcje</th>
+                                        <th scope="col">Imię</th>
+                                        <th scope="col">Nazwisko</th>
+                                        <th scope="col">Zdjęcie</th>
+                                        <th scope="col">Pozycja</th>
+                                        <th scope="col">Wiek</th>
+                                        <th scope="col">Doświadczenie</th>
+                                        <th scope="col">Wzrost</th>
+                                        <th scope="col">Klub</th>
+                                        <th scope="col">Transfer</th>
+                                        <th scope="col">Akceptuj</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                 
-                                    @foreach ($posts as $post)
+                                    @foreach ($profiles as $profile)
                                         <tr>
-                                            <th scope="row"><a href="/p/{{ $post->id }}">Pokaż</a></th>
-                                            <th scope="row">{{ $post->id }}</th>
-                                            <td 
-                                            class="{{ $post->scoreHomeFull() > $post->scoreAwayFull() ? 'winner-home' : 'loser-home' }}">
-                                                {{ $post->clubHome() }}
+                                            <th scope="row"><a href="/profile/{{ $profile->id }}">Pokaż</a></th>
+                                            <th scope="row">{{ $profile->id }}</th>
+                                            <td>
+                                                {{ $profile->name }}
                                             </td>
-                                            <td 
-                                            class="{{ $post->scoreHomeFull() < $post->scoreAwayFull() ? 'winner-home' : 'loser-home' }}">
-                                                {{ $post->clubAway()}}
+                                            <td>
+                                                {{ $profile->lastname }}
                                             </td>
-                                        <td>{{ $post->scoreFull}}</td>
-                                        <td>{{ $post->scoreHalf}}</td>
-                                        <td>{{ $post->description}}</td>
-                                        <td>
-                                            @if (  $post->video  !== 'noimage.jpg' )
-                                                <video src="/storage/video/{{ $post->video}}" width="50px" height="50px" alt="">
-                                            @else
-                                                <img src="/storage/video/{{ $post->video}}" width="50px" height="50px" alt="">
-                                            @endif
-                                        </td>
-                                        <td class="d-flex">
-                                            <a title="Edytuj ten post" href="/p/{{$post->id}}/edit"><i class="fas fa-lg fa-pen-square pr-1" style="font-size: 150%;"></i></a> 
-                                            &#8260; 
-                                            <a title="Usuń ten post"
-                                            class="pl-1"
-                                            onclick="event.preventDefault(); 
-                                            var r = confirm('Jestes pewien ?'); 
-                                            if (r === true)
-                                            {
-                                                document.getElementById('delete-post-{{ $post->id }}').submit();
-                                            } else {
-                                                return false;
-                                            }">
-                                            <i class="fas fa-trash"></i>
-                                            </a>
-                                            <form class="d-none" id="delete-post-{{ $post->id }}" action="{{ route('posts.delete', $post->id) }}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                            </form>
-                                        </td>
+                                            <td>
+                                                <img src="{{ $profile->profileImage() }}" alt="">
+                                            </td>
+                                            <td>
+                                                {{ $profile->positione }}
+                                            </td>
+                                            <td>
+                                                {{ $profile->age ?? 'Brak' }}
+                                            </td>
+                                            <td>
+                                                {{ $profile->experience ?? 'Brak' }}
+                                            </td>
+                                            <td>
+                                                {{ $profile->height ?? 'Brak' }}
+                                            </td>
+                                            <td>
+                                                {{ $profile->club->name ?? 'Brak' }}
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>
@@ -112,7 +104,7 @@ i.fa-trash:hover {
     
                             <div class="row">
                                 <div class="col-12 d-flex justify-content-center">
-                                    {{ $posts->links() }}
+                                    {{ $profiles->links() }}
                                 </div>
                             </div>
                         </div>

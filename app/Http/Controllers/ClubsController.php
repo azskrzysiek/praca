@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Club;
+use App\Profile;
 use Illuminate\Http\Request;
 
 class ClubsController extends Controller
@@ -45,9 +46,12 @@ class ClubsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Club $club)
     {
-        //
+
+        $players = Profile::where('club_id',$club->id)->get();
+
+        return view('clubs.show', compact('club','players'));
     }
 
     /**

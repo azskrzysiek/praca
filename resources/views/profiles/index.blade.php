@@ -93,7 +93,7 @@
            <div class="d-flex flex-column justify-content-start">
                <div><strong class="mr-3">Pozycja:</strong>{{ $user->profile->positione }}</div>
                <div><strong class="mr-3">Wiek:</strong>{{ $user->profile->age ?? 'Brak' }}</div>
-           <div><strong class="mr-3">Doświadczenie:</strong>
+               <div><strong class="mr-3">Doświadczenie:</strong>
                 {{ $user->profile->experience ?? 'Brak' }} 
                 {{ ($user->profile->experience == 0) ? '': 
                 (($user->profile->experience) < 2 ? 'rok' : 
@@ -107,14 +107,17 @@
                    @endif
                    {{ $user->profile->club->name ?? 'Brak' }}
                 </div>
-               <div><strong class="mr-3">Dodanych filmów:</strong>{{ $user->posts->count() }}</div>
+                <div><strong class="mr-3">Numer</strong>{{ $user->profile->number }}</div>
+                <div><strong class="mr-3">Zatwierdzonych meczy:</strong>{{ $posts->count() ?? '0' }}</div>
+                <div><strong class="mr-3">Czekających na zatwierdzenie</strong>{{ $unaproved->count() ?? '0' }}</div>
            </div>
+           
            <div class="pt-5 font-weight-bold">Osiągnięcia:</div>
            <div class="text-justify">
             <ul>
-                    @foreach($user->profile->descriptione as $item) 
-                      <li>{{$item == null ? 'Brak': $item}}</li>
-                    @endforeach    
+                @foreach($user->profile->descriptione as $item) 
+                    <li>{{$item == null ? 'Brak': $item}}</li>
+                @endforeach    
             </ul>   
             </div>
             </div>

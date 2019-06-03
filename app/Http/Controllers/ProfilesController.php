@@ -28,12 +28,15 @@ class ProfilesController extends Controller
     {
 
          $users = $user->posts()->pluck('posts.user_id');
+         $number = 1;
 
-         $posts = Post::whereIn('user_id', $users)->latest()->paginate(3, ['*'], 'posts');
+         $posts = Post::whereIn('user_id', $users)->where('approved',1)->latest()->paginate(3);
+         
+         $unaproved = Post::whereIn('user_id', $users)->where('approved',0)->latest()->paginate(3);
 
         //  $postFavorites = Auth::user()->favoriting()->paginate(3, ['*'], 'postFavorites');
 
-        return view('profiles.index', compact('user','posts'));
+        return view('profiles.index', compact('user','posts','unaproved'));
     }
 
     public function edit(User $user)

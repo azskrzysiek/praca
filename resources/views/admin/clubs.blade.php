@@ -64,7 +64,7 @@ img {
                                 
                                     @foreach ($clubs as $club)
                                         <tr>
-                                            <th scope="row"><a href="{{route('clubs.index') }}">Pokaż</a></th>
+                                            <th scope="row"><a href="{{route('clubs.show', $club->id) }}">Pokaż</a></th>
                                             <th scope="row">{{ $club->id }}</th>
                                             <td>{{ $club->name}}</td> 
                                             <td><img src="/storage/logos/{{ $club->logo }}" alt=""></td> 
