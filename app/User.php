@@ -99,8 +99,14 @@ class User extends Authenticatable
 
     public function isAdmin() {
         return $this->roles()->where('name', 'Admin')->exists();
-     }
-
+    }
+    public function isTrainer() {
+        return $this->roles()->where('name', 'Trainer')->exists();
+    }
+    
+    public function isUser() {
+        return $this->roles()->where('name', 'User')->exists();
+    }
 
     public function roles()
     {

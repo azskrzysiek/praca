@@ -49,4 +49,37 @@ class AdminController extends Controller
         
         return view('admin.users', compact('users'));
     }
+    public function usersroleuser(User $user)
+    {
+        if ($user->isUser()) 
+        {
+            $user->roles()->detach(Role::where('name','User')->first());
+            return back();
+        } else {
+            $user->roles()->attach(Role::where('name','User')->first());
+            return back();
+        }
+    }
+    public function usersroletrainer(User $user)
+    {
+        if ($user->isTrainer()) 
+        {
+            $user->roles()->detach(Role::where('name','Trainer')->first());
+            return back();
+        } else {
+            $user->roles()->attach(Role::where('name','Trainer')->first());
+            return back();
+        }
+    }
+    public function usersroleadmin(User $user)
+    {
+        if ($user->isAdmin()) 
+        {
+            $user->roles()->detach(Role::where('name','Admin')->first());
+            return back();
+        } else {
+            $user->roles()->attach(Role::where('name','Admin')->first());
+            return back();
+        }
+    }
 }

@@ -31,7 +31,11 @@ Route::get('/admin', 'AdminController@index')->name('admin.index');
 Route::get('/admin/posts', 'AdminController@posts')->name('admin.posts');
 Route::get('/admin/clubs', 'AdminController@clubs')->name('admin.clubs');
 Route::get('/admin/profiles', 'AdminController@posts')->name('admin.profiles');
-Route::get('/admin/users', 'AdminController@posts')->name('admin.users');
+Route::get('/admin/users', 'AdminController@users')->name('admin.users');
+
+Route::patch('/admin/users/user/{user}', 'AdminController@usersroleuser')->name('admin.role.user');
+Route::patch('/admin/users/trainer/{user}', 'AdminController@usersroletrainer')->name('admin.role.trainer');
+Route::patch('/admin/users/admin/{user}', 'AdminController@usersroleadmin')->name('admin.role.admin');
 
 Route::get('favorite/', 'FavoritesController@index');
 Route::post('favorite/{post}', 'FavoritesController@store');
