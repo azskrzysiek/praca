@@ -35,7 +35,8 @@ class PostPolicy
      */
     public function create(User $user)
     {
-        //
+
+        // return $user->isAdmin();
     }
 
     /**
@@ -47,7 +48,7 @@ class PostPolicy
      */
     public function update(User $user, Post $post)
     {
-        return $user->id === $post->user_id;
+        return ($user->isAdmin() || $user->isTrainer()) && $user->id === $post->user_id;
     }
 
     /**

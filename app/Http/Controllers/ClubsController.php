@@ -11,7 +11,7 @@ class ClubsController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('admin')->except('index','show','addtransfer');
     }
     /**
      * Display a listing of the resource.
@@ -31,7 +31,13 @@ class ClubsController extends Controller
      */
     public function create()
     {
-        //
+        $clubs = CLub::all();
+
+        if ($clubs->count() > 11) {
+            return back();
+        } else {
+            return view('clubs.create');
+        }
     }
 
     /**
@@ -42,7 +48,48 @@ class ClubsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = auth()->user();
+
+        if ($user->isAdmin())
+        {
+            $data = request()->validate([
+                'name' => 'required',
+                'logo' => 'required|image'
+                ],
+                [
+                    'name.required' => 'Wprowadź nazwę drużyny',
+                    'logo.required' => 'Dodaj logo drużyny',
+                    'logo.image' => 'Logo musi być w zdjęciem',
+                ]);
+    
+                if (request('logo'))
+                {
+                    //Get filename with the extension
+                    $filenameWithExt = request()->file('logo')->getClientOriginalName();
+                    //Get just filename
+                    $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+                    // Get just extension
+                    $extension = request()->file('logo')->getClientOriginalExtension();
+                    // Filename to store
+                    $fileNameToStore = $filename.'_'.time().'.'.$extension;
+                    // Upload
+                    $path = request('logo')->storeAs('public/logos', $fileNameToStore);
+                    
+                    $logoArray = ['logo' => $fileNameToStore];
+                } 
+    
+    
+            
+    
+            Club::create(array_merge(
+                $data,
+                $logoArray,
+            ));
+            
+            return redirect('/admin/clubs');
+        } else {
+            return back();
+        }
     }
 
     public function addtransfer(Club $club)
@@ -67,6 +114,8 @@ class ClubsController extends Controller
     {
 
         $players = Profile::where('club_id',$club->id)->get();
+
+
 
         return view('clubs.show', compact('club','players'));
     }
@@ -102,11 +151,11 @@ class ClubsController extends Controller
         {
             $data = request()->validate([
                 'name' => 'required',
-                'logo' => 'required|image'
+                'logo' => 'image'
                 ],
                 [
                     'name.required' => 'Wprowadź nazwę drużyny',
-                    'logo.required' => 'Dodaj logo drużyny',
+                    // 'logo.required' => 'Dodaj logo drużyny',
                     'logo.image' => 'Logo musi być w zdjęciem',
                 ]);
     

@@ -21,7 +21,7 @@ class ProfilePolicy
      */
     public function view(User $user, Profile $profile)
     {
-        //
+        return ($user->isTrainer() || $user->isAdmin()) && $user->id == $profile->user_id;
     }
 
     /**

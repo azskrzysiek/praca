@@ -26,6 +26,12 @@
 //     padding: 4rem;
 // }
 
+.table > tbody > tr > td {
+    vertical-align: middle;
+}
+.table > tbody > tr > th {
+    vertical-align: middle;
+}
 
 .bg-text {
     position: absolute;

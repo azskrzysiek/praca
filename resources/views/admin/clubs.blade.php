@@ -48,6 +48,11 @@ img {
                                 </div>
                             @endif
                             @if($clubs->count() > 0)
+                                @if ($clubs->count() < 12 )
+                                    <div>
+                                        <a class="btn btn-primary mb-3" href="{{ route('clubs.create') }}">Dodaj drużynę</a>
+                                    </div>
+                                @endif
                             <div class="table-responsive">
                                 <table class="table table-hover text-center">
                                     <thead>

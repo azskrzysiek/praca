@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Club;
+use App\User;
 use App\Post;
 use App\Profile;
 use Illuminate\Http\Request;
@@ -72,8 +73,17 @@ class PostsController extends Controller
 
     public function create()
     {
-         $clubs = Club::all();
-         return view('posts.create',compact('clubs'));
+        $user = auth()->user();
+
+
+        if ($user->isAdmin() || $user->isTrainer())
+        {
+            $clubs = Club::all();
+            return view('posts.create',compact('clubs'));
+        } else {
+            return back();
+        }
+        
     }
 
     public function get_by_club($id)
@@ -85,6 +95,12 @@ class PostsController extends Controller
 
     public function store()
     {
+        $user = auth()->user();
+        
+        if( $user->isAdmin() || $user->isTrainer())
+        {
+
+        
         
          $data = request()->validate([
             'club_id_home' => 'required',
@@ -140,6 +156,10 @@ class PostsController extends Controller
          ]);
 
          return redirect('/profile/' . auth()->user()->id);
+        }
+        else {
+            return back();
+        }
 
     }
 
@@ -181,7 +201,7 @@ class PostsController extends Controller
 
     public function edit(Post $post)
     {
-        $this->authorize('update', $post);
+        // $this->authorize('update', $post);
 
         $clubs = Club::all();
 
@@ -190,7 +210,7 @@ class PostsController extends Controller
 
     public function update(Post $post)
     {
-        $this->authorize('update', $post);
+        // $this->authorize('update', $post);
 
         $data = request()->validate([
             'club_id_home' => 'required',
@@ -233,7 +253,7 @@ class PostsController extends Controller
 
         $post->update(array_merge(
             $data,
-            $imageArray ?? []
+            $videoArray ?? []
         ));
 
         $user = auth()->user();

@@ -28,7 +28,8 @@ class ProfilesController extends Controller
     {
 
          $users = $user->posts()->pluck('posts.user_id');
-         $number = 1;
+
+         $count_mvp = Post::where('id_home_player',$user->id)->orWhere('id_away_player',$user->id)->count();
 
          $posts = Post::whereIn('user_id', $users)->where('approved',1)->latest()->paginate(3);
          
@@ -36,7 +37,7 @@ class ProfilesController extends Controller
 
         //  $postFavorites = Auth::user()->favoriting()->paginate(3, ['*'], 'postFavorites');
 
-        return view('profiles.index', compact('user','posts','unaproved'));
+        return view('profiles.index', compact('user','posts','unaproved','count_mvp'));
     }
 
     public function edit(User $user)
@@ -60,7 +61,8 @@ class ProfilesController extends Controller
             'age' => '',
             'height' => '',
             'experience' => '',
-            'club_id' => '',
+            // 'club_id' => '',
+            'number' => '',
             'urlFacebook' => 'domain:facebook.com',
             'urlTwitter' => 'domain:twitter.com',
             'urlInstagram' => 'domain:www.instagram',

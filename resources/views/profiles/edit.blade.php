@@ -63,6 +63,16 @@
                 @enderror
         </div>
         <div class="form-group row">
+            <label for="number" class="col-md-4 col-form-label pl-0">Numer</label>
+                <input id="number" type="text" rows="5" class="form-control @error('number') is-invalid @enderror" name="number" value="{{ old('number') ?? $user->profile->number}}" autocomplete="number" autofocus>
+
+                @error('number')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+        </div>
+        <div class="form-group row">
             <label for="height" class="col-md-4 col-form-label pl-0">Wzrost</label>
                 <input id="height" type="number" rows="5" class="form-control @error('height') is-invalid @enderror" name="height" min="80" max="300" value="{{ old('height') ?? $user->profile->height}}" autocomplete="height" autofocus>
 
@@ -77,27 +87,6 @@
                 <input id="experience" type="number" rows="5" class="form-control @error('experience') is-invalid @enderror" name="experience" min="0" max="90" value="{{ old('experience') ?? $user->profile->experience}}" autocomplete="experience" autofocus>
 
                 @error('experience')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
-        </div>
-        <div class="form-group row">
-            <label for="club_id" class="col-md-4 col-form-label pl-0">Aktualny klub</label>
-                <select id="club_id" type="text" rows="5" class="form-control @error('club_id') is-invalid @enderror" name="club_id">
-                    
-                    @php
-                        $club = ['Stal Gorzów', 'Nielba Wągrowiec', 'Jurand Ciechanów', 'SMS Gdańsk', 'Gwardia Koszalin', 'Sambor Tczew', 'Sokół Kościerzyna', 'Warmia Olsztyn', 'GKS Żukowo', 'Mazur Sierpc','Wójcik Elbląg','Pomozenia Malbork'];
-                    @endphp
-                    <option value="0">Wybierz drużynę</option>
-                    @foreach ($clubs as $club)
-                        <option value="{{$club->id}}" {{!empty($user->profile->club_id) && ($user->profile->club_id == $club->id) ? 'selected' : '' }}>{{$club->name}}
-                        </option>
-                    @endforeach
-                
-                </select>
-
-                @error('club_id')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>
                     </span>

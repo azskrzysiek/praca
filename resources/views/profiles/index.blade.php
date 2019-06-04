@@ -13,7 +13,7 @@
 
 @section('content')
 <div class="container pt-3">
-    <div class="jumbotron mt-5">
+<div class="jumbotron mt-5">
    <div class="row">
        <div class="col-12 col-md-7 text-center">
             <img src="{{ $user->profile->profileImage() }}" style="max-height: 400px; max-width: 400px;" class=" rounded-circle w-100 mb-3" alt="">
@@ -64,30 +64,30 @@
                <h1 class="pb-2">{{ $user->profile->name }} {{ $user->profile->lastname }}</h1>
 
                <div class="row pb-4">
-                   <div class="col-4">
-                       @can('update', $user->profile)
+                   @can('view', $user->profile)
+                   <div class="col">
                         <a class="d-block badge badge-pill badge-success" href="/p/create">
                             <i class="fas fa-2x fa-plus-circle pb-1"></i>
                             <div>Dodaj mecz</div>
                         </a>
-                       @endcan
-                   </div>
-                   <div class="col-4">
+                    </div>
+                    @endcan
+                    <div class="col">
                         @can('update', $user->profile)
-                            <a class="d-block badge badge-pill badge-info" href="/profile/{{ $user->id }}/edit">
-                                <i class="fas fa-2x fa-pen-square pb-1"></i>
-                                <div>Edytuj profil</div>
-                            </a>
+                        <a class="d-block badge badge-pill badge-info" href="/profile/{{ $user->id }}/edit">
+                            <i class="fas fa-2x fa-pen-square pb-1"></i>
+                            <div>Edytuj profil</div>
+                        </a>
                         @endcan
-                   </div>
-                   <div class="col-4">
+                    </div>
                         @can('update', $user->profile)
-                            <a class="d-block badge badge-pill badge-warning red" href="/favorite">
-                                <i class="fas fa-2x fa-heart pb-1"></i>
-                                <div>Ulubione</div>
-                            </a>
+                   <div class="col">
+                        <a class="d-block badge badge-pill badge-warning red" href="/favorite">
+                            <i class="fas fa-2x fa-heart pb-1"></i>
+                            <div>Ulubione</div>
+                        </a>
+                    </div>
                         @endcan
-                   </div>
                </div>
             </div>
            <div class="d-flex flex-column justify-content-start">
@@ -107,9 +107,10 @@
                    @endif
                    {{ $user->profile->club->name ?? 'Brak' }}
                 </div>
-                <div><strong class="mr-3">Numer</strong>{{ $user->profile->number }}</div>
+                <div><strong class="mr-3">Numer:</strong>{{ $user->profile->number }}</div>
+                <div><strong class="mr-3">MVP:</strong>{{ $count_mvp }}</div>
                 <div><strong class="mr-3">Zatwierdzonych meczy:</strong>{{ $posts->count() ?? '0' }}</div>
-                <div><strong class="mr-3">Czekających na zatwierdzenie</strong>{{ $unaproved->count() ?? '0' }}</div>
+                <div><strong class="mr-3">Czekających na zatwierdzenie:</strong>{{ $unaproved->count() ?? '0' }}</div>
            </div>
            
            <div class="pt-5 font-weight-bold">Osiągnięcia:</div>
@@ -120,21 +121,24 @@
                 @endforeach    
             </ul>   
             </div>
-            </div>
     </div>
-
+   </div>
 </div>
-       
-        <div class="row">
-            <div class="col-12 text-center">
+
+
+    <div class="row">
+        <div class="col-12 text-center">
+            @if($posts->count() > 0)
                 <div class="card"><h4 class="pt-1">Moje filmy</h4></div>
-            </div>
+            @endif
         </div>
+    </div>
+    
 
        <div class="row pt-4">
         <div class="card-deck">
            @foreach($posts as $post)
-            <div class="col-12 col-md-4 pb-4">
+            <div class="col-4 col-md-4 pb-4">
                 <div class="card" style="min-height: 220px; max-height: 220px padding: 10px;">
                     <div class="card-header d-flex justify-content-center">
                         <div class="flex-grow-1">{{ $post->clubHome() }}</div> 
@@ -156,7 +160,6 @@
             </div>
            @endforeach
         </div>
-
        </div>
 
        <div class="row">
@@ -164,25 +167,6 @@
                 {{ $posts->links() }}
             </div>
         </div>
-
-       {{-- <div class="row">
-            <div class="col-12 text-center">Moje ulubione filmy</div>
-        </div>
-        <div class="row">
-            @foreach ($postFavorites as $postFavorite)
-            <div class="col-4 pb-4">
-                 <a href="/p/{{ $postFavorite->id }}">
-                     <img src="/storage/{{ $postFavorite->image }}" class="w-100" alt="">
-                 </a>
-             </div>
-            @endforeach
-        </div>
-
-        <div class="row">
-            <div class="col-12 d-flex justify-content-center">
-                {{ $postFavorites->links() }}
-            </div>
-        </div>        --}}
 </div>
 
 

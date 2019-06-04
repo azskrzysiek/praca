@@ -16698,6 +16698,14 @@ readers do not read off random characters that represent icons */
   font-family: "Font Awesome 5 Brands";
 }
 
+.table > tbody > tr > td {
+  vertical-align: middle;
+}
+
+.table > tbody > tr > th {
+  vertical-align: middle;
+}
+
 .bg-text {
   position: absolute;
   top: 0;

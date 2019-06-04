@@ -33,6 +33,7 @@
 
 @section('content')
 <div class="container one d-flex flex-column justify-content-center">
+    @if (Auth::user()->profile->transfer !== $club->id && Auth::user()->profile->club_id !== $club->id)
     <div class="top text-center">
         <a title="Dołącz do drużyny"
             class="btn btn-primary text-white"
@@ -51,7 +52,8 @@
                 @method('PATCH')
             </form> 
     </div>
-    <div class="row">
+    @endif
+    <div class="row mt-5">
             @foreach ($players as $player)
                     <div class="col-lg-4 col-md-6 col-12">
                         <div class="card mx-auto" style="width: 18rem;">

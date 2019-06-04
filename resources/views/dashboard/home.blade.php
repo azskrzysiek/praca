@@ -86,7 +86,7 @@ i.fa-trash:hover {
                                             <img src="/storage/video/{{ $post->video}}" width="50px" height="50px" alt="">
                                         @endif
                                     </td>
-                                    <td>
+                                    <td class="d-flex">
                                         <a title="Edytuj ten post" href="/p/{{$post->id}}/edit"><i class="fas fa-lg fa-pen-square pr-1" style="font-size: 150%;"></i></a> 
                                         &#8260; 
                                         <a title="Usuń ten post"

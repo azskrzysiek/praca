@@ -35,7 +35,7 @@ img {
     color: #42f44b;
 }
 .flex-grow-1 {
-    width: 80px;
+    width: 86px;
 }
 .less {
     max-width: 130px;

@@ -47,22 +47,24 @@ Route::get('/search', 'PostsController@search');
 
 Route::get('/p/{post}/edit', 'PostsController@edit')->name('posts.edit');
 Route::get('/p/{post}', 'PostsController@show')->name('posts.show');
+Route::patch('/p/{post}/accept', 'PostsController@acceptPost')->name('posts.accept');
 Route::patch('/p/{post}', 'PostsController@update')->name('posts.update');
-Route::patch('/p/{post}', 'PostsController@acceptPost')->name('posts.accept');
 Route::delete('/p/{post}', 'PostsController@destroy')->name('posts.delete');
 
 
+Route::get('/clubs/create', 'ClubsController@create')->name('clubs.create');
 Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
 Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
 Route::patch('/profile/{user}', 'ProfilesController@update')->name('profile.update');
 
 Route::get('/clubs/{club}/edit', 'ClubsController@edit')->name('clubs.edit');
 Route::patch('/clubs/{club}', 'ClubsController@update')->name('clubs.update');
-Route::patch('/clubs/transfer/{club}', 'ClubsController@addtransfer')->name('clubs.add.transfer');
+Route::patch('/clubs/transfer/{club}', 'ClubsController@addtransfer')->name('clubs.add.transfer')->middleware('auth');
 Route::patch('/clubs/transfer/accept/{profile}', 'AdminController@accepttransfer')->name('admin.accept.transfer');
 Route::patch('/clubs/transfer/decline/{profile}', 'AdminController@declinetransfer')->name('admin.decline.transfer');
 Route::get('/clubs/{club}', 'ClubsController@show')->name('clubs.show');
 Route::get('/clubs/', 'ClubsController@index')->name('clubs.index');
+Route::post('/clubs', 'ClubsController@store')->name('clubs.store');
 Route::delete('/clubs/{club}', 'ClubsController@destroy')->name('clubs.delete');
 
 

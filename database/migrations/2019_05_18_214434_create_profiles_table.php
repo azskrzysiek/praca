@@ -30,7 +30,6 @@ class CreateProfilesTable extends Migration
             $table->text('description')->nullable();
             $table->integer('number')->default(0);
             $table->integer('transfer')->nullable();
-            $table->boolean('approved')->default(0);
             $table->timestamps();
 
             $table->index('user_id');

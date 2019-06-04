@@ -8,7 +8,7 @@ class Profile extends Model
 {
 
     protected $fillable = [
-        'name', 'lastname', 'position','age','height','experience','club_id', 'image','urlFacebook','urlTwitter','urlInstagram','description','transfer','approved',
+        'name', 'lastname', 'position','age','height','experience','club_id', 'image','urlFacebook','urlTwitter','urlInstagram','description','transfer','number',
     ];
 
     public function profileImage()

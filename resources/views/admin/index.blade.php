@@ -49,17 +49,22 @@ i.fa-trash:hover {
             <div class="row size pt-1">
                     <div class="col-3">
                         <div class="card size">
-                            <img class="card-img-top" src="http://www.kokoschkarevival.com/files/2016-11/generic-image-missing-profile.jpg" alt="Card image cap">
+                            <a href="{{ route('admin.users') }}">
+                                <img class="card-img-top" src="http://www.kokoschkarevival.com/files/2016-11/generic-image-missing-profile.jpg" alt="Card image cap">
+                            </a>
                             <div class="card-body d-flex flex-column align-items-stretch">
                                 <h5 class="card-title">Użytkownicy</h5>
-                                <p class="card-text">Zarządzaj rolami użytkowników, usuwaj oraz dodawaj użytkowników</p>
+                                <p class="card-text">Zarządzaj rolami użytkowników.</p>
                                 <a href="{{ route('admin.users') }}" class="btn btn-primary">Użytkownicy</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-3">
                         <div class="card size">
-                            <img class="card-img-top" src="/storage/admin/team.jpg" alt="Card image cap">
+                            <a href="{{ route('admin.clubs') }}">
+                                <img class="card-img-top" src="/storage/admin/team.jpg" 
+                                alt="Card image cap">
+                            </a>
                             <div class="card-body d-flex flex-column align-items-stretch">
                                 <h5 class="card-title">Drużyny</h5>
                                 <p class="card-text">Aktualizuj drużyny, zarządzaj ich zasobami</p>
@@ -69,7 +74,9 @@ i.fa-trash:hover {
                     </div>
                     <div class="col-3">
                         <div class="card size" >
-                            <img class="card-img-top" src="https://www.learndash.com/wp-content/uploads/trianing-video.png" alt="Card image cap">
+                            <a href="{{ route('admin.posts') }}">
+                                <img class="card-img-top" src="https://www.learndash.com/wp-content/uploads/trianing-video.png" alt="Card image cap">
+                            </a>
                             <div class="card-body d-flex flex-column align-items-stretch">
                                 <h5 class="card-title">Posty</h5>
                                 <p class="card-text">Zatwierdzaj oraz zarządzaj postami wszystkich użytkowników</p>
@@ -79,7 +86,9 @@ i.fa-trash:hover {
                     </div>
                     <div class="col-3">
                         <div class="card size" >
-                            <img class="card-img-top" src="/storage/admin/jurecki.jpg" alt="Card image cap">
+                            <a href="{{ route('admin.profiles') }}">
+                                <img class="card-img-top" src="/storage/admin/jurecki.jpg" alt="Card image cap">
+                            </a>
                             <div class="card-body d-flex flex-column align-items-stretch">
                                 <h5 class="card-title">Transfery</h5>
                                 <p class="card-text">Przypisuj zawodników do drużyn</p>
