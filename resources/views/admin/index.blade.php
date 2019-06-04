@@ -28,6 +28,10 @@ i.fa-trash:hover {
 .card-img-top {
     height: 245px;
 }
+
+.jumbotron {
+    margin-top: 20vh;
+}
 </style>
 
 @endsection
@@ -35,7 +39,7 @@ i.fa-trash:hover {
 @section('content')
 
 
-<div class="container d-flex flex-column justify-content-center">
+<div class="container">
         <div class="jumbotron">
             <div class="row">
                 <div class="col-12">
