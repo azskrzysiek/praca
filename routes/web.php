@@ -58,6 +58,9 @@ Route::patch('/profile/{user}', 'ProfilesController@update')->name('profile.upda
 
 Route::get('/clubs/{club}/edit', 'ClubsController@edit')->name('clubs.edit');
 Route::patch('/clubs/{club}', 'ClubsController@update')->name('clubs.update');
+Route::patch('/clubs/transfer/{club}', 'ClubsController@addtransfer')->name('clubs.add.transfer');
+Route::patch('/clubs/transfer/accept/{profile}', 'AdminController@accepttransfer')->name('admin.accept.transfer');
+Route::patch('/clubs/transfer/decline/{profile}', 'AdminController@declinetransfer')->name('admin.decline.transfer');
 Route::get('/clubs/{club}', 'ClubsController@show')->name('clubs.show');
 Route::get('/clubs/', 'ClubsController@index')->name('clubs.index');
 Route::delete('/clubs/{club}', 'ClubsController@destroy')->name('clubs.delete');

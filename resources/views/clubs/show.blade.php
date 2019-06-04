@@ -34,7 +34,22 @@
 @section('content')
 <div class="container one d-flex flex-column justify-content-center">
     <div class="top text-center">
-        <a href="" class="btn btn-primary">Aplikuj do tej drużyny</a>
+        <a title="Dołącz do drużyny"
+            class="btn btn-primary text-white"
+            onclick="event.preventDefault(); 
+            var r = confirm('Jestes pewien ?'); 
+            if (r === true)
+            {
+                document.getElementById('add-club-{{ $club->id }}').submit();
+            } else {
+                return false;
+            }">
+            Dołącz do drużyny
+            </a>
+            <form class="d-none" id="add-club-{{ $club->id }}" action="{{ route('clubs.add.transfer', $club->id) }}" method="POST">
+                @csrf
+                @method('PATCH')
+            </form> 
     </div>
     <div class="row">
             @foreach ($players as $player)

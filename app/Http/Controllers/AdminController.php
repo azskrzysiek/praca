@@ -39,10 +39,33 @@ class AdminController extends Controller
     }
     public function profiles()
     {
-        $profiles = Profile::latest()->paginate(10);
+        $profiles = Profile::where('transfer','<>',null)->latest()->paginate(10);
+
         
         return view('admin.profiles', compact('profiles'));
     }
+
+    public function accepttransfer(Profile $profile)
+    {
+        $profile->update([
+            'club_id' => $profile->transfer,
+            'transfer' => null,
+        ]);
+
+        return back();
+        
+    }
+    public function declinetransfer(Profile $profile)
+    {
+        $profile->update([
+            'transfer' => null,
+        ]);
+
+        return back();
+        
+    }
+    
+    
     public function users()
     {
         $users = User::latest()->paginate(10);

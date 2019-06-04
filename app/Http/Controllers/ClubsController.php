@@ -45,6 +45,18 @@ class ClubsController extends Controller
         //
     }
 
+    public function addtransfer(Club $club)
+    {
+        $user = auth()->user();
+
+        $user->profile->update([
+            'transfer' => $club->id,
+        ]);
+
+        return back();
+    }
+
+
     /**
      * Display the specified resource.
      *

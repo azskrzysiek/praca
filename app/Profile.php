@@ -8,7 +8,7 @@ class Profile extends Model
 {
 
     protected $fillable = [
-        'name', 'lastname', 'position','age','height','experience','club_id', 'image','urlFacebook','urlTwitter','urlInstagram','description',
+        'name', 'lastname', 'position','age','height','experience','club_id', 'image','urlFacebook','urlTwitter','urlInstagram','description','transfer','approved',
     ];
 
     public function profileImage()
@@ -38,11 +38,19 @@ class Profile extends Model
 
     public function getClubeAttribute()
     {
-        $club = ['Brak','Kupa', 'Nielba Wągrowiec', 'Jurand Ciechanów', 'SMS Gdańsk', 'Gwardia Koszalin', 'Sambor Tczew', 'Sokół Kościerzyna', 'Warmia Olsztyn', 'GKS Żukowo', 'Mazur Sierpc','Wójcik Elbląg','Pomozenia Malbork'];
 
-        $where = $this->club_id;
+        $club = ['Brak','Stal Gorzów', 'Nielba Wągrowiec', 'Jurand Ciechanów', 'Sambor Tczew', 'Wójcik Elbląg', 'Mazur Sierpc', 'GKS Żukowo', 'Gwardia Koszalin', 'SMS Gdańsk', 'Warmia Olsztyn','Sokół Kościerzyna','MKS Malbork'];
 
-        return $club[$where];
+
+        $where = $this->transfer;
+
+        if ($where === null)
+        {
+            return 'Brak';
+        } else {
+            return $club[$where];
+        }
+
 
     }
 

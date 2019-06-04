@@ -81,7 +81,7 @@ i.fa-trash:hover {
                         <div class="card size" >
                             <img class="card-img-top" src="/storage/admin/jurecki.jpg" alt="Card image cap">
                             <div class="card-body d-flex flex-column align-items-stretch">
-                                <h5 class="card-title">Zawodnicy</h5>
+                                <h5 class="card-title">Transfery</h5>
                                 <p class="card-text">Przypisuj zawodników do drużyn</p>
                                 <a href="{{ route('admin.profiles') }}" class="btn btn-primary">Profile</a>
                             </div>
