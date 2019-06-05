@@ -4,7 +4,7 @@
 <style>
     .one {
         min-height: 100vh;
-
+        margin-bottom: 3vh;
     }
 
     .card {
@@ -36,7 +36,7 @@
     @if (Auth::user()->profile->transfer !== $club->id && Auth::user()->profile->club_id !== $club->id)
     <div class="top text-center">
         <a title="Dołącz do drużyny"
-            class="btn btn-primary text-white"
+            class="btn btn-success text-white"
             onclick="event.preventDefault(); 
             var r = confirm('Jestes pewien ?'); 
             if (r === true)

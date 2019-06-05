@@ -109,6 +109,8 @@ class PostsController extends Controller
             'id_away_player' => 'required',
             'scoreFull' => 'required',
             'scoreHalf' => 'required',
+            'penalty_home' => 'required',
+            'penalty_away' => 'required',
             'description' => 'required',
             'video' => '',
             ],
@@ -119,6 +121,8 @@ class PostsController extends Controller
                 'id_away_player.required' => 'Wybierz gracza z listy',
                 'scoreFull.required' => 'Dodaj wynik po zakończeniu meczu',
                 'scoreHalf.required' => 'Dodaj wynik po połowie meczu',
+                'penalty_home.required' => 'Dodaj ilość kar dla gospodarzy',
+                'penalty_away.required' => 'Dodaj ilość kar dla gości',
                 'description.required' => 'Dodaj opis meczu',
             ]);
 
@@ -150,6 +154,8 @@ class PostsController extends Controller
              'id_away_player' => $data['id_away_player'],
              'scoreFull' => $data['scoreFull'],
              'scoreHalf' => $data['scoreHalf'],
+             'penalty_home' => $data['penalty_home'],
+             'penalty_away' => $data['penalty_away'],
              'description' => $data['description'],
              'video' => $fileNameToStore,
              'approved' => 0,
@@ -194,14 +200,17 @@ class PostsController extends Controller
         $clubHome = Club::findOrFail($post->club_id_home);
         $clubAway = Club::findOrFail($post->club_id_away);
 
+        $player_home = Profile::with('user')->where('id',$post->id_home_player)->first();
+        $player_away = Profile::with('user')->where('id',$post->id_away_player)->first();
+
         $count = Club::count();
 
-        return view('posts.show', compact('post', 'favorit', 'clubHome','clubAway','count'));
+        return view('posts.show', compact('post', 'favorit', 'clubHome','clubAway','count','player_home','player_away'));
     }
 
     public function edit(Post $post)
     {
-        // $this->authorize('update', $post);
+        $this->authorize('update', $post);
 
         $clubs = Club::all();
 
@@ -210,7 +219,7 @@ class PostsController extends Controller
 
     public function update(Post $post)
     {
-        // $this->authorize('update', $post);
+        $this->authorize('update', $post);
 
         $data = request()->validate([
             'club_id_home' => 'required',
@@ -219,6 +228,8 @@ class PostsController extends Controller
             'id_away_player' => 'required',
             'scoreFull' => 'required',
             'scoreHalf' => 'required',
+            'penalty_home' => 'required',
+            'penalty_away' => 'required',
             'description' => 'required',
             'video' => '',
             ],
@@ -229,8 +240,11 @@ class PostsController extends Controller
                 'id_away_player.required' => 'Wybierz gracza z listy',
                 'scoreFull.required' => 'Dodaj wynik po zakończeniu meczu',
                 'scoreHalf.required' => 'Dodaj wynik po połowie meczu',
+                'penalty_home.required' => 'Dodaj ilość kar dla gospodarzy',
+                'penalty_away.required' => 'Dodaj ilość kar dla gości',
                 'description.required' => 'Dodaj opis meczu',
             ]);
+
 
             if (request('video'))
             {

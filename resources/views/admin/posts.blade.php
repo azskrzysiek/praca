@@ -61,7 +61,7 @@
                                         <th scope="col">Goście</th>
                                         <th scope="col">Wynik meczu</th>
                                         <th scope="col">Wynik do połowy</th>
-                                        <th scope="col">Opis meczu</th>
+                                        <th scope="col">Dodał</th>
                                         <th scope="col">Video</th>
                                         <th scope="col">Zatwierdź</th>
                                         <th scope="col">Usuń</th>
@@ -71,7 +71,11 @@
                                 
                                     @foreach ($posts as $post)
                                         <tr>
-                                            <th scope="row"><a href="/p/{{ $post->id }}">Pokaż</a></th>
+                                            <th scope="row">
+                                                @if ($post->approved === 1)
+                                                    <a href="/p/{{ $post->id }}">Pokaż</a>
+                                                @endif
+                                            </th>
                                             <th scope="row">{{ $post->id }}</th>
                                             <td 
                                             class="{{ $post->scoreHomeFull() > $post->scoreAwayFull() ? 'winner-home' : 'loser-home' }}">
@@ -83,7 +87,7 @@
                                             </td>
                                         <td>{{ $post->scoreFull}}</td>
                                         <td>{{ $post->scoreHalf}}</td>
-                                        <td>{{ $post->description}}</td>
+                                        <td><a class="text-dark" style="text-decoration: none;" href="/profile/{{ $post->user->id }}">{{ $post->user->username}}</a></td>
                                         <td>
                                             @if (  $post->video  !== 'noimage.jpg' )
                                                 <video src="/storage/video/{{ $post->video}}" width="50px" height="50px" alt="">

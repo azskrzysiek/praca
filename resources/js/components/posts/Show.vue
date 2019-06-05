@@ -20,8 +20,8 @@
                 </div>
             </div>
         </div>
-            <half :post="post" :score="score" v-if="score === 1" :key="score"></half>
-            <full :score="score" v-else-if="score === 2" :key="score"></full>
+            <half :post="post" :player_home="player_home" :player_away="player_away" :score="score" v-if="score === 1" :key="score"></half>
+            <full :post="post" :score="score" :player_home="player_home" :player_away="player_away" v-else-if="score === 2" :key="score"></full>
             <chart :post="post" :score="score" v-else-if="score === 3" :key="score"></chart>
     </div>
 </div>
@@ -34,10 +34,10 @@
 <script>
  
 export default {
-    props: ['post'],
+    props: ['post','player_home','player_away'],
     data () {
         return {
-            score: 1,
+            score: 2,
             isHalf: 0,
             
         }

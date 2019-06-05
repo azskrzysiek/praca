@@ -59470,14 +59470,77 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['score'],
+  props: ['post', 'score', 'player_home', 'player_away'],
   data: function data() {
     return {
       styleObject: {
         minHeight: '1000px'
-      }
+      },
+      img_home: this.player_home.image ? '/storage/' + this.player_home.image : '/jpg/noimage.jpg',
+      img_away: this.player_away.image ? '/storage/' + this.player_away.image : '/jpg/noimage.jpg',
+      link_home: '/profile/' + this.player_home.id,
+      link_away: '/profile/' + this.player_away.id,
+      score_roz: 5,
+      score_home: '',
+      score_away: '',
+      score_home_roz: '',
+      score_away_roz: ''
     };
+  },
+  mounted: function mounted() {
+    score_home: {
+      this.score_roz = this.post.scoreFull.split(':').map(Number);
+      this.score_home = this.score_roz[0];
+      this.score_away = this.score_roz[1];
+      this.score_home_roz = this.score_roz[0] - this.score_roz[1];
+      this.score_away_roz = this.score_roz[1] - this.score_roz[0];
+      this.score_home_roz > 0 ? this.score_home_roz = '+' + this.score_home_roz : this.score_home_roz = this.score_home_roz;
+      this.score_away_roz > 0 ? this.score_away_roz = '+' + this.score_away_roz : this.score_away_roz = this.score_away_roz;
+    }
   }
 });
 
@@ -59502,13 +59565,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['post', 'score'],
+  props: ['post', 'score', 'player_home', 'player_away'],
   data: function data() {
     return {
       styleObject: {
         minHeight: '1000px'
-      }
+      },
+      img_home: this.player_home.image ? '/storage/' + this.player_home.image : '/jpg/noimage.jpg',
+      img_away: this.player_away.image ? '/storage/' + this.player_away.image : '/jpg/noimage.jpg'
     };
   },
   mounted: function mounted() {
@@ -59561,10 +59635,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['post'],
+  props: ['post', 'player_home', 'player_away'],
   data: function data() {
     return {
-      score: 1,
+      score: 2,
       isHalf: 0
     };
   },
@@ -64063,7 +64137,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.move-right[data-v-49f573e3] {\n    position: absolute;\n    display: inline-block;\n    right: 0;\n    top: 8.5%;\n    cursor: pointer;\n}\n.fade-enter[data-v-49f573e3] {\n  opacity: 0;\n}\n.fade-enter-active[data-v-49f573e3] {\n  transition: all 1s;\n}\n\n", ""]);
+exports.push([module.i, "\n.move-right[data-v-49f573e3] {\n    position: absolute;\n    display: inline-block;\n    right: 0;\n    top: 8.5%;\n    cursor: pointer;\n}\n.fade-enter[data-v-49f573e3] {\n  opacity: 0;\n}\n.fade-enter-active[data-v-49f573e3] {\n  transition: all 1s;\n}\nimg[data-v-49f573e3] {\n    height: 100px;\n}\n.mvp[data-v-49f573e3] {\n    padding: 5vh 0;\n    border-bottom: 1px solid #000;\n    height: 290px;\n}\n\n\n", ""]);
 
 // exports
 
@@ -64082,7 +64156,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.move-right[data-v-3de02d87] {\n    position: absolute;\n    display: inline-block;\n    right: 0;\n    top: 8.5%;\n    cursor: pointer;\n}\n.fade-enter[data-v-3de02d87] {\n  opacity: 0;\n}\n.fade-enter-active[data-v-3de02d87] {\n  transition: all 1s;\n}\n\n\n", ""]);
+exports.push([module.i, "\n.move-right[data-v-3de02d87] {\n    position: absolute;\n    display: inline-block;\n    right: 0;\n    top: 8.5%;\n    cursor: pointer;\n}\n.fade-enter[data-v-3de02d87] {\n  opacity: 0;\n}\n.fade-enter-active[data-v-3de02d87] {\n  transition: all 1s;\n}\nimg[data-v-3de02d87] {\n    height: 100px;\n}\n\n\n", ""]);
 
 // exports
 
@@ -99138,10 +99212,124 @@ var render = function() {
       _c(
         "div",
         {
-          staticClass: "card-body text-center zero",
+          staticClass: "card-body text-center",
           style: [_vm.score === 2 ? _vm.styleObject : ""]
         },
-        [_c("h1", [_vm._v("Full time score")])]
+        [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-6" }, [
+              _c("h1", [_vm._v("Gospodarze")]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "mvp d-flex flex-column justify-content-center"
+                },
+                [
+                  _c("h1", [_vm._v("MVP")]),
+                  _vm._v(" "),
+                  _c("i", { staticClass: "fas fa-trophy pb-2" }),
+                  _vm._v(" "),
+                  _c("a", { attrs: { href: _vm.link_home } }, [
+                    _c("img", { attrs: { src: _vm.img_home, alt: "" } })
+                  ]),
+                  _vm._v(" "),
+                  _c("h1", { staticClass: "pt-2" }, [
+                    _vm._v(
+                      _vm._s(_vm.player_home.user.name) +
+                        " " +
+                        _vm._s(_vm.player_home.number)
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "mvp d-flex flex-column justify-content-center"
+                },
+                [
+                  _c("h1", [_vm._v("Kary")]),
+                  _vm._v(" "),
+                  _c("i", { staticClass: "fas fa-hand-peace" }),
+                  _vm._v(" "),
+                  _c("h1", [_vm._v(_vm._s(_vm.post.penalty_home) + " minut")])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "mvp d-flex flex-column justify-content-center"
+                },
+                [
+                  _c("h1", [_vm._v("Bramki różnica")]),
+                  _vm._v(" "),
+                  _c("i", { staticClass: "fas fa-futbol pb-2" }),
+                  _vm._v(" "),
+                  _c("h1", [_vm._v(_vm._s(_vm.score_home_roz))])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-6" }, [
+              _c("h1", [_vm._v("Goście")]),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "mvp d-flex flex-column justify-content-center"
+                },
+                [
+                  _c("h1", [_vm._v("MVP")]),
+                  _vm._v(" "),
+                  _c("i", { staticClass: "fas fa-trophy pb-2" }),
+                  _vm._v(" "),
+                  _c("a", { attrs: { href: _vm.link_away } }, [
+                    _c("img", { attrs: { src: _vm.img_away, alt: "" } })
+                  ]),
+                  _vm._v(" "),
+                  _c("h1", { staticClass: "pt-2" }, [
+                    _vm._v(
+                      _vm._s(_vm.player_away.user.name) +
+                        " " +
+                        _vm._s(_vm.player_away.number)
+                    )
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "mvp d-flex flex-column justify-content-center"
+                },
+                [
+                  _c("h1", [_vm._v("Kary")]),
+                  _vm._v(" "),
+                  _c("i", { staticClass: "fas fa-hand-peace" }),
+                  _vm._v(" "),
+                  _c("h1", [_vm._v(_vm._s(_vm.post.penalty_away) + " minut")])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "mvp d-flex flex-column justify-content-center"
+                },
+                [
+                  _c("h1", [_vm._v("Bramki różnica")]),
+                  _vm._v(" "),
+                  _c("i", { staticClass: "fas fa-futbol pb-2" }),
+                  _vm._v(" "),
+                  _c("h1", [_vm._v(_vm._s(_vm.score_away_roz))])
+                ]
+              )
+            ])
+          ])
+        ]
       )
     ]
   )
@@ -99178,7 +99366,25 @@ var render = function() {
           staticClass: "card-body text-center",
           style: [_vm.score === 1 ? _vm.styleObject : ""]
         },
-        [_c("div", [_c("h1", [_vm._v(_vm._s(_vm.post.id))])])]
+        [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-6" }, [
+              _c("h1", [_vm._v("Gospodarze")]),
+              _vm._v(" "),
+              _c("img", { attrs: { src: _vm.img_home, alt: "" } }),
+              _vm._v(" "),
+              _c("h1", [_vm._v(_vm._s(_vm.player_home.user.name))])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-6" }, [
+              _c("h1", [_vm._v("Goście")]),
+              _vm._v(" "),
+              _c("img", { attrs: { src: _vm.img_away, alt: "" } }),
+              _vm._v(" "),
+              _c("h1", [_vm._v(_vm._s(_vm.player_away.user.name))])
+            ])
+          ])
+        ]
       )
     ]
   )
@@ -99268,10 +99474,23 @@ var render = function() {
         _vm.score === 1
           ? _c("half", {
               key: _vm.score,
-              attrs: { post: _vm.post, score: _vm.score }
+              attrs: {
+                post: _vm.post,
+                player_home: _vm.player_home,
+                player_away: _vm.player_away,
+                score: _vm.score
+              }
             })
           : _vm.score === 2
-          ? _c("full", { key: _vm.score, attrs: { score: _vm.score } })
+          ? _c("full", {
+              key: _vm.score,
+              attrs: {
+                post: _vm.post,
+                score: _vm.score,
+                player_home: _vm.player_home,
+                player_away: _vm.player_away
+              }
+            })
           : _vm.score === 3
           ? _c("chart", {
               key: _vm.score,

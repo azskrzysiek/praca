@@ -70,7 +70,7 @@
    </div>
     <div class="row">
        <div class="col-12">
-           <show :post="{{ $post }}"></show>
+        <show :post="{{ $post }}" :player_home="{{ $player_home }}" :player_away="{{ $player_away }}"></show>
        </div>
    </div>
 </div>

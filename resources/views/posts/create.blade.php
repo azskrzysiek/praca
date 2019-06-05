@@ -94,7 +94,29 @@
                                 </span>
                             @enderror
                     </div>
-        
+
+                    <div class="form-group row">
+                        <label for="penalty_home" class="col-md-4 col-form-label pl-0">Kary gospodarze</label>
+                            <input id="penalty_home" type="number" rows="5" class="form-control @error('penalty_home') is-invalid @enderror" name="penalty_home" value="{{ old('penalty_home')}}" autocomplete="penalty_home" autofocus>
+            
+                            @error('penalty_home')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="penalty_away" class="col-md-4 col-form-label pl-0">Kary gospodarze</label>
+                            <input id="penalty_away" type="number" rows="5" class="form-control @error('penalty_away') is-invalid @enderror" name="penalty_away" value="{{ old('penalty_away')}}" autocomplete="penalty_away" autofocus>
+            
+                            @error('penalty_away')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                    </div>
+    
                     <div class="form-group row">
                         <label for="description" class="col-md-4 col-form-label pl-0">Opis meczu</label>
                             <textarea id="description" type="text" class="form-control @error('description') is-invalid @enderror" name="description" value="{{ old('description') }}" autocomplete="description" autofocus></textarea>
@@ -138,6 +160,7 @@
     $(document).ready(function() {
         $('#uploadForm').submit(function(e) {
         $('#loader').show();
+        $('form :submit').attr("disabled", "disabled");
     });
       $('#club_id_home').on('change', function() {
           var stateID = $(this).val();
