@@ -13,16 +13,10 @@
                     :class="{'btnActive':score === 2}"
                     @click.prevent="showFull()">Cały mecz</button>
                 </div>
-                <div>
-                    <button class="btn btn1 btn-primary" 
-                    :class="{'btnActive':score === 3}"
-                    @click.prevent="showChart()">Wykresy</button>
-                </div>
             </div>
         </div>
             <half :post="post" :player_home="player_home" :player_away="player_away" :score="score" v-if="score === 1" :key="score"></half>
             <full :post="post" :score="score" :player_home="player_home" :player_away="player_away" v-else-if="score === 2" :key="score"></full>
-            <chart :post="post" :score="score" v-else-if="score === 3" :key="score"></chart>
     </div>
 </div>
     
@@ -37,7 +31,7 @@ export default {
     props: ['post','player_home','player_away'],
     data () {
         return {
-            score: 2,
+            score: 1,
             isHalf: 0,
             
         }
@@ -49,9 +43,6 @@ export default {
         },
         showFull() {
             this.score = 2;
-        },
-        showChart() {
-            this.score = 3;
         },
         onChild(value) {
             this.score = value;

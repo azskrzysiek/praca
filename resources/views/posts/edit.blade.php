@@ -1,7 +1,20 @@
 @extends('layouts.app')
+@section('style')
+<style>
+.top {
+    min-height: 100vh;
+}
+.jumbotron {
+    margin-top: 10vh;
+    margin-bottom: 5vh;
+}
+
+</style>    
+
+@endsection
 
 @section('content')
-<div class="container d-flex flex-column justify-content-center" style="height: 90vh; margin-top: 10rem; margin-bottom: 10rem;">
+<div class="container top d-flex flex-column justify-content-center">
     <div class="jumbotron">
         <div class="row">
 
@@ -10,7 +23,7 @@
                     <h1>Edytuj mecz</h1>
                 </div>
 
-                <form action="/p/{{ $post->id }}" enctype="multipart/form-data" method="POST">
+                <form id="uploadForm" action="/p/{{ $post->id }}" enctype="multipart/form-data" method="POST">
                     @csrf
                     @method('PATCH')
                     <div class="form-group row">
@@ -139,6 +152,7 @@
 
                     </div>
 
+                    <div id="loader" class="pt-2" style="display: none;"><img src="/storage/logos/loader.gif" alt=""></div>
                     <div class="row pt-3 d-flex">
                         <button class="btn btn-outline-primary mr-3">Modyfikuj mecz</button>
                         <a href="javascript:history.back()" class="btn btn-outline-secondary ml-3">Wróć</a>
@@ -155,6 +169,10 @@
 <script>
 
 $(document).ready(function() {
+    $('#uploadForm').submit(function(e) {
+        $('#loader').show();
+        $('form :submit').attr("disabled", "disabled");
+    });
     var post = {!! $post !!}
       $('#club_id_home').load('load', function() {
           var stateID = $(this).val();

@@ -3,9 +3,9 @@
     <div class="card-body text-center" :style="[score === 2 ? styleObject : '']">
         <div class="row">
             <div class="col-6">
-                <h1>Gospodarze</h1>
+                <h1 class="h1">Gospodarze</h1>
                 <div class="mvp d-flex flex-column justify-content-center">
-                    <h1>MVP</h1>
+                    <h1 class="h1">MVP</h1>
                     <i class="fas fa-trophy pb-2"></i>
                      <a :href="link_home">
                         <img :src="img_home" alt="">
@@ -13,20 +13,20 @@
                     <h1 class="pt-2">{{ player_home.user.name }} {{ player_home.number }}</h1>
                 </div>
                  <div class="mvp d-flex flex-column justify-content-center">
-                    <h1>Kary</h1>
+                    <h1 class="h1">Kary</h1>
                     <i class="fas fa-hand-peace"></i>
                     <h1>{{ post.penalty_home }} minut</h1>
                 </div>
                 <div class="mvp d-flex flex-column justify-content-center">
-                    <h1>Bramki różnica</h1>
-                    <i class="fas fa-futbol pb-2"></i>
+                    <h1 class="h1">Bramki różnica</h1>
+                    <i class="fas fa-futbol red pb-2"></i>
                     <h1>{{ score_home_roz }}</h1>
                 </div>
             </div>
             <div class="col-6">
-                <h1>Goście</h1>
+                <h1 class="h1">Goście</h1>
                 <div class="mvp d-flex flex-column justify-content-center">
-                    <h1>MVP</h1>
+                    <h1 class="h1">MVP</h1>
                     <i class="fas fa-trophy pb-2"></i>
                     <a :href="link_away">
                         <img :src="img_away" alt="">
@@ -34,13 +34,13 @@
                     <h1 class="pt-2">{{ player_away.user.name }} {{ player_away.number }}</h1>
                 </div>
                 <div class="mvp d-flex flex-column justify-content-center">
-                    <h1>Kary</h1>
+                    <h1 class="h1">Kary</h1>
                     <i class="fas fa-hand-peace"></i>
                     <h1>{{ post.penalty_away }} minut</h1>
                 </div>
                 <div class="mvp d-flex flex-column justify-content-center">
-                    <h1>Bramki różnica</h1>
-                    <i class="fas fa-futbol pb-2"></i>
+                    <h1 class="h1">Bramki różnica</h1>
+                    <i class="fas fa-futbol red pb-2"></i>
                     <h1>{{ score_away_roz }}</h1>
                 </div>
             </div>
@@ -104,14 +104,37 @@ export default {
     .fade-enter-active {
       transition: all 1s;
     }
+    .h1 {
+        font-weight: 700;
+    }
 
     img {
         height: 100px;
     }
+
+    i {
+        font-size: 200%;
+        padding: 10px;
+    }
+
     .mvp {
         padding: 5vh 0;
         border-bottom: 1px solid #000;
         height: 290px;
+    }
+    .fa-trophy {
+        color: #f4ee42;
+    }
+    .fa-hand-peace {
+        color: #e60000;
+        padding: 10px;
+    }
+    .fa-futbol {
+        color: #33cc33;
+        padding: 10px;
+    }
+    .red {
+        color: #e60000;
     }
 
 

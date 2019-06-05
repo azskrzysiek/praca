@@ -1,7 +1,18 @@
 @extends('layouts.app')
 
+@section('style')
+<style>
+.top {
+    min-height: 100vh;
+}
+.jumbotron {
+    margin-top: 10vh;
+}
+</style>
+@endsection
+
 @section('content')
-<div class="container d-flex flex-column justify-content-center" style="height: 90vh; margin-top: 10rem; margin-bottom: 10rem;">
+<div class="container top d-flex flex-column justify-content-center">
     <div class="jumbotron">
         <div class="row">
 

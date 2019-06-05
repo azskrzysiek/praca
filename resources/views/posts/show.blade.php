@@ -1,9 +1,25 @@
 @extends('layouts.app')
 
+@section('style')
+<style>
+.top {
+    min-height: 100vh;
+}
+.top-row {
+    margin-top: 8vh;
+    margin-bottom: 5vh;
+}
+.row-bottom {
+    margin-bottom: 5vh;
+}
+</style>
+
+@endsection
+
 @section('content')
-<div class="container" style="margin-bottom: 20px">
-    <div class="row text-center">
-        <div class="col-12" style="margin: 5vh 0;">
+<div class="container top">
+    <div class="row text-center top-row">
+        <div class="col-12">
             <div class="card d-flex flex-row align-items-center">
                 <div class="col-2">
                     <i class="fas fa-clock pr-2"></i>
@@ -68,7 +84,7 @@
            </div>
        </div>
    </div>
-    <div class="row">
+    <div class="row row-bottom">
        <div class="col-12">
         <show :post="{{ $post }}" :player_home="{{ $player_home }}" :player_away="{{ $player_away }}"></show>
        </div>

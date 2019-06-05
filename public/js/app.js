@@ -59555,6 +59555,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_apexcharts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-apexcharts */ "./node_modules/vue-apexcharts/dist/vue-apexcharts.js");
+/* harmony import */ var vue_apexcharts__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_apexcharts__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -59574,7 +59576,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'Chart',
+  components: {
+    apexcharts: vue_apexcharts__WEBPACK_IMPORTED_MODULE_0___default.a
+  },
   props: ['post', 'score', 'player_home', 'player_away'],
   data: function data() {
     return {
@@ -59582,11 +59615,30 @@ __webpack_require__.r(__webpack_exports__);
         minHeight: '1000px'
       },
       img_home: this.player_home.image ? '/storage/' + this.player_home.image : '/jpg/noimage.jpg',
-      img_away: this.player_away.image ? '/storage/' + this.player_away.image : '/jpg/noimage.jpg'
+      img_away: this.player_away.image ? '/storage/' + this.player_away.image : '/jpg/noimage.jpg',
+      link_home: '/profile/' + this.player_home.id,
+      link_away: '/profile/' + this.player_away.id,
+      score_roz: '',
+      score_home: '',
+      score_away: '',
+      score_home_roz: '',
+      score_away_roz: '',
+      chance_home: '',
+      chance_away: ''
     };
   },
   mounted: function mounted() {
-    console.log(this.post.id);
+    score_home: {
+      this.score_roz = this.post.scoreHalf.split(':').map(Number);
+      this.score_home = this.score_roz[0];
+      this.score_away = this.score_roz[1];
+      this.score_home_roz = this.score_roz[0] - this.score_roz[1];
+      this.score_away_roz = this.score_roz[1] - this.score_roz[0];
+      this.score_home_roz > 0 ? this.score_home_roz = '+' + this.score_home_roz : this.score_home_roz = this.score_home_roz;
+      this.score_away_roz > 0 ? this.score_away_roz = '+' + this.score_away_roz : this.score_away_roz = this.score_away_roz;
+      this.chance_home = this.score_home * 100 / (this.score_away + this.score_home);
+      this.chance_away = this.score_away * 100 / (this.score_away + this.score_home);
+    }
   }
 });
 
@@ -59628,17 +59680,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['post', 'player_home', 'player_away'],
   data: function data() {
     return {
-      score: 2,
+      score: 1,
       isHalf: 0
     };
   },
@@ -59649,9 +59695,6 @@ __webpack_require__.r(__webpack_exports__);
     },
     showFull: function showFull() {
       this.score = 2;
-    },
-    showChart: function showChart() {
-      this.score = 3;
     },
     onChild: function onChild(value) {
       this.score = value;
@@ -64137,7 +64180,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.move-right[data-v-49f573e3] {\n    position: absolute;\n    display: inline-block;\n    right: 0;\n    top: 8.5%;\n    cursor: pointer;\n}\n.fade-enter[data-v-49f573e3] {\n  opacity: 0;\n}\n.fade-enter-active[data-v-49f573e3] {\n  transition: all 1s;\n}\nimg[data-v-49f573e3] {\n    height: 100px;\n}\n.mvp[data-v-49f573e3] {\n    padding: 5vh 0;\n    border-bottom: 1px solid #000;\n    height: 290px;\n}\n\n\n", ""]);
+exports.push([module.i, "\n.move-right[data-v-49f573e3] {\n    position: absolute;\n    display: inline-block;\n    right: 0;\n    top: 8.5%;\n    cursor: pointer;\n}\n.fade-enter[data-v-49f573e3] {\n  opacity: 0;\n}\n.fade-enter-active[data-v-49f573e3] {\n  transition: all 1s;\n}\n.h1[data-v-49f573e3] {\n    font-weight: 700;\n}\nimg[data-v-49f573e3] {\n    height: 100px;\n}\ni[data-v-49f573e3] {\n    font-size: 200%;\n    padding: 10px;\n}\n.mvp[data-v-49f573e3] {\n    padding: 5vh 0;\n    border-bottom: 1px solid #000;\n    height: 290px;\n}\n.fa-trophy[data-v-49f573e3] {\n    color: #f4ee42;\n}\n.fa-hand-peace[data-v-49f573e3] {\n    color: #e60000;\n    padding: 10px;\n}\n.fa-futbol[data-v-49f573e3] {\n    color: #33cc33;\n    padding: 10px;\n}\n.red[data-v-49f573e3] {\n    color: #e60000;\n}\n\n\n", ""]);
 
 // exports
 
@@ -64156,7 +64199,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.move-right[data-v-3de02d87] {\n    position: absolute;\n    display: inline-block;\n    right: 0;\n    top: 8.5%;\n    cursor: pointer;\n}\n.fade-enter[data-v-3de02d87] {\n  opacity: 0;\n}\n.fade-enter-active[data-v-3de02d87] {\n  transition: all 1s;\n}\nimg[data-v-3de02d87] {\n    height: 100px;\n}\n\n\n", ""]);
+exports.push([module.i, "\n.move-right[data-v-3de02d87] {\n    position: absolute;\n    display: inline-block;\n    right: 0;\n    top: 8.5%;\n    cursor: pointer;\n}\n.h1[data-v-3de02d87] {\n    font-weight: 700;\n}\ni[data-v-3de02d87] {\n    font-size: 200%;\n    padding: 10px;\n}\n.blue[data-v-3de02d87] {\n    color: #1a1aff;\n}\n.fade-enter[data-v-3de02d87] {\n  opacity: 0;\n}\n.fade-enter-active[data-v-3de02d87] {\n  transition: all 1s;\n}\nimg[data-v-3de02d87] {\n    height: 100px;\n}\n.mvp[data-v-3de02d87] {\n    padding: 5vh 0;\n    border-bottom: 1px solid #000;\n    height: 290px;\n}\n.fa-trophy[data-v-3de02d87] {\n    color: #f4ee42;\n}\n.fa-hand-peace[data-v-3de02d87] {\n    color: #e60000;\n    padding: 10px;\n}\n.fa-futbol[data-v-3de02d87] {\n    color: #33cc33;\n    padding: 10px;\n}\n.red[data-v-3de02d87] {\n    color: #e60000;\n}\n\n\n", ""]);
 
 // exports
 
@@ -99218,7 +99261,7 @@ var render = function() {
         [
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-6" }, [
-              _c("h1", [_vm._v("Gospodarze")]),
+              _c("h1", { staticClass: "h1" }, [_vm._v("Gospodarze")]),
               _vm._v(" "),
               _c(
                 "div",
@@ -99226,7 +99269,7 @@ var render = function() {
                   staticClass: "mvp d-flex flex-column justify-content-center"
                 },
                 [
-                  _c("h1", [_vm._v("MVP")]),
+                  _c("h1", { staticClass: "h1" }, [_vm._v("MVP")]),
                   _vm._v(" "),
                   _c("i", { staticClass: "fas fa-trophy pb-2" }),
                   _vm._v(" "),
@@ -99250,7 +99293,7 @@ var render = function() {
                   staticClass: "mvp d-flex flex-column justify-content-center"
                 },
                 [
-                  _c("h1", [_vm._v("Kary")]),
+                  _c("h1", { staticClass: "h1" }, [_vm._v("Kary")]),
                   _vm._v(" "),
                   _c("i", { staticClass: "fas fa-hand-peace" }),
                   _vm._v(" "),
@@ -99264,9 +99307,9 @@ var render = function() {
                   staticClass: "mvp d-flex flex-column justify-content-center"
                 },
                 [
-                  _c("h1", [_vm._v("Bramki różnica")]),
+                  _c("h1", { staticClass: "h1" }, [_vm._v("Bramki różnica")]),
                   _vm._v(" "),
-                  _c("i", { staticClass: "fas fa-futbol pb-2" }),
+                  _c("i", { staticClass: "fas fa-futbol red pb-2" }),
                   _vm._v(" "),
                   _c("h1", [_vm._v(_vm._s(_vm.score_home_roz))])
                 ]
@@ -99274,7 +99317,7 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-6" }, [
-              _c("h1", [_vm._v("Goście")]),
+              _c("h1", { staticClass: "h1" }, [_vm._v("Goście")]),
               _vm._v(" "),
               _c(
                 "div",
@@ -99282,7 +99325,7 @@ var render = function() {
                   staticClass: "mvp d-flex flex-column justify-content-center"
                 },
                 [
-                  _c("h1", [_vm._v("MVP")]),
+                  _c("h1", { staticClass: "h1" }, [_vm._v("MVP")]),
                   _vm._v(" "),
                   _c("i", { staticClass: "fas fa-trophy pb-2" }),
                   _vm._v(" "),
@@ -99306,7 +99349,7 @@ var render = function() {
                   staticClass: "mvp d-flex flex-column justify-content-center"
                 },
                 [
-                  _c("h1", [_vm._v("Kary")]),
+                  _c("h1", { staticClass: "h1" }, [_vm._v("Kary")]),
                   _vm._v(" "),
                   _c("i", { staticClass: "fas fa-hand-peace" }),
                   _vm._v(" "),
@@ -99320,9 +99363,9 @@ var render = function() {
                   staticClass: "mvp d-flex flex-column justify-content-center"
                 },
                 [
-                  _c("h1", [_vm._v("Bramki różnica")]),
+                  _c("h1", { staticClass: "h1" }, [_vm._v("Bramki różnica")]),
                   _vm._v(" "),
-                  _c("i", { staticClass: "fas fa-futbol pb-2" }),
+                  _c("i", { staticClass: "fas fa-futbol red pb-2" }),
                   _vm._v(" "),
                   _c("h1", [_vm._v(_vm._s(_vm.score_away_roz))])
                 ]
@@ -99369,19 +99412,99 @@ var render = function() {
         [
           _c("div", { staticClass: "row" }, [
             _c("div", { staticClass: "col-6" }, [
-              _c("h1", [_vm._v("Gospodarze")]),
+              _c("h1", { staticClass: "h1" }, [_vm._v("Gospodarze")]),
               _vm._v(" "),
-              _c("img", { attrs: { src: _vm.img_home, alt: "" } }),
+              _c(
+                "div",
+                {
+                  staticClass: "mvp d-flex flex-column justify-content-center"
+                },
+                [
+                  _c("h1", { staticClass: "h1" }, [_vm._v("Bramki zdobyte")]),
+                  _vm._v(" "),
+                  _c("i", { staticClass: "fas fa-futbol pb-2" }),
+                  _vm._v(" "),
+                  _c("h1", [_vm._v(_vm._s(_vm.score_home))])
+                ]
+              ),
               _vm._v(" "),
-              _c("h1", [_vm._v(_vm._s(_vm.player_home.user.name))])
+              _c(
+                "div",
+                {
+                  staticClass: "mvp d-flex flex-column justify-content-center"
+                },
+                [
+                  _c("h1", { staticClass: "h1" }, [
+                    _vm._v("Szanse na zwycięstwo")
+                  ]),
+                  _vm._v(" "),
+                  _c("i", { staticClass: "fas fa-dice blue" }),
+                  _vm._v(" "),
+                  _c("h1", [_vm._v(_vm._s(_vm.chance_home) + " %")])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "mvp d-flex flex-column justify-content-center"
+                },
+                [
+                  _c("h1", { staticClass: "h1" }, [_vm._v("Bramki różnica")]),
+                  _vm._v(" "),
+                  _c("i", { staticClass: "fas fa-futbol red pb-2" }),
+                  _vm._v(" "),
+                  _c("h1", [_vm._v(_vm._s(_vm.score_home_roz))])
+                ]
+              )
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-6" }, [
-              _c("h1", [_vm._v("Goście")]),
+              _c("h1", { staticClass: "h1" }, [_vm._v("Goście")]),
               _vm._v(" "),
-              _c("img", { attrs: { src: _vm.img_away, alt: "" } }),
+              _c(
+                "div",
+                {
+                  staticClass: "mvp d-flex flex-column justify-content-center"
+                },
+                [
+                  _c("h1", { staticClass: "h1" }, [_vm._v("Bramki zdobyte")]),
+                  _vm._v(" "),
+                  _c("i", { staticClass: "fas fa-futbol pb-2" }),
+                  _vm._v(" "),
+                  _c("h1", [_vm._v(_vm._s(_vm.score_away))])
+                ]
+              ),
               _vm._v(" "),
-              _c("h1", [_vm._v(_vm._s(_vm.player_away.user.name))])
+              _c(
+                "div",
+                {
+                  staticClass: "mvp d-flex flex-column justify-content-center"
+                },
+                [
+                  _c("h1", { staticClass: "h1" }, [
+                    _vm._v("Szanse na zwycięstwo")
+                  ]),
+                  _vm._v(" "),
+                  _c("i", { staticClass: "fas fa-dice blue" }),
+                  _vm._v(" "),
+                  _c("h1", [_vm._v(_vm._s(_vm.chance_away) + " %")])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass: "mvp d-flex flex-column justify-content-center"
+                },
+                [
+                  _c("h1", { staticClass: "h1" }, [_vm._v("Bramki różnica")]),
+                  _vm._v(" "),
+                  _c("i", { staticClass: "fas fa-futbol red pb-2" }),
+                  _vm._v(" "),
+                  _c("h1", [_vm._v(_vm._s(_vm.score_away_roz))])
+                ]
+              )
             ])
           ])
         ]
@@ -99450,23 +99573,6 @@ var render = function() {
                 },
                 [_vm._v("Cały mecz")]
               )
-            ]),
-            _vm._v(" "),
-            _c("div", [
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn1 btn-primary",
-                  class: { btnActive: _vm.score === 3 },
-                  on: {
-                    click: function($event) {
-                      $event.preventDefault()
-                      return _vm.showChart()
-                    }
-                  }
-                },
-                [_vm._v("Wykresy")]
-              )
             ])
           ])
         ]),
@@ -99490,11 +99596,6 @@ var render = function() {
                 player_home: _vm.player_home,
                 player_away: _vm.player_away
               }
-            })
-          : _vm.score === 3
-          ? _c("chart", {
-              key: _vm.score,
-              attrs: { post: _vm.post, score: _vm.score }
             })
           : _vm._e()
       ],
