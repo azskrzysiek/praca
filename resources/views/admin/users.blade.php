@@ -63,7 +63,7 @@ a {
                                     @foreach ($users as $user)
                                         <tr>
                                                 <th scope="row">{{ $user->id }}</th>
-                                                <td>{{ $user->name }}</td>
+                                                <td><a href="/profile/{{ $user->id }}">{{ $user->name }}</a></td>
                                                 <td>{{ $user->email }}</td>
                                                 <td>{{ $user->username }}</td>
                                                 <td class="d-flex justify-content-around">

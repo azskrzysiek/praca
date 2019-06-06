@@ -55,6 +55,7 @@ Route::delete('/p/{post}', 'PostsController@destroy')->name('posts.delete');
 Route::get('/clubs/create', 'ClubsController@create')->name('clubs.create');
 Route::get('/profile/{user}/edit', 'ProfilesController@edit')->name('profile.edit');
 Route::get('/profile/{user}', 'ProfilesController@index')->name('profile.show');
+Route::get('/profile/{user}/mvp', 'ProfilesController@mvp')->name('profile.mvp');
 Route::patch('/profile/{user}', 'ProfilesController@update')->name('profile.update');
 
 Route::get('/clubs/{club}/edit', 'ClubsController@edit')->name('clubs.edit');

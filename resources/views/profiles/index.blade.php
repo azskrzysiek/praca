@@ -5,6 +5,18 @@
 
 .jumbotron {
     font-size: 1.2rem;
+    margin: 10vh auto;
+}
+.profile {
+    max-height: 400px; 
+    max-width: 400px;
+}
+
+.green {
+    color: #00ff00;
+}
+.red {
+    color: #e60000;
 }
 
 </style>
@@ -12,11 +24,11 @@
 @endsection
 
 @section('content')
-<div class="container pt-3">
-<div class="jumbotron mt-5">
+<div class="container">
+<div class="jumbotron">
    <div class="row">
        <div class="col-12 col-md-7 text-center">
-            <img src="{{ $user->profile->profileImage() }}" style="max-height: 400px; max-width: 400px;" class=" rounded-circle w-100 mb-3" alt="">
+            <img src="{{ $user->profile->profileImage() }}" class=" rounded-circle w-100 mb-3 profile" alt="">
             <div class="row d-flex flex-column justify-content-center">
                 <div class="col-6 offset-3">
                     @if (isset($user->profile->urlInstagram))
@@ -61,7 +73,12 @@
        </div>
        <div class="col-12 col-md-5">
            <div class="pt-5 text-center d-block">
-               <h1 class="pb-2">{{ $user->profile->name }} {{ $user->profile->lastname }}</h1>
+               <h1 class="">{{ $user->profile->name }} {{ $user->profile->lastname }}</h1>
+               @if ($user->isAdmin())
+               <small><i class="fas fa-user-shield red"></i> Admin </small>
+               @elseif ($user->isTrainer())
+               <small><i class="fas fa-certificate green"></i> Trener </small>
+               @endif
 
                <div class="row pb-4">
                    @can('view', $user->profile)
@@ -108,9 +125,16 @@
                    {{ $user->profile->club->name ?? 'Brak' }}
                 </div>
                 <div><strong class="mr-3">Numer:</strong>{{ $user->profile->number }}</div>
-                <div><strong class="mr-3">MVP:</strong>{{ $count_mvp }}</div>
-                <div><strong class="mr-3">Zatwierdzonych meczy:</strong>{{ $posts->count() ?? '0' }}</div>
-                <div><strong class="mr-3">Czekających na zatwierdzenie:</strong>{{ $unaproved->count() ?? '0' }}</div>
+                <div>
+                    <strong class="mr-3">MVP:</strong>{{ $count_mvp }}
+                    @if ($count_mvp > 0)
+                        <a class="pl-3" style="text-decoration: none;" href="/profile/{{ $user->id }}/mvp"> Zobacz mecze</a>
+                    @endif
+                </div>
+                @if ($user->isTrainer() || $user->isAdmin())
+                    <div><strong class="mr-3">Zatwierdzonych meczy:</strong>{{ $posts->count() ?? '0' }}</div>
+                    <div><strong class="mr-3">Czekających na zatwierdzenie:</strong>{{ $unaproved->count() ?? '0' }}</div>
+                @endif
            </div>
            
            <div class="pt-5 font-weight-bold">Osiągnięcia:</div>
@@ -125,16 +149,15 @@
    </div>
 </div>
 
-
+@if ($user->isTrainer() || $user->isAdmin())
     <div class="row">
         <div class="col-12 text-center">
             @if($posts->count() > 0)
-                <div class="card"><h4 class="pt-1">Moje filmy</h4></div>
+                <div class="card"><h4 class="pt-1">Dodane filmy</h4></div>
             @endif
         </div>
     </div>
     
-
        <div class="row pt-4">
         <div class="card-deck">
            @foreach($posts as $post)
@@ -167,6 +190,8 @@
                 {{ $posts->links() }}
             </div>
         </div>
+@endif
+
 </div>
 
 

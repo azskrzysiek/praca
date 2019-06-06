@@ -5,6 +5,9 @@
     .btn {
         width: 80%;
     }
+    .card-top {
+        margin: 20px 0;
+    }
 </style>
 
 @endsection
@@ -14,7 +17,7 @@
 <div class="container pt-4">
     <div class="row pt-4">
         <div class="col-12">
-            <div class="card text-center align-content-center">
+            <div class="card card-top text-center align-content-center">
                 <div class="cardheader h2 pt-2 text-uppercase">Drużyny - I liga</div>
             </div>
         </div>

@@ -16,6 +16,7 @@ class FavoritesController extends Controller
 
     public function index()
     {
+        
         $postFavorites = Auth::user()->favoriting()->paginate(3, ['*'], 'postFavorites');
 
         return view('favorites.index', compact('postFavorites'));

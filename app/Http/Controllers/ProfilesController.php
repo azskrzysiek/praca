@@ -29,7 +29,7 @@ class ProfilesController extends Controller
 
          $users = $user->posts()->pluck('posts.user_id');
 
-         $count_mvp = Post::where('id_home_player',$user->id)->orWhere('id_away_player',$user->id)->count();
+         $count_mvp = Post::where('approved',1)->where('id_home_player',$user->id)->orWhere('approved',1)->where('id_away_player',$user->id)->count();
 
          $posts = Post::whereIn('user_id', $users)->where('approved',1)->latest()->paginate(3);
          
@@ -38,6 +38,19 @@ class ProfilesController extends Controller
         //  $postFavorites = Auth::user()->favoriting()->paginate(3, ['*'], 'postFavorites');
 
         return view('profiles.index', compact('user','posts','unaproved','count_mvp'));
+    }
+
+    public function mvp(User $user)
+    {
+        $count_mvp = Post::where('approved',1)->where('id_home_player',$user->id)->orWhere('approved',1)->where('id_away_player',$user->id)->count();
+
+        if ($count_mvp > 0) {
+            $posts = Post::where('approved',1)->where('id_home_player',$user->id)->orWhere('approved',1)->where('id_away_player',$user->id)->paginate(3);
+            return view('profiles.mvp', compact('posts'));
+        } else {
+            return redirect('/profile/'. $user->id);
+        }
+
     }
 
     public function edit(User $user)

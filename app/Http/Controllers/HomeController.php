@@ -28,9 +28,15 @@ class HomeController extends Controller
 
         $user = auth()->user();
 
-        $posts = Post::whereIn('user_id', $user)->latest()->paginate(10);
+        if ($user->isAdmin() || $user->isTrainer())
+        {
+            $posts = Post::where('user_id', $user->id)->latest()->paginate(10);
+    
+            return view('dashboard.home', compact('posts'));
+        } else {
+            return back();
+        }
 
-        return view('dashboard.home', compact('posts'));
     }
 
 }

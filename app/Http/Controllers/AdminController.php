@@ -99,7 +99,12 @@ class AdminController extends Controller
         if ($user->isAdmin()) 
         {
             $user->roles()->detach(Role::where('name','Admin')->first());
-            return back();
+            if (auth()->user()->isAdmin())
+            {
+                return back();
+            } else {
+                return redirect('/posts');
+            }
         } else {
             $user->roles()->attach(Role::where('name','Admin')->first());
             return back();

@@ -46,10 +46,12 @@
                                     <i class="fas fa-home"></i>
                                     <div class="ml-3">Strona główna</div>
                                 </a>
+                                @if (Auth::user()->isAdmin() || Auth::user()->isTrainer())
                                 <a class="dropdown-item d-flex align-items-baseline" href="{{ route('home') }}">
                                         <i class="fas fa-columns"></i>
                                     <div class="ml-3">Zarządzaj filmami</div>
                                 </a>
+                                @endif
                                 <a class="dropdown-item d-flex align-items-baseline" href="{{ route('clubs.index') }}">
                                         <i class="fas fa-futbol"></i>
                                     <div class="ml-3">Drużyny</div>

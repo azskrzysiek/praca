@@ -59638,6 +59638,8 @@ __webpack_require__.r(__webpack_exports__);
       this.score_away_roz > 0 ? this.score_away_roz = '+' + this.score_away_roz : this.score_away_roz = this.score_away_roz;
       this.chance_home = this.score_home * 100 / (this.score_away + this.score_home);
       this.chance_away = this.score_away * 100 / (this.score_away + this.score_home);
+      this.chance_home = this.chance_home.toFixed(2);
+      this.chance_away = this.chance_away.toFixed(2);
     }
   }
 });

@@ -35,9 +35,11 @@
                 @endif
             </a>
             <div class="card-body">
-                <p class="card-text text-center">
+                <p class="card-text text-center d-flex">
                      
-                    <span>{{ $postFavorite->title }}</span>
+                    <span class="flex-grow-1">{{ $postFavorite->clubHome() }}</span>
+                    <span class="flex-grow-1">vs</span>
+                    <span class="flex-grow-1">{{ $postFavorite->clubAway() }}</span>
                 </p>
             </div>
             </div>
