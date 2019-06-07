@@ -74,10 +74,10 @@ img {
                                             <td>{{ $club->name}}</td> 
                                             <td><img src="/storage/logos/{{ $club->logo }}" alt=""></td> 
                                         <td>
-                                            <a title="Edytuj ten post" href="{{ route('clubs.edit', $club->id) }}"><i class="fas fa-lg fa-pen-square"></i></a> 
+                                            <a title="Edytuj tę drużynę" href="{{ route('clubs.edit', $club->id) }}"><i class="fas fa-lg fa-pen-square"></i></a> 
                                         </td>
                                         <td>
-                                            <a title="Usuń ten post"
+                                            <a title="Usuń tę drużynę"
                                             class="pl-1"
                                             onclick="event.preventDefault(); 
                                             var r = confirm('Jestes pewien ?'); 

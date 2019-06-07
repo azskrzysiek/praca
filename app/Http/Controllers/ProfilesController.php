@@ -102,6 +102,7 @@ class ProfilesController extends Controller
             $imageArray ?? []
         ));
 
+        toast('Profil zaktualizowany','info','top-right');
         return redirect("/profile/{$user->id}");
     }
 }

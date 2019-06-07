@@ -1,7 +1,15 @@
 @extends('layouts.app')
 
+@section('style')
+<style>
+    .jumbotron {
+        margin-top: 10vh;
+    }
+</style>
+@endsection
+
 @section('content')
-<div class="container d-flex flex-column justify-content-center" style="height: 100vh;">
+<div class="container d-flex flex-column justify-content-center">
     <div class="jumbotron">
 
         <div class="row">
@@ -14,7 +22,7 @@
         <div class="row">
     @if ($posts->count() > 0)
     @foreach ($posts as $post)
-    <div class=" col-12 col-md-4 py-4">
+    <div class=" col-md-6 col-xl-4 py-4">
         <div class="card" style="min-height: 280px;">
             <div class="card-header d-flex align-items-baseline justify-content-between">
                 <div>

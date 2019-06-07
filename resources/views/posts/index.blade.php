@@ -10,6 +10,15 @@
         background-color: #ee9a2e; 
         border:1px solid #ee9a2e;
     }
+    .top {
+        min-height: 80vh;
+        padding-top: 10vh;
+        padding-bottom: 5vh;
+    }
+    .card {
+        min-height: 300px; 
+        min-width: 350px;
+    }
 </style>
 
 @endsection
@@ -17,16 +26,16 @@
 @section('content')
 
 
-<div class="container d-flex flex-column justify-content-center" style="height:80vh;">
-    <div class="row" style="padding-top: 15rem;">
+<div class="container d-flex flex-column justify-content-center">
+    <div class="row top">
         <form action="/search" method="get" class="form-inline ml-3">
                 <input name="search" class="form-control mr-sm-2" type="search" placeholder="Szukaj drużynę ..." aria-label="Search">
             <button class="btn btn-success my-2 my-sm-0" type="submit">Szukaj</button>
         </form>
         <div class="card-deck">
     @foreach ($posts as $post)
-            <div class="col-lg-4 col-md-6 col-12 py-4">
-                <div class="card" style="height: 300px; min-width: 350px;">
+            <div class="col-lg-4 col-md-6 col-sm-12 py-3">
+                <div class="card">
                     <div class="card-header d-flex align-items-baseline justify-content-between">
                         <div>
                             <i class="fas fa-clock pr-2"></i>

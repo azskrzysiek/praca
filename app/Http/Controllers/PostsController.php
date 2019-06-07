@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 
+
 class PostsController extends Controller
 {
 
@@ -161,7 +162,7 @@ class PostsController extends Controller
              'approved' => 0,
          ]);
 
-         return redirect('/profile/' . auth()->user()->id);
+         return redirect('/profile/' . auth()->user()->id)->with('success', 'Mecz został dodany, gdy zostanie zaakceptowany pojawi się na stronie.');
         }
         else {
             return back();
@@ -274,9 +275,11 @@ class PostsController extends Controller
 
         if ($user->isAdmin())
         {
+            toast('Mecz został zaktualizowany','success','top-right');
             return redirect('/admin');
         }
 
+        toast('Mecz został zaktualizowany','success','top-right');
         return redirect("/home");
     }
 
@@ -286,6 +289,8 @@ class PostsController extends Controller
         $this->authorize('delete', $post);
 
         $post->delete();
+
+        toast('Mecz został usunięty','info','top-right');
 
         return back();
     }

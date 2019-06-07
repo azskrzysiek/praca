@@ -18,6 +18,10 @@
 .red {
     color: #e60000;
 }
+.flex-grow-1 {
+    min-width: 110px;
+    max-width: 215px;
+}
 
 </style>
 
@@ -80,16 +84,16 @@
                <small><i class="fas fa-certificate green"></i> Trener </small>
                @endif
 
-               <div class="row pb-4">
+               <div class="row pb-4 ">
                    @can('view', $user->profile)
-                   <div class="col">
+                   <div class="col p-sm-2">
                         <a class="d-block badge badge-pill badge-success" href="/p/create">
                             <i class="fas fa-2x fa-plus-circle pb-1"></i>
                             <div>Dodaj mecz</div>
                         </a>
                     </div>
                     @endcan
-                    <div class="col">
+                    <div class="col p-sm-2">
                         @can('update', $user->profile)
                         <a class="d-block badge badge-pill badge-info" href="/profile/{{ $user->id }}/edit">
                             <i class="fas fa-2x fa-pen-square pb-1"></i>
@@ -98,7 +102,7 @@
                         @endcan
                     </div>
                         @can('update', $user->profile)
-                   <div class="col">
+                   <div class="col p-sm-2">
                         <a class="d-block badge badge-pill badge-warning red" href="/favorite">
                             <i class="fas fa-2x fa-heart pb-1"></i>
                             <div>Ulubione</div>
@@ -161,11 +165,11 @@
        <div class="row pt-4">
         <div class="card-deck">
            @foreach($posts as $post)
-            <div class="col-4 col-md-4 pb-4">
+            <div class="col-lg-4 col-md-6 col-sm-12 pb-4">
                 <div class="card" style="min-height: 220px; max-height: 220px padding: 10px;">
-                    <div class="card-header d-flex justify-content-center">
+                    <div class="card-header d-flex text-center">
                         <div class="flex-grow-1">{{ $post->clubHome() }}</div> 
-                        <div class="flex-grow-1">vs</div>
+                        <div class="flex-grow-2">vs</div>
                         <div class="flex-grow-1">{{ $post->clubAway() }}</div> 
                     </div>
                     <a href="/p/{{ $post->id }}">

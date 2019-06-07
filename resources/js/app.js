@@ -11,6 +11,7 @@ window.Vue = require("vue");
 
 import VueApexCharts from 'vue-apexcharts'
 
+
 Vue.component('apexchart', VueApexCharts)
 
 /**
@@ -104,6 +105,9 @@ $('a[href*="#"]')
       }
     }
   });
+
+
+
   
 
 

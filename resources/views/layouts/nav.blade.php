@@ -1,6 +1,6 @@
 
-<nav id="navbar" style="max-height:60px" class="{{ Auth::guest() ? 'visible' : ''}} navbar fixed-top navbar-expand-md navbar-light bg-white shadow-sm">
-        <div class="container" style="max-height: 60px;">
+<nav id="navbar" class="{{ Auth::guest() ? 'visible' : ''}} navbar fixed-top navbar-expand-sm navbar-light bg-white shadow-sm">
+        <div class="container">
             <a title="strona główna" class="navbar-brand d-flex" href="{{ url('/') }}">
                 <div><img src="/svg/logo.svg" class="pr-1 hov" style="" alt=""></div>
                 <div class="pl-2 pt-1 hov">ReczVod</div>
@@ -11,9 +11,9 @@
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
+                {{-- <ul class="navbar-nav mr-auto">
 
-                </ul>
+                </ul> --}}
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -77,6 +77,7 @@
             </div>
         </div>
     </nav>
+    
 
     @guest
     <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -89,7 +90,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                <form method="POST" action="{{ route('login') }}">
+                <form id="loginForm" method="POST" action="{{ route('login') }}">
                         @csrf
 
                         <div class="form-group row loginText">
@@ -97,7 +98,7 @@
 
                             <div class="col-md-12 d-flex align-items-baseline">
                                 <i class="fas fa-envelope-square pr-2"></i>
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="example@example.com" required autocomplete="email" autofocus>
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="example@example.com" autocomplete="email" autofocus>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -112,7 +113,7 @@
 
                             <div class="col-md-12 d-flex align-items-baseline">
                                 <i class="fas fa-lock pr-2"></i>
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Hasło" required autocomplete="current-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required placeholder="Hasło" autocomplete="current-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -121,6 +122,16 @@
                                 @enderror
                             </div>
                         </div>
+
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
 
                         <div class="form-group row">
                             <div class="col-md-6 ml-3 d-flex">
@@ -153,6 +164,7 @@
                             </a>
                         @endif
                     </div>
+                    
                     
                 </div>
                 </div>
@@ -241,6 +253,16 @@
                                         <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password" placeholder="Potwierdź hasło">
                                     </div>
                                 </div>
+
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
         
                                 <div class="form-group row pt-4">
                                     <div class="col-md-8 offset-md-2">
@@ -257,5 +279,7 @@
                     </div>
                 </div> {{-- Modal register --}}
         @endguest
+
+
 
     

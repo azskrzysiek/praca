@@ -33,9 +33,8 @@
                         </a>
                     </div>
                 </div>
-                <div class="col-2">
+                <div class="col-2 mb-3">
                     <favorite-button title="Dodaj post do ulubionych" post-id="{{ $post->id }}" favorit="{{ $favorit }}"></favorite-button>
-                    <p>Ulubiony</p>
                 </div>
             </div>
         </div>
@@ -43,44 +42,41 @@
    <div class="row">
        <div class="col-12 text-center">
            <div class="jumbotron">
-               <div class="pt-0 d-flex flex-row justify-content-beetwen">
-                   @if ($post->scoreHomeFull() !== $post->scoreAwayFull())
-                   <div class="flex-grow-1 h2 {{ ($post->scoreHomeFull() > $post->scoreAwayFull()) ? 'winner-home' : 'loser-home' }}" 
-                   style="width: 30%;">{{ ($post->scoreHomeFull() > $post->scoreAwayFull()) ? 'Zwycięzca' : 'Przegrany' }}</div>
-                   <div 
-                   style="width: 298px;" class="h2">Wynik</div>
-                   <div class="flex-grow-1 h2 {{ ($post->scoreHomeFull() < $post->scoreAwayFull()) ? 'winner-home' : 'loser-home' }}" 
-                   style="width: 30%;">{{ ($post->scoreHomeFull() < $post->scoreAwayFull()) ? 'Zwycięzca' : 'Przegrany' }}</div>
-                   @else
-                    <div class=" w-100 h2 text-info">Remis</div>
-                   @endif
-               </div>
-               <div class="d-flex justify-content-between pb-5">
-                   <div 
-                        class="flex-grow-1
-                        {{ ($post->scoreHomeFull() > $post->scoreAwayFull()) ? 'winner-home' : ( ($post->scoreHomeFull() === $post->scoreAwayFull()) ? 'text-info' : 'loser-home') }}" 
-                        style="padding: 10px 0; width: 30%;">
-                            <img src="/storage/logos/{{ $clubHome->logo }}" style="height:50px;" class="img-fluid"  alt="">
-                            <h1>{{ $clubHome->name }}</h1>
-                   </div>
-                   <div class="d-flex align-items-end"
-                   style="padding: 10px 2rem;">
-                        <h1>({{$post->scoreHomeHalf()}}) {{ $post->scoreHomeFull() }} </h1>
-                        <h1>:</h1>
-                        <h1>{{ $post->scoreAwayFull() }} ({{$post->scoreAwayHalf()}})</h1>
-                   </div>
-                   <div class="flex-grow-1
-                   {{ ($post->scoreHomeFull() < $post->scoreAwayFull()) ? 'winner-home' : ( ($post->scoreHomeFull() === $post->scoreAwayFull()) ? 'text-info' : 'loser-home') }}"
-                   style="padding: 10px 0; width: 30%;">
-                        <img src="/storage/logos/{{ $clubAway->logo }}" style="height: 50px;" class="img-fluid" alt="">
-                        <h1>{{ $clubAway->name }}</h1>
+               <div class="row">
+                    <div class="col-lg-4 h2 
+                        {{ (($post->scoreHomeFull() > $post->scoreAwayFull()) ? 'winner-home' : (($post->scoreHomeFull() < $post->scoreAwayFull()) ? 'loser-home' : '')) }}">
+                        {{ (($post->scoreHomeFull() > $post->scoreAwayFull()) ? 'Zwycięzca' : (($post->scoreHomeFull() < $post->scoreAwayFull()) ? 'Przegrany' : '' )) }}
+                        <div>
+                            <img class="my-2" src="/storage/logos/{{ $clubHome->logo }}" style="height:50px;" class="img-fluid"  alt="">
+                                <h1>{{ $clubHome->name }}</h1>
+                        </div>
                     </div>
-               </div>
-               @if ($post->video !== 'noimage.jpg')
-                    <video class="" style="width: auto; height: auto; max-width: 1000px; margin: 0 auto;" src="/storage/video/{{ $post->video }}" controls>
-                @else
-                    <img class="" style="width: auto; height: auto; max-width: 1000px; margin: 0 auto;" src="/storage/video/{{ $post->video }}">
-                @endif
+                    <div class="col-lg-4 h2 d">
+                    <h1 class="d-sm-none">{{ (($post->scoreHomeFull() === $post->scoreAwayFull()) ? 'Remis' : 'Wynik') }}</h1>
+                        <div class="p-3">
+                            <div>{{ $post->scoreHomeFull() }} : {{ $post->scoreAwayFull() }} </div>
+                            <div>({{$post->scoreHomeHalf()}}) ({{$post->scoreAwayHalf()}})</div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 h2 
+                        {{ (($post->scoreHomeFull() < $post->scoreAwayFull()) ? 'winner-home' : (($post->scoreHomeFull() > $post->scoreAwayFull()) ? 'loser-home' : '')) }}">
+                        {{ (($post->scoreHomeFull() < $post->scoreAwayFull()) ? 'Zwycięzca' : (($post->scoreHomeFull() > $post->scoreAwayFull()) ? 'Przegrany' : '' )) }}
+                        <div>
+                            <img class="my-2" src="/storage/logos/{{ $clubAway->logo }}" style="height: 50px;" class="img-fluid" alt="">
+                            <h1>{{ $clubAway->name }}</h1>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        @if ($post->video !== 'noimage.jpg')
+                             <video class="img-fluid"  src="/storage/video/{{ $post->video }}" controls>
+                         @else
+                             <img class="img-fluid" src="/storage/video/{{ $post->video }}">
+                         @endif
+                    </div>
+                </div>
            </div>
        </div>
    </div>

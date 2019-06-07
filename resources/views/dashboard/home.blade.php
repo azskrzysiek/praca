@@ -91,12 +91,12 @@ i.fa-trash:hover {
                                         @endif
                                     </td>
                                     <td class="d-flex">
-                                        <a title="Edytuj ten post" href="/p/{{$post->id}}/edit"><i class="fas fa-lg fa-pen-square pr-1" style="font-size: 150%;"></i></a> 
+                                        <a title="Edytuj ten mecz" href="/p/{{$post->id}}/edit"><i class="fas fa-lg fa-pen-square pr-1" style="font-size: 150%;"></i></a> 
                                         &#8260; 
-                                        <a title="Usuń ten post"
+                                        <a title="Usuń ten mecz"
                                         class="pl-1"
                                         onclick="event.preventDefault(); 
-                                        var r = confirm('Jestes pewien ?'); 
+                                        var r = confirm('Czy chcesz usunąć ten mecz ?'); 
                                         if (r === true)
                                         {
                                             document.getElementById('delete-post-{{ $post->id }}').submit();

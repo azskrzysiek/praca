@@ -55,6 +55,14 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'username' => ['required', 'string', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'confirmed'],
+        ],
+        [
+            'name.required' => 'Wprowadź imię i nazwisko',
+            'email.unique:users' => 'Email zajęty',
+            'username.required' => 'Wprowadź naazwę użytkownika',
+            'username.unique:users' => 'Nazwa użytkownika zajęta',
+            'password.required' => 'Wprowadź hasło',
+            'password.confirmed' => 'Hasła nie pasują',
         ]);
     }
 

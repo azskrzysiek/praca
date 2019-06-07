@@ -52,6 +52,7 @@ class AdminController extends Controller
             'transfer' => null,
         ]);
 
+        toast('Transfer zaakceptowany','info','top-right');
         return back();
         
     }
@@ -61,6 +62,7 @@ class AdminController extends Controller
             'transfer' => null,
         ]);
 
+        toast('Transfer anulowany','error','top-right');
         return back();
         
     }

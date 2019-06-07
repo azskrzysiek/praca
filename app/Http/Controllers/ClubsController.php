@@ -86,6 +86,7 @@ class ClubsController extends Controller
                 $logoArray,
             ));
             
+            toast('Drużyna została dodana pomyślnie','success','top-right');
             return redirect('/admin/clubs');
         } else {
             return back();
@@ -100,6 +101,7 @@ class ClubsController extends Controller
             'transfer' => $club->id,
         ]);
 
+        toast('Twoja prośba została wysłana','info','top-right');
         return back();
     }
 
@@ -183,6 +185,7 @@ class ClubsController extends Controller
                 $logoArray ?? []
             ));
             
+            toast('Drużyna została zaktualizowana pomyślnie','info','top-right');
             return redirect('/admin/clubs');
         } else {
             return back();
@@ -204,6 +207,7 @@ class ClubsController extends Controller
 
         $club->delete();
 
+        toast('Drużyna została usunięta','success','top-right');
         return back();
     }
 }

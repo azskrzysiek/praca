@@ -47,7 +47,7 @@ i.fa-trash:hover {
                 </div>
             </div>
             <div class="row size pt-1">
-                    <div class="col-3">
+                    <div class="col-lg-3 col-md-6">
                         <div class="card size">
                             <a href="{{ route('admin.users') }}">
                                 <img class="card-img-top" src="http://www.kokoschkarevival.com/files/2016-11/generic-image-missing-profile.jpg" alt="Card image cap">
@@ -59,7 +59,7 @@ i.fa-trash:hover {
                             </div>
                         </div>
                     </div>
-                    <div class="col-3">
+                    <div class="col-lg-3 col-md-6">
                         <div class="card size">
                             <a href="{{ route('admin.clubs') }}">
                                 <img class="card-img-top" src="/storage/admin/team.jpg" 
@@ -72,19 +72,19 @@ i.fa-trash:hover {
                             </div>
                         </div>
                     </div>
-                    <div class="col-3">
+                    <div class="col-lg-3 col-md-6">
                         <div class="card size" >
                             <a href="{{ route('admin.posts') }}">
                                 <img class="card-img-top" src="https://www.learndash.com/wp-content/uploads/trianing-video.png" alt="Card image cap">
                             </a>
                             <div class="card-body d-flex flex-column align-items-stretch">
-                                <h5 class="card-title">Posty</h5>
-                                <p class="card-text">Zatwierdzaj oraz zarządzaj postami wszystkich użytkowników</p>
-                                <a href="{{ route('admin.posts') }}" class="btn btn-primary">Posty</a>
+                                <h5 class="card-title">Mecze</h5>
+                                <p class="card-text">Zatwierdzaj oraz zarządzaj meczami wszystkich użytkowników</p>
+                                <a href="{{ route('admin.posts') }}" class="btn btn-primary">Mecze</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-3">
+                    <div class="col-lg-3 col-md-6">
                         <div class="card size" >
                             <a href="{{ route('admin.profiles') }}">
                                 <img class="card-img-top" src="/storage/admin/jurecki.jpg" alt="Card image cap">
@@ -92,7 +92,7 @@ i.fa-trash:hover {
                             <div class="card-body d-flex flex-column align-items-stretch">
                                 <h5 class="card-title">Transfery</h5>
                                 <p class="card-text">Przypisuj zawodników do drużyn</p>
-                                <a href="{{ route('admin.profiles') }}" class="btn btn-primary">Profile</a>
+                                <a href="{{ route('admin.profiles') }}" class="btn btn-primary">Transery</a>
                             </div>
                         </div>
                     </div>

@@ -1,7 +1,25 @@
 @extends('layouts.app')
 
+@section('style')
+
+<style>
+
+.top {
+    min-height: 100vh;
+}
+.jumbotron {
+    margin-top: 10vh;
+}
+
+.flex-grow-1 {
+    min-width: 110px;
+}
+</style>
+
+@endsection
+
 @section('content')
-<div class="container d-flex flex-column justify-content-center" style="height: 100vh;">
+<div class="container top d-flex flex-column justify-content-center">
     <div class="jumbotron">
 
     
@@ -14,7 +32,7 @@
     </div>
     <div class="row">
     @foreach ($postFavorites as $postFavorite)
-    <div class=" col-12 col-md-4 py-4">
+    <div class=" col-12 col-md-6 col-lg-4 py-4">
         <div class="card" style="min-height: 280px;">
             <div class="card-header d-flex align-items-baseline justify-content-between">
                 <div>
@@ -38,7 +56,7 @@
                 <p class="card-text text-center d-flex">
                      
                     <span class="flex-grow-1">{{ $postFavorite->clubHome() }}</span>
-                    <span class="flex-grow-1">vs</span>
+                    <span class="flex-grow-2">vs</span>
                     <span class="flex-grow-1">{{ $postFavorite->clubAway() }}</span>
                 </p>
             </div>

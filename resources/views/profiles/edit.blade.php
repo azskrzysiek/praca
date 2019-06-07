@@ -92,41 +92,46 @@
                     </span>
                 @enderror
         </div>
-        <div class="form-group p-5 d-flex flex-column row text-center" style="border: 1px dotted black;">
-            <h4 class="p-0 m-0">Social media</h4>
-            <div class="d-flex">
-                <div class="flex-grow-1">
-                    <label for="urlFacebook" class="col-md-4 col-form-label pl-0">Facebook</label>
-                    <input id="urlFacebook" style="width: 320px" type="text" class="form-control @error('urlFacebook') is-invalid @enderror" name="urlFacebook" value="{{ old('urlFacebook') ?? $user->profile->urlFacebook }}" autocomplete="urlFacebook" autofocus>
-    
-                    @error('urlFacebook')
+        <div class="form-group row text-center p-4" style="border: 1px dotted black;">
+            <div class="col-sm-12">
+                <h4 class="p-0 m-0 text-center">Social media</h4>
+            </div>
+                <div class="col-xl-4 col-lg-12">
+                    <div class="d-flex flex-column align-items-center">
+                        <label for="urlFacebook" class="col-md-4 col-sm-12 col-form-label pl-0">Facebook</label>
+                        <input id="urlFacebook" style="width: 320px" type="text" class="form-control @error('urlFacebook') is-invalid @enderror" name="urlFacebook" value="{{ old('urlFacebook') ?? $user->profile->urlFacebook }}" autocomplete="urlFacebook" autofocus>
+                        
+                        @error('urlFacebook')
                         <span class="invalid-feedback" role="alert">
                             <strong>{!! $message !!}</strong>
                         </span>
-                    @enderror
+                        @enderror
+                    </div>
                 </div>
                
-                <div class="flex-grow-1 pr-2 pl-2">
-                    <label for="urlTwitter"  class="col-md-4 col-form-label pl-0">Twitter</label>
-                    <input  id="urlTwitter" style="width: 320px" type="text" class="form-control @error('urlTwitter') is-invalid @enderror" name="urlTwitter" value="{{ old('urlTwitter') ?? $user->profile->urlTwitter }}" autocomplete="urlTwitter" autofocus>
-    
-                    @error('urlTwitter')
+                <div class="col-xl-4 col-lg-12">
+                    <div class="d-flex flex-column align-items-center">
+                        <label for="urlTwitter"  class="col-md-4 col-sm-12 col-form-label pl-0">Twitter</label>
+                        <input  id="urlTwitter" style="width: 320px" type="text" class="form-control @error('urlTwitter') is-invalid @enderror" name="urlTwitter" value="{{ old('urlTwitter') ?? $user->profile->urlTwitter }}" autocomplete="urlTwitter" autofocus>
+                        @error('urlTwitter')
                         <span class="invalid-feedback" role="alert">
                             <strong>{!! $message !!}</strong>
                         </span>
-                    @enderror
+                        @enderror
+                    </div>
                 </div>
-                <div class="flex-grow-1">
-                    <label for="urlInstagram"  class="col-md-4 col-form-label pl-0">Instagram</label>
-                    <input  id="urlInstagram"  style="width: 320px" type="text" class="form-control @error('urlInstagram') is-invalid @enderror" name="urlInstagram" value="{{ old('urlInstagram') ?? $user->profile->urlInstagram }}" autocomplete="urlInstagram" autofocus>
-    
-                    @error('urlInstagram')
+                <div class="col-xl-4 col-lg-12">
+                    <div class="d-flex flex-column align-items-center">
+                        <label for="urlInstagram"  class="col-md-4 col-sm-12 col-form-label pl-0">Instagram</label>
+                        <input  id="urlInstagram"  style="width: 320px" type="text" class="form-control @error('urlInstagram') is-invalid @enderror" name="urlInstagram" value="{{ old('urlInstagram') ?? $user->profile->urlInstagram }}" autocomplete="urlInstagram" autofocus>
+                        
+                        @error('urlInstagram')
                         <span class="invalid-feedback" role="alert">
                             <strong>{!! $message !!}</strong>
                         </span>
-                    @enderror
+                        @enderror
+                    </div>
                 </div>
-            </div>
         </div>
         <div class="form-group row">
             <label for="description" class="col-md-4 col-form-label pl-0">Osiągnięcia(Oddzielaj enterem)</label>

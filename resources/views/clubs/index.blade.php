@@ -24,7 +24,7 @@
     </div>
     <div class="row">
         @foreach ($clubs as $club)
-            <div class="col-6">
+            <div class="col-lg-6 col-sm-12">
                 <div id="f1_container">
                 <div id="f1_card" class="shadow">
                     <div class="front face">
