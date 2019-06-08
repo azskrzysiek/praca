@@ -268,7 +268,10 @@ class PostsController extends Controller
 
         $post->update(array_merge(
             $data,
-            $videoArray ?? []
+            $videoArray ?? [],
+            [
+                'approved' => 0,
+            ],
         ));
 
         $user = auth()->user();

@@ -108,7 +108,7 @@
 
                     <div class="form-group row">
                         <label for="penalty_home" class="col-md-4 col-form-label pl-0">Kary gospodarze</label>
-                            <input id="penalty_home" type="number" rows="5" class="form-control @error('penalty_home') is-invalid @enderror" name="penalty_home" value="{{ old('penalty_home')}}" autocomplete="penalty_home" autofocus>
+                            <input id="penalty_home" type="number" rows="5" class="form-control @error('penalty_home') is-invalid @enderror" name="penalty_home" min="0" max="40" value="{{ old('penalty_home')}}" autocomplete="penalty_home" autofocus>
             
                             @error('penalty_home')
                                 <span class="invalid-feedback" role="alert">
@@ -119,7 +119,7 @@
 
                     <div class="form-group row">
                         <label for="penalty_away" class="col-md-4 col-form-label pl-0">Kary gospodarze</label>
-                            <input id="penalty_away" type="number" rows="5" class="form-control @error('penalty_away') is-invalid @enderror" name="penalty_away" value="{{ old('penalty_away')}}" autocomplete="penalty_away" autofocus>
+                            <input id="penalty_away" type="number" rows="5" class="form-control @error('penalty_away') is-invalid @enderror" name="penalty_away" min="0" max="40" value="{{ old('penalty_away')}}" autocomplete="penalty_away" autofocus>
             
                             @error('penalty_away')
                                 <span class="invalid-feedback" role="alert">
