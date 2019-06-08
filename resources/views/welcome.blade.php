@@ -1,5 +1,46 @@
 @extends('layouts.app')
 
+@section('style')
+<style>
+#section-a,
+{
+    color: #926239;
+    height: 100vh;
+}
+
+#section-a {
+    padding: 20px;
+    background: #fff;
+    text-align: center;
+}
+
+#section-a h1 {
+    padding: 15px;
+    font-weight: 700;
+    text-shadow: 1px 1px #000;
+}
+#section-a img {
+    padding: 15px;
+    box-shadow: 5px 10px 8px #888888;
+    margin-bottom: 20px;
+}
+
+.games {
+    width: 80%;
+}
+.end {
+    height: 30vh;
+    border: 1px solid #000;
+    box-shadow: 5px 10px 8px #888888;
+    width: 78vw;
+    margin: 10px auto;
+}
+
+</style>
+
+
+@endsection
+
 @section('content')
 
 {{-- <div class="flex-center position-ref full-height">
@@ -26,33 +67,48 @@
             </div>
         </header>
         <section id="section-a">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, voluptatum quisquam consequuntur ullam natus saepe placeat tempora aut dolore doloremque dicta, quia consectetur quaerat aspernatur voluptas ducimus ab! Esse sequi laborum obcaecati accusantium praesentium iste sapiente quia doloribus magni veniam sunt blanditiis, quos eveniet dignissimos qui fuga excepturi non. Voluptates ex, adipisci veniam voluptatem fugiat illo impedit nisi nobis! Saepe ipsum vitae ipsa laudantium harum cupiditate molestias recusandae velit, odio, doloremque placeat architecto odit, totam aliquam? Est blanditiis similique doloribus debitis sapiente nam numquam repudiandae illum, iusto eligendi voluptatum laborum quisquam facere. Ratione rerum cum odit veniam aperiam, commodi eveniet?</p>
+                <div class="row">
+                    <div class="col-12">
+                        <h1>Oglądaj mecze I ligi</h1>
+                        <img class="img-fluid games" src="/jpg/mecze.jpg" alt="">
+                    </div>
+                    <div class="col-12">
+                        <h1>Edytuj swój profil zawodnika</h1>
+                        <img class="img-fluid games" src="/jpg/profil.jpg" alt="">
+                    </div>
+                    <div class="col-12">
+                        <h1>Dodawaj mecze swojej drużyny</h1>
+                        <img class="img-fluid games" src="/jpg/add.jpg" alt="">
+                    </div>
+                    <div class="col-12">
+                        <h1>Dodaj profil do drużyny</h1>
+                        <img class="img-fluid games" src="/jpg/join.jpg" alt="">
+                    </div>
+                    <div class="col-12 text-center">
+                        <div class="end">
+                            <h1>Dołącz już dzisiaj</h1>
+                            <div class="my-5">
+                                <a class="btn btn-block btn-outline-primary"  
+                                    href="#" data-toggle="modal" 
+                                    data-target="#loginModal">
+                                    Zaloguj się
+                                </a>
+                                <a class="btn btn-block btn-outline-secondary" 
+                                    href="#" data-toggle="modal" data-target="#registerModal">
+                                    Zarejestruj się
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
         </section>
-        <section id="section-b">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt, voluptatum quisquam consequuntur ullam natus saepe placeat tempora aut dolore doloremque dicta, quia consectetur quaerat aspernatur voluptas ducimus ab! Esse sequi laborum obcaecati accusantium praesentium iste sapiente quia doloribus magni veniam sunt blanditiis, quos eveniet dignissimos qui fuga excepturi non. Voluptates ex, adipisci veniam voluptatem fugiat illo impedit nisi nobis! Saepe ipsum vitae ipsa laudantium harum cupiditate molestias recusandae velit, odio, doloremque placeat architecto odit, totam aliquam? Est blanditiis similique doloribus debitis sapiente nam numquam repudiandae illum, iusto eligendi voluptatum laborum quisquam facere. Ratione rerum cum odit veniam aperiam, commodi eveniet?</p>
-        </section>
-        <section id="section-c">
-            <div class="box-1">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, exercitationem ipsam fugiat dignissimos at modi repellendus natus nihil quia distinctio?
-            </div>
-            <div class="box-2">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, exercitationem ipsam fugiat dignissimos at modi repellendus natus nihil quia distinctio?
-            </div>
-            <div class="box-3">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, exercitationem ipsam fugiat dignissimos at modi repellendus natus nihil quia distinctio?
-            </div>
-        </section>
+        
 
         
 @endsection
 
 @section('script')
 
-// Refresh page on top
-
-window.onbeforeunload = function () {
-  window.scrollTo(0, 0);
-}
     
 @endsection
 

@@ -78,7 +78,7 @@ class ProfilesController extends Controller
             'number' => '',
             'urlFacebook' => 'domain:facebook.com',
             'urlTwitter' => 'domain:twitter.com',
-            'urlInstagram' => 'domain:www.instagram',
+            'urlInstagram' => 'domain:instagram.com',
             'image' => '',
         ],
         [
