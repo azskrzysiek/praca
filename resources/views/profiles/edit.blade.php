@@ -144,7 +144,7 @@
                 @enderror
         </div>
         <div class="row">
-            <label for="image" class="col-md-4 col-form-label pl-0">Profile image</label>
+            <label for="image" class="col-md-4 col-form-label pl-0">Zdjęcie profilowe</label>
             <input type="file" class="form-control-file" id="image" name="image">
 
             @error('image')

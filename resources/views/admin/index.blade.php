@@ -50,7 +50,7 @@ i.fa-trash:hover {
                     <div class="col-lg-3 col-md-6">
                         <div class="card size">
                             <a href="{{ route('admin.users') }}">
-                                <img class="card-img-top" src="http://www.kokoschkarevival.com/files/2016-11/generic-image-missing-profile.jpg" alt="Card image cap">
+                                <img class="card-img-top" src="/storage/admin/user.jpg" alt="Card image cap">
                             </a>
                             <div class="card-body d-flex flex-column align-items-stretch">
                                 <h5 class="card-title">Użytkownicy</h5>
@@ -75,7 +75,7 @@ i.fa-trash:hover {
                     <div class="col-lg-3 col-md-6">
                         <div class="card size" >
                             <a href="{{ route('admin.posts') }}">
-                                <img class="card-img-top" src="https://www.learndash.com/wp-content/uploads/trianing-video.png" alt="Card image cap">
+                                <img class="card-img-top" src="/storage/admin/video.jpg" alt="Card image cap">
                             </a>
                             <div class="card-body d-flex flex-column align-items-stretch">
                                 <h5 class="card-title">Mecze</h5>

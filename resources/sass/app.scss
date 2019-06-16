@@ -41,7 +41,7 @@
 .bg-text:before {
     content: "";
     position: fixed;
-    background: url('https://image.freepik.com/vecteurs-libre/terrain-handball-perspective_23-2147876471.jpg');
+    background: url('/jpg/boisko.jpg');
     background-size: cover;
     background-position: center;
     z-index: -1; /* Keep the background behind the content */
@@ -126,7 +126,7 @@ a:hover {
 // }
 
 #showcase {
-    background: url('https://images.unsplash.com/photo-1553627220-92f0446b6a5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80');
+    background: url('/jpg/bramka.jpg');
     background-size: cover;
     background-position: center;
     height: 100vh;

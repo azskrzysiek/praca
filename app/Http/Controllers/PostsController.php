@@ -100,9 +100,6 @@ class PostsController extends Controller
         
         if( $user->isAdmin() || $user->isTrainer())
         {
-
-        
-        
          $data = request()->validate([
             'club_id_home' => 'required',
             'id_home_player' => 'required',
@@ -126,11 +123,6 @@ class PostsController extends Controller
                 'penalty_away.required' => 'Dodaj ilość kar dla gości',
                 'description.required' => 'Dodaj opis meczu',
             ]);
-
-        //  $imagePath = request('image')->store('uploads', 'public');
-
-        //  $image = Image::make(public_path("storage/{$imagePath}"))->fit(1000, 1000);
-        //  $image->save();
 
                 if (request('video'))
                 {
@@ -191,7 +183,7 @@ class PostsController extends Controller
     public function show(Post $post)
     {
 
-        if ($post->approved === 0)
+        if ($post->approved === 0 && !auth()->user()->isAdmin())
         {
             return abort(404);
         }
@@ -245,8 +237,6 @@ class PostsController extends Controller
                 'penalty_away.required' => 'Dodaj ilość kar dla gości',
                 'description.required' => 'Dodaj opis meczu',
             ]);
-
-
             if (request('video'))
             {
                 //Get filename with the extension
@@ -262,10 +252,6 @@ class PostsController extends Controller
                 
                 $videoArray = ['video' => $fileNameToStore];
             } 
-
-
-        
-
         $post->update(array_merge(
             $data,
             $videoArray ?? [],
@@ -275,13 +261,11 @@ class PostsController extends Controller
         ));
 
         $user = auth()->user();
-
         if ($user->isAdmin())
         {
             toast('Mecz został zaktualizowany','success','top-right');
             return redirect('/admin');
         }
-
         toast('Mecz został zaktualizowany','success','top-right');
         return redirect("/home");
     }

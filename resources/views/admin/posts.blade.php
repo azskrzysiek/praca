@@ -72,9 +72,7 @@
                                     @foreach ($posts as $post)
                                         <tr>
                                             <th scope="row">
-                                                @if ($post->approved === 1)
-                                                    <a href="/p/{{ $post->id }}">Pokaż</a>
-                                                @endif
+                                                <a href="/p/{{ $post->id }}">Pokaż</a>
                                             </th>
                                             <th scope="row">{{ $post->id }}</th>
                                             <td 
