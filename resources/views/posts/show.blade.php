@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="col-2 mb-3">
-                    <favorite-button title="Dodaj post do ulubionych" post-id="{{ $post->id }}" favorit="{{ $favorit }}"></favorite-button>
+                    <favorite-button title="Dodaj mecz do ulubionych" post-id="{{ $post->id }}" favorit="{{ $favorit }}"></favorite-button>
                 </div>
             </div>
         </div>

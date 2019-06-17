@@ -145,7 +145,6 @@ class ClubsController extends Controller
      */
     public function update(Club $club)
     {
-        // $this->authorize('update', $post);
 
         $user = auth()->user();
 

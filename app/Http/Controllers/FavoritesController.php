@@ -24,7 +24,6 @@ class FavoritesController extends Controller
 
     public function store(Post $post)
     {
-
         return auth()->user()->favoriting()->toggle($post);
     }
 }
