@@ -86,7 +86,7 @@
                    
                     <div class="form-group row">
                         <label for="scoreFull" class="col-md-4 col-form-label pl-0">Wynik meczu</label>
-                            <input id="scoreFull" type="text" class="form-control @error('scoreFull') is-invalid @enderror" name="scoreFull" value="{{ old('scoreFull') }}" autocomplete="scoreFull" autofocus>
+                            <input id="scoreFull" type="text" class="form-control @error('scoreFull') is-invalid @enderror" name="scoreFull" placeholder="np. 30:20"value="{{ old('scoreFull') }}" autocomplete="scoreFull" autofocus>
 
                             @error('scoreFull')
                                 <span class="invalid-feedback" role="alert">
@@ -97,7 +97,7 @@
 
                     <div class="form-group row">
                         <label for="scoreHalf" class="col-md-4 col-form-label pl-0">Wynik do przerwy</label>
-                            <input id="scoreHalf" type="text" class="form-control @error('scoreHalf') is-invalid @enderror" name="scoreHalf" value="{{ old('scoreHalf') }}" autocomplete="scoreHalf" autofocus>
+                            <input id="scoreHalf" type="text" class="form-control @error('scoreHalf') is-invalid @enderror" name="scoreHalf" placeholder="np. !0:15" value="{{ old('scoreHalf') }}" autocomplete="scoreHalf" autofocus>
 
                             @error('scoreHalf')
                                 <span class="invalid-feedback" role="alert">
