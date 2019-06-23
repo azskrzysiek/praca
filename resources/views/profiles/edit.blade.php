@@ -153,8 +153,8 @@
         </div>
 
         <div class="row pt-3">
-            <button class="btn btn-outline-primary">Save Profile</button>
-            <a href="javascript:history.back()" class="btn btn-outline-primary ml-3">Back</a>
+            <button class="btn btn-outline-primary">Zapisz profil</button>
+            <a href="javascript:history.back()" class="btn btn-outline-primary ml-3">Powrót</a>
         </div>
     </form>
 </div>

@@ -151,8 +151,8 @@
                     <div id="loader" class="pt-2" style="display: none;"><img src="/storage/logos/loader.gif" alt=""></div>
 
                     <div class="row pt-3 d-flex">
-                        <button class="btn btn-outline-primary mr-3">Add New Post</button>
-                        <a href="javascript:history.back()" class="btn btn-outline-secondary ml-3">Back</a>
+                        <button class="btn btn-outline-primary mr-3">Dodaj post</button>
+                        <a href="javascript:history.back()" class="btn btn-outline-secondary ml-3">Powrót</a>
                     </div>
                 </form>
             </div>
